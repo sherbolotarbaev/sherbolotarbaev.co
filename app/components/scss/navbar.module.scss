@@ -1,0 +1,93 @@
+.navbar {
+  width: 100%;
+  min-width: 350px;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+
+  background: var(--bg-main), 0.4;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  transition: 0.25s;
+
+  .wrapper {
+    width: 100%;
+    max-width: 36rem;
+
+    padding: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .content {
+      display: flex;
+      align-items: center;
+      gap: 1.85rem;
+
+      @media (max-width: 1205px) {
+        gap: 1.55rem;
+      }
+
+      .logo_wrapper {
+        width: 38px;
+        height: 38px;
+
+        overflow: hidden;
+
+        .logo {
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+        }
+      }
+
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        .link {
+          padding: 0.35rem 0.65rem;
+
+          border-radius: var(--border-radius-300);
+
+          font-size: 0.875rem;
+          color: var(--color-800);
+
+          transition: 0.25s;
+
+          &:hover {
+            background: var(--bg-main-hover);
+          }
+
+          &:active {
+            background: var(--bg-main-active);
+          }
+
+          &.active {
+            // background: var(--bg-main-hover);
+          }
+
+          @media (max-width: 1205px) {
+            font-size: 0.825rem;
+          }
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      gap: 1rem;
+    }
+  }
+}

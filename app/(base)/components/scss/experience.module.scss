@@ -1,0 +1,90 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.85rem;
+
+  .title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-800);
+  }
+
+  .jobs {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.85rem;
+
+    .job {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+
+      padding-bottom: 2.55rem;
+
+      border-bottom: 1px solid var(--color-300);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width: 528px) {
+          align-items: start;
+          flex-direction: column;
+          gap: 0.55rem;
+        }
+
+        .role {
+          font-size: 1.15rem;
+          font-weight: 400;
+          color: var(--color-800);
+        }
+
+        .date {
+          font-size: 0.875rem;
+          color: var(--color-400);
+        }
+      }
+
+      .name {
+        font-size: 0.955rem;
+        color: var(--color-400);
+      }
+
+      .desc {
+        line-height: 1.6;
+
+        font-size: 0.955rem;
+        font-weight: 300;
+        color: var(--color-600);
+
+        span {
+          font-weight: 500;
+          color: var(--color-800);
+        }
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        font-size: 0.955rem;
+        color: #47a3f3;
+
+        text-decoration: underline;
+      }
+    }
+  }
+}

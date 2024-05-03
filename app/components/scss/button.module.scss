@@ -1,0 +1,97 @@
+.button {
+  width: 100%;
+
+  padding: 0.55rem;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+
+  background: var(--bg-main);
+  border: 0.8px solid var(--color-300);
+  border-radius: var(--border-radius-500);
+  outline: 1.85px solid transparent;
+
+  font-size: 0.875rem;
+  color: var(--color-600);
+
+  transition: 0.25s;
+
+  &:hover {
+    color: var(--color-500);
+    background: var(--bg-main-hover);
+  }
+
+  &:active {
+    background: var(--bg-main-active);
+  }
+
+  @media (max-width: 768px) {
+    cursor: default;
+  }
+
+  &.disabled,
+  &.load {
+    background: var(--bg-main-hover);
+
+    cursor: not-allowed;
+
+    color: var(--color-300);
+
+    &:hover,
+    &:active {
+      background: var(--bg-main-hover);
+    }
+  }
+
+  .loader {
+    color: var(--color-500);
+
+    animation: rotateAnimation 0.9s infinite linear;
+
+    @keyframes rotateAnimation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &.blue {
+    background: var(--blue-badge-bg);
+    border-color: var(--blue-badge-border-color);
+
+    color: var(--blue-badge-color);
+
+    &:hover {
+      background: var(--blue-badge-bg-hover);
+    }
+
+    &:active {
+      background: var(--blue-badge-bg-active);
+    }
+
+    &.disabled,
+    &.load {
+      background: var(--blue-badge-bg-active);
+
+      color: var(--blue-badge-bg-hover);
+
+      cursor: not-allowed;
+
+      .loader {
+        color: var(--blue-badge-color);
+      }
+
+      &:hover,
+      &:active {
+        background: var(--blue-badge-bg-active);
+      }
+    }
+  }
+}

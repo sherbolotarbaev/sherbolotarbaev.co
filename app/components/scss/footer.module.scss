@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+  height: 100px;
+
+  padding: 0.85rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--bg-main);
+
+  .text {
+    text-align: center;
+
+    font-size: 0.955rem;
+    color: var(--color-400);
+  }
+}

@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  text-decoration: none;
+}
+
+::selection {
+  background: #47a3f3;
+  color: #fefefe;
+}
+
+:root {
+  --bg-main: #fff;
+  --bg-main-hover: #f5f5f5;
+  --bg-main-active: #f0f0f0;
+
+  --color-800: #121212;
+  --color-600: rgba(0, 0, 0, 0.8);
+  --color-500: rgba(0, 0, 0, 0.6);
+  --color-400: rgba(0, 0, 0, 0.4);
+  --color-300: rgba(0, 0, 0, 0.2);
+
+  --green-badge-color: #215339;
+  --green-badge-bg: #a8ffc4;
+  --green-badge-border-color: #00d66fed;
+
+  --red-badge-color: #f57165;
+  --red-badge-bg: #f571651d;
+  --red-badge-border-color: #f5716548;
+
+  --blue-badge-color: #ddebff;
+  --blue-badge-bg: hsl(216, 100%, 54%);
+  --blue-badge-bg-hover: hsl(216, 100%, 60%);
+  --blue-badge-bg-active: hsl(216, 100%, 44%);
+  --blue-badge-border-color: hsl(216, 100%, 34%);
+
+  --border-radius-700: 0.75rem;
+  --border-radius-500: 0.5rem;
+  --border-radius-400: 0.375rem;
+  --border-radius-300: 0.3125rem;
+  --border-radius-200: 0.25rem;
+
+  --gradient-loader: linear-gradient(90deg, #e7e7e7, #ffffff, #e4e4e4);
+
+  --box-shadow-500: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+  --box-shadow-300: 0px 4px 18px rgb(0 0 0 / 4%),
+    0px 2.025px 7.84688px rgba(0, 0, 0, 0.027), 0px 0.8px 2.925px rgb(0 0 0 / 2%),
+    0px 0.175px 1.04062px rgba(0, 0, 0, 0.013);
+}
+
+html,
+body {
+  width: 100vw;
+  min-height: 100vh;
+  min-width: 350px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  overflow-x: hidden;
+
+  background: var(--bg-main);
+
+  &.dark {
+    --bg-main: rgb(0, 0, 0);
+    --bg-main-hover: rgba(40, 38, 38, 0.782);
+    --bg-main-active: rgb(32, 31, 31);
+
+    --gradient-loader: linear-gradient(
+      90deg,
+      rgba(64, 64, 64, 0.505),
+      rgb(17 16 16 / 1),
+      rgb(18, 18, 18)
+    );
+
+    --green-badge-color: #79ffa4;
+    --green-badge-bg: #32b25b1d;
+    --green-badge-border-color: #32b25b45;
+
+    --red-badge-color: #f57165;
+    --red-badge-bg: #f571651d;
+    --red-badge-border-color: #f5716548;
+
+    --blue-badge-color: #cadfff;
+    --blue-badge-bg: #4c94ff45;
+    --blue-badge-bg-hover: #4c94ff75;
+    --blue-badge-bg-active: #4c94ffd5;
+    --blue-badge-border-color: #569aff73;
+
+    --color-800: rgb(255 255 255 / 1);
+    --color-600: rgba(233, 233, 233, 0.824);
+    --color-500: rgb(163 163 163 / 1);
+    --color-400: rgb(84 84 84 / 1);
+    --color-300: rgba(64, 64, 64, 0.575);
+  }
+
+  main {
+    width: 100%;
+    height: 100%;
+    max-width: 36rem;
+
+    margin-top: 4.05rem;
+
+    flex: 1 1 auto;
+  }
+}
