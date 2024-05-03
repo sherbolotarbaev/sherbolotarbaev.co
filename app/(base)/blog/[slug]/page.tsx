@@ -63,7 +63,7 @@ function NotFound() {
             <h2 className={scss.title}>Oh no 🥲</h2>
 
             <p className={scss.desc}>
-              This post was not found or is not available in english
+              This post was not found.
             </p>
           </div>
 
