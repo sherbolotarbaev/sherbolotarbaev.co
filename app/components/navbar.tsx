@@ -2,20 +2,15 @@
 
 import { siteConfig } from '@/config/site';
 
-import { Theme, useThemeContext } from '@/app/lib/providers/theme/context';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import NavLinks from './navlinks';
-import Button from './button';
+import Theme from './theme';
 
 import logo from '@/public/images/logo.png';
-import { BiMoon, BiSun } from 'react-icons/bi';
 import scss from './scss/navbar.module.scss';
 
 export default function NavBar() {
-  const { toggleTheme, theme } = useThemeContext();
-
   return (
     <>
       <div className={scss.navbar}>
@@ -36,9 +31,7 @@ export default function NavBar() {
           </div>
 
           <div className={scss.right}>
-            <Button width={150} onClick={toggleTheme}>
-              {theme === Theme.LIGHT ? <BiMoon size={20} /> : <BiSun size={20} />}
-            </Button>
+            <Theme />
           </div>
         </div>
       </div>

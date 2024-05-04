@@ -7,18 +7,30 @@ export enum Theme {
   DARK = 'dark',
 }
 
+const getDefaultTheme = (): Theme => {
+  if (window.matchMedia) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return Theme.DARK;
+    } else {
+      return Theme.LIGHT;
+    }
+  } else {
+    return Theme.DARK;
+  }
+};
+
 export const THEME_LOCAL_STORAGE_KEY = 'theme';
-export const DEFAULT_THEME = Theme.DARK;
+export const DEFAULT_THEME = getDefaultTheme();
 export const THEME_VALUES: string[] = Object.values(Theme);
 
 export const DEFAULT_VALUE: ThemeContextData = {
   theme: DEFAULT_THEME,
-  toggleTheme: () => {},
+  toggleTheme: (theme: Theme) => {},
 };
 
 export type ThemeContextData = {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (theme: Theme) => void;
 };
 
 export const ThemeContext = createContext<ThemeContextData>(DEFAULT_VALUE);
