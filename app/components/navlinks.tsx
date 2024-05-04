@@ -10,19 +10,22 @@ import scss from './scss/navbar.module.scss';
 export default function NavLinks() {
   const pathname = usePathname();
 
-  if (!links.length) return null;
-
   return (
     <div className={scss.links}>
-      {links.map((link, index) => (
-        <Link
-          key={index}
-          href={link.path}
-          className={pathname === link.path ? `${scss.link} ${scss.active}` : scss.link}
-        >
-          {link.name}
-        </Link>
-      ))}
+      {links.length &&
+        links.map((link, index) => (
+          <Link
+            key={index}
+            className={pathname === link.path ? `${scss.link} ${scss.active}` : scss.link}
+            href={link.path}
+          >
+            {link.name}
+          </Link>
+        ))}
+
+      <Link className={scss.link} href="/cv/sherbolot_arbaev.pdf" target="_blank">
+        Resume
+      </Link>
     </div>
   );
 }
