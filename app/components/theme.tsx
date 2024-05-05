@@ -66,7 +66,7 @@ export default function Theme() {
                   handleOpenThemeMenu();
                 }}
               >
-                {value === ThemeEnum.LIGHT ? <BiMoon size={18} /> : <BiSun size={18} />}
+                {value === ThemeEnum.LIGHT ? <BiSun size={18} /> : <BiMoon size={18} />}
                 {value}
               </span>
             ))}
