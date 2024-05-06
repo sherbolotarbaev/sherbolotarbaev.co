@@ -100,6 +100,10 @@
       font-size: 1.985rem;
       font-weight: 500;
       color: var(--color-800);
+
+      .code {
+        font-size: 1.985rem;
+      }
     }
 
     h2,
@@ -108,14 +112,26 @@
       font-size: 1.685rem;
       font-weight: 500;
       color: var(--color-800);
+
+      .code {
+        font-size: 1.685rem;
+      }
     }
 
     h3 {
       font-size: 1.505rem;
+
+      .code {
+        font-size: 1.505rem;
+      }
     }
 
     h4 {
       font-size: 1.285rem;
+
+      .code {
+        font-size: 1.285rem;
+      }
     }
 
     p {
@@ -124,6 +140,10 @@
       font-size: 0.955rem;
       font-weight: 300;
       color: var(--color-600);
+
+      .code {
+        font-size: 0.955rem;
+      }
     }
 
     pre {
@@ -141,15 +161,16 @@
       scrollbar-width: 0;
     }
 
-    ul {
-      padding: 0.55em;
-
+    ul,
+    ol {
       line-height: 1.8;
     }
 
-    li::marker {
-      color: var(--color-400);
-      font-size: 1.15rem;
+    li {
+      &::marker {
+        color: var(--color-400);
+        font-size: 1.15rem;
+      }
     }
 
     strong {
