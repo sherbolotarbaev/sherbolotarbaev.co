@@ -168,7 +168,7 @@ export default function LoginForm() {
 
             {!isOtpSent && (
               <span className={scss.info}>
-                We'll send a verification code to your email.
+                {"We'll send a verification code to your email."}
               </span>
             )}
           </div>
