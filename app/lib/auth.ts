@@ -8,12 +8,12 @@ export const {
 } = NextAuth({
   providers: [
     Github({
-      clientId: process.env.GITHUB_OAUTH_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET as string,
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
     Google({
-      clientId: process.env.GOOGLE_OAUTH_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
 
