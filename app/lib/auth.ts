@@ -1,5 +1,3 @@
-import 'server-only';
-
 import NextAuth from 'next-auth';
 import Github from 'next-auth/providers/github';
 import Google from 'next-auth/providers/google';
@@ -10,12 +8,12 @@ export const {
 } = NextAuth({
   providers: [
     Github({
-      clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
-      clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
+      clientId: process.env.OAUTH_GITHUB_CLIENT_ID,
+      clientSecret: process.env.OAUTH_GITHUB_CLIENT_SECRET,
     }),
     Google({
-      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+      clientId: process.env.OAUTH_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.OAUTH_GOOGLE_CLIENT_SECRET,
     }),
   ],
 
