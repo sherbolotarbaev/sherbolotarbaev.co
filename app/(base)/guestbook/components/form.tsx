@@ -80,7 +80,7 @@ export default function Form({ user }: Readonly<Props>) {
                     height={30}
                     src={user.image}
                     alt={user.name || 'User'}
-                    loading={'lazy'}
+                    loading="lazy"
                   />
                 )}
 

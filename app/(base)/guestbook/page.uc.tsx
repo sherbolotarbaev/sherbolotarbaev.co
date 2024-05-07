@@ -9,8 +9,7 @@ import { formatDate } from '@/app/lib/date';
 
 import Image from 'next/image';
 import Form from './components/form';
-import LoginForm from './components/login-form';
-import { SignOutButton } from '@/content/guestbook/buttons';
+import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
 import Modal from '@/app/components/modal';
 import Button from '@/app/components/button';
 
@@ -47,7 +46,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
     <>
       {open && (
         <Modal open={open} handleOpen={handleOpen} title="Sign in" desc="to your account">
-          <LoginForm />
+          <SignInButtons />
         </Modal>
       )}
 
@@ -83,7 +82,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
                         height={30}
                         src={image}
                         alt={name || 'User'}
-                        loading={'lazy'}
+                        loading="lazy"
                       />
                     )}
 

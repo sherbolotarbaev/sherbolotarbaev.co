@@ -1,27 +1,4 @@
-import type { Credentials } from '.';
-
 import { signIn, signOut } from 'next-auth/react';
-import { AuthError } from 'next-auth';
-
-export async function loginOtp(formData: Credentials) {
-  try {
-    await signIn('credentials', {
-      redirect: false,
-      ...formData,
-    });
-  } catch (error: any) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return {
-            error: {
-              data: 'Incorrect verification code.',
-            },
-          };
-      }
-    }
-  }
-}
 
 export async function oauthGitHub() {
   try {

@@ -35,7 +35,7 @@ export const components: MDXComponents = {
           width={700}
           height={350}
           alt={alt}
-          loading={'lazy'}
+          loading="lazy"
           {...props}
         />
       </div>

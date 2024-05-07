@@ -62,9 +62,7 @@ function NotFound() {
           <div className={scss.text}>
             <h2 className={scss.title}>Oh no 🥲</h2>
 
-            <p className={scss.desc}>
-              This post was not found.
-            </p>
+            <p className={scss.desc}>This post was not found.</p>
           </div>
 
           <Button width={180} redirect="/blog">
@@ -137,7 +135,7 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
                   : `${siteConfig.url}/og?title=${post.metadata.title}`
               }
               alt={post.metadata.title}
-              loading={'lazy'}
+              loading="lazy"
             />
           </div>
 
