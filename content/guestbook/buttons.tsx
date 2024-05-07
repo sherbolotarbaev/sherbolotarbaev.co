@@ -2,9 +2,9 @@ import { signIn, signOut } from 'next-auth/react';
 
 import Button from '@/app/components/button';
 
-import { BiLogOut, BiLogoGithub } from 'react-icons/bi';
+import { BiLogOut, BiLogoGithub, BiLogoGoogle } from 'react-icons/bi';
 
-const oauth = async () => {
+const oauthGitHub = async () => {
   try {
     await signIn('github', {
       redirect: false,
@@ -14,19 +14,35 @@ const oauth = async () => {
   }
 };
 
+const oauthGoogle = async () => {
+  try {
+    await signIn('google', {
+      redirect: false,
+    });
+  } catch (error: any) {
+    console.error('Google authentication failed:', error.message);
+  }
+};
+
 const logOut = async () => {
   try {
     await signOut();
   } catch (error: any) {
-    console.error('GitHub logging out failed:', error.message);
+    console.error('OAUTH logging out failed:', error.message);
   }
 };
 
-export function SignInButton() {
+export function SignInButtons() {
   return (
-    <Button width={190} onClick={oauth}>
-      <BiLogoGithub size={20} /> Sign in wtih GitHub
-    </Button>
+    <>
+      <Button onClick={oauthGitHub}>
+        <BiLogoGithub size={20} /> Continue wtih GitHub
+      </Button>
+
+      <Button onClick={oauthGoogle}>
+        <BiLogoGoogle size={20} /> Continue wtih Google
+      </Button>
+    </>
   );
 }
 

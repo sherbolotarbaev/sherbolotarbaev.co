@@ -18,6 +18,8 @@
   --bg-main-hover: #f5f5f5;
   --bg-main-active: #f0f0f0;
 
+  --bg-300: #ffff;
+
   --color-800: #121212;
   --color-600: rgba(0, 0, 0, 0.8);
   --color-500: rgba(0, 0, 0, 0.6);
@@ -73,10 +75,17 @@ body {
 
   background: var(--bg-main);
 
+  &.disabled {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+  }
+
   &.dark {
     --bg-main: rgb(0, 0, 0);
     --bg-main-hover: rgba(35, 35, 35, 0.782);
     --bg-main-active: rgb(47, 47, 47);
+
+    --bg-300: #111111;
 
     --gradient-loader: linear-gradient(
       90deg,

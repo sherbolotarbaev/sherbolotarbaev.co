@@ -6,8 +6,8 @@ import { Suspense } from 'react';
 import LayoutClient from './layout.uc';
 import Loader from '@/app/components/loader';
 
-import { geistMono, geistSans } from '@/app/lib/fonts';
-import '@/app/components/scss/globals.scss';
+import { geistSans } from '@/app/lib/fonts';
+import './globals.scss';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

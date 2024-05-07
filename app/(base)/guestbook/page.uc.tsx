@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { User } from 'next-auth';
 
@@ -9,7 +9,9 @@ import { formatDate } from '@/app/lib/date';
 
 import Image from 'next/image';
 import Form from './components/form';
-import { SignInButton, SignOutButton } from './components/buttons';
+import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
+import Modal from '@/app/components/modal';
+import Button from '@/app/components/button';
 
 import { BiChevronDown } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
@@ -28,8 +30,26 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
     refetch();
   };
 
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  useEffect(() => {
+    if (!user) {
+      handleOpen();
+    }
+  }, [user]);
+
   return (
     <>
+      {open && (
+        <Modal open={open} handleOpen={handleOpen} title="Sign in">
+          <SignInButtons />
+        </Modal>
+      )}
+
       <section className={scss.wrapper}>
         <div className={scss.container}>
           <div className={scss.text}>
@@ -45,7 +65,9 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
               <SignOutButton />
             </>
           ) : (
-            <SignInButton />
+            <Button width={150} onClick={handleOpen}>
+              Sign in
+            </Button>
           )}
 
           <div className={isLoading ? `${scss.messages} ${scss.load}` : scss.messages}>
