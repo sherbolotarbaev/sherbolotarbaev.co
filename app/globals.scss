@@ -21,6 +21,7 @@
   --bg-300: #ffff;
 
   --color-800: #121212;
+  --color-700: #111111;
   --color-600: rgba(0, 0, 0, 0.8);
   --color-500: rgba(0, 0, 0, 0.6);
   --color-400: rgba(0, 0, 0, 0.4);
@@ -85,7 +86,7 @@ body {
     --bg-main-hover: rgba(35, 35, 35, 0.782);
     --bg-main-active: rgb(47, 47, 47);
 
-    --bg-300: #111111;
+    --bg-300: #121212;
 
     --gradient-loader: linear-gradient(
       90deg,
@@ -109,6 +110,7 @@ body {
     --blue-badge-border-color: #569aff73;
 
     --color-800: rgb(255 255 255 / 1);
+    --color-700: rgb(238, 238, 238);
     --color-600: rgba(233, 233, 233, 0.824);
     --color-500: rgb(163 163 163 / 1);
     --color-400: rgb(84 84 84 / 1);

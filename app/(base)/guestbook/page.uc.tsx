@@ -45,7 +45,12 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
   return (
     <>
       {open && (
-        <Modal open={open} handleOpen={handleOpen} title="Sign in">
+        <Modal
+          open={open}
+          handleOpen={handleOpen}
+          title="Sign in"
+          desc="to continue to guestbook"
+        >
           <SignInButtons />
         </Modal>
       )}

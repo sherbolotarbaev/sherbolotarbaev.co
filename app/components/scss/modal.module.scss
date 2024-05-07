@@ -14,7 +14,7 @@
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
-  z-index: 99;
+  z-index: 1;
 
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -36,8 +36,8 @@
 
   .box {
     width: 100%;
-    max-width: 320px;
-    max-height: 400px;
+    max-width: 380px;
+    max-height: 500px;
 
     padding: 1.25rem;
 
@@ -49,6 +49,7 @@
     background: var(--bg-300);
     border: 0.8px solid var(--color-300);
     border-radius: var(--border-radius-700);
+    box-shadow: var(--box-shadow-300);
 
     transform: translateX(600px);
 
@@ -73,16 +74,28 @@
 
       display: flex;
       align-items: center;
+      justify-content: space-between;
 
-      .title {
-        font-size: 1.25rem;
-        font-weight: 500;
-        color: var(--color-800);
+      .text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .title {
+          font-size: 1.25rem;
+          font-weight: 500;
+          color: var(--color-800);
+        }
+
+        .desc {
+          font-size: 0.875rem;
+          color: var(--color-400);
+        }
       }
 
       .close {
+        margin-bottom: auto;
         padding: 0.25rem;
-        margin-left: auto;
 
         cursor: pointer;
 
