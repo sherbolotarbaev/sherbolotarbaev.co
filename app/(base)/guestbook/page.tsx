@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { getUser } from '@/app/lib/user';
+import { getUser } from '@/app/lib/auth/user';
 
 import GuestbookClient from './page.uc';
 

@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 
-import { BiX } from 'react-icons/bi';
 import scss from './scss/modal.module.scss';
 
 interface Props {
@@ -50,7 +49,11 @@ export default function Modal({
               </div>
             )}
 
-            {handleOpen && <BiX className={scss.close} onClick={handleOpen} />}
+            {handleOpen && (
+              <span className={scss.close} onClick={handleOpen}>
+                Close
+              </span>
+            )}
           </div>
 
           <div className={scss.content}>{children}</div>

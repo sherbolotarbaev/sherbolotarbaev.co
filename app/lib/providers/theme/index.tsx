@@ -29,7 +29,8 @@ const getThemeFromLocalStorage = (): Theme => {
 export default function ThemeContextProvider({ children }: Readonly<Props>) {
   const [theme, setTheme] = useState<Theme>(getThemeFromLocalStorage);
 
-  const toggleTheme = (theme: Theme) => setTheme(() => theme);
+  const toggleTheme = () =>
+    setTheme((oldTheme) => (oldTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
 
   useEffect(() => {
     localStorage.setItem(THEME_LOCAL_STORAGE_KEY, theme);
