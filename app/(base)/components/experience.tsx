@@ -9,7 +9,7 @@ import scss from './scss/experience.module.scss';
 export default function Experience() {
   return (
     <>
-      <div className={scss.wrapper}>
+      <div className={scss.wrapper} id="experience">
         <h2 className={scss.title}>Experience</h2>
 
         {jobs.length && (
