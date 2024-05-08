@@ -11,7 +11,7 @@ export default function NotFound() {
     <section
       className={scss.wrapper}
       style={{
-        minHeight: '80vh',
+        minHeight: '70vh',
         alignItems: 'center',
         justifyContent: 'center',
       }}
