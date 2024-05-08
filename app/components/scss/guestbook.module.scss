@@ -42,23 +42,80 @@
       gap: 0.85rem;
 
       &.load {
-        padding: 1.55rem;
+        .message {
+          .logo_wrapper {
+            background: var(--gradient-loader);
+            background-size: 500% 500%;
 
-        background: var(--gradient-loader);
-        border-radius: var(--border-radius-500);
-        background-size: 500% 500%;
+            animation: loadingAnimation 2s linear infinite;
 
-        animation: loadingAnimation 2s linear infinite;
-
-        @keyframes loadingAnimation {
-          0% {
-            background-position: 0% 50%;
+            @keyframes loadingAnimation {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+            }
           }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
+
+          .info {
+            width: 100%;
+
+            gap: 0.35rem;
+
+            .name {
+              width: 100%;
+              max-width: 135px;
+
+              padding: 0.35rem;
+
+              background: var(--gradient-loader);
+              border-radius: var(--border-radius-300);
+              background-size: 500% 500%;
+
+              animation: loadingAnimation 2s linear infinite;
+
+              @keyframes loadingAnimation {
+                0% {
+                  background-position: 0% 50%;
+                }
+                50% {
+                  background-position: 100% 50%;
+                }
+                100% {
+                  background-position: 0% 50%;
+                }
+              }
+            }
+
+            .text {
+              width: 100%;
+              max-width: 280px;
+
+              padding: 0.55rem;
+
+              background: var(--gradient-loader);
+              border-radius: var(--border-radius-300);
+              background-size: 500% 500%;
+
+              animation: loadingAnimation 2s linear infinite;
+
+              @keyframes loadingAnimation {
+                0% {
+                  background-position: 0% 50%;
+                }
+                50% {
+                  background-position: 100% 50%;
+                }
+                100% {
+                  background-position: 0% 50%;
+                }
+              }
+            }
           }
         }
       }
@@ -86,15 +143,15 @@
           width: 30px;
           height: 30px;
           min-width: 30px;
-    
+
           overflow: hidden;
-    
+
           border-radius: 50%;
-    
+
           .logo {
             width: 100%;
             height: 100%;
-    
+
             object-fit: cover;
           }
         }
