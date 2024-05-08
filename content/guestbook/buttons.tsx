@@ -1,3 +1,5 @@
+'use client';
+
 import { logOut, oauthGitHub, oauthGoogle } from '@/app/lib/auth/actions';
 
 import Button from '@/app/components/button';

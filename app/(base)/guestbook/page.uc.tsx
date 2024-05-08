@@ -76,14 +76,16 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
                 {data.messages.map(({ message, image, name, createdAt }, index) => (
                   <div key={index} className={scss.message}>
                     {image && (
-                      <Image
-                        className={scss.logo}
-                        width={30}
-                        height={30}
-                        src={image}
-                        alt={name || 'User'}
-                        loading="lazy"
-                      />
+                      <div className={scss.logo_wrapper}>
+                        <Image
+                          className={scss.logo}
+                          width={30}
+                          height={30}
+                          src={image}
+                          alt={name || 'User'}
+                          loading="lazy"
+                        />
+                      </div>
                     )}
 
                     <div className={scss.info}>

@@ -43,7 +43,7 @@ export default function Form({ user }: Readonly<Props>) {
       await newGuestbookMessage({
         name: user.name as string,
         email: user.email as string,
-        image: user.image as string,
+        image: user.image || `https://avatar.vercel.sh/${user.email}`,
         message,
       }).unwrap();
     } catch (error: any) {
@@ -73,16 +73,14 @@ export default function Form({ user }: Readonly<Props>) {
                   isLoading ? `${scss.input_wrapper} ${scss.load}` : scss.input_wrapper
                 }
               >
-                {user.image && (
-                  <Image
-                    className={scss.logo}
-                    width={30}
-                    height={30}
-                    src={user.image}
-                    alt={user.name || 'User'}
-                    loading="lazy"
-                  />
-                )}
+                <Image
+                  className={scss.logo}
+                  width={30}
+                  height={30}
+                  src={user.image || `https://avatar.vercel.sh/${user.email}`}
+                  alt={user.name || 'User'}
+                  loading="lazy"
+                />
 
                 <input
                   type="text"

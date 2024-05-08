@@ -1,0 +1,35 @@
+.wrapper {
+  width: 100%;
+  min-height: 70vh;
+
+  padding-top: 1.65rem;
+  padding-bottom: 1.65rem;
+  margin-inline: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .text {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    font-size: 0.955rem;
+    color: var(--color-600);
+
+    .loader {
+      animation: rotateAnimation 0.9s infinite linear;
+
+      @keyframes rotateAnimation {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}

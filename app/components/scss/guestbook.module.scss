@@ -82,8 +82,21 @@
         display: flex;
         gap: 0.55rem;
 
-        .logo {
+        .logo_wrapper {
+          width: 30px;
+          height: 30px;
+          min-width: 30px;
+    
+          overflow: hidden;
+    
           border-radius: 50%;
+    
+          .logo {
+            width: 100%;
+            height: 100%;
+    
+            object-fit: cover;
+          }
         }
 
         .info {

@@ -178,6 +178,7 @@
             &:-webkit-autofill:active {
               -webkit-box-shadow: 0 0 0 30px var(--bg-main) inset !important;
               -webkit-text-fill-color: var(--color-800) !important;
+              caret-color: var(--color-800);
             }
           }
 
