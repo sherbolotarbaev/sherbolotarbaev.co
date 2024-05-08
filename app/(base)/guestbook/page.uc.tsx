@@ -24,8 +24,8 @@ function LoadingMessages({ count }: { count: number }) {
   return (
     <div className={`${scss.messages} ${scss.load}`}>
       {count > 0 &&
-        Array.from({ length: count }).map(() => (
-          <div className={scss.message}>
+        Array.from({ length: count }).map((_, index) => (
+          <div key={index} className={scss.message}>
             <div className={scss.logo_wrapper}></div>
 
             <div className={scss.info}>
