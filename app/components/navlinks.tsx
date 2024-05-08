@@ -24,7 +24,7 @@ export default function NavLinks() {
         ))}
 
       <Link className={scss.link} href="/cv/sherbolot_arbaev.pdf" target="_blank">
-        Resume
+        resume
       </Link>
     </div>
   );
