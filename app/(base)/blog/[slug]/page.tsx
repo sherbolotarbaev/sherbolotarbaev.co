@@ -120,8 +120,6 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
               {formatDate2(post.metadata.publishedAt)} (
               {formatDate(post.metadata.publishedAt)})
             </span>
-
-            <p className={scss.desc}>{post.metadata.summary}</p>
           </div>
 
           <div className={scss.image_wrapper}>
@@ -137,6 +135,12 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
               alt={post.metadata.title}
               loading="lazy"
             />
+          </div>
+
+          <div className={scss.text}>
+            <h3>Introduction</h3>
+
+            <p className={scss.desc}>{post.metadata.summary}</p>
           </div>
 
           <MDXContent source={post.content} />
