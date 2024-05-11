@@ -2,6 +2,8 @@ import NextAuth from 'next-auth';
 import Github from 'next-auth/providers/github';
 import Google from 'next-auth/providers/google';
 
+const COOKIE_MAX_AGE = 60 * 60 * 24; // 24 hours or 1 day
+
 export const {
   handlers: { GET, POST },
   auth,
@@ -22,9 +24,15 @@ export const {
   pages: {
     signIn: '/sign-in',
     signOut: '/sign-out',
+    error: '/sign-in',
   },
 
   session: {
     strategy: 'jwt',
+    maxAge: COOKIE_MAX_AGE,
+  },
+
+  jwt: {
+    maxAge: COOKIE_MAX_AGE,
   },
 });

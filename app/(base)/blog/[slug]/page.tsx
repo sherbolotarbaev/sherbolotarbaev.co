@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
+import { notFound } from 'next/navigation';
+
 import { getBlogPosts } from '@/app/lib/blog';
 import { formatDate, formatDate2 } from '@/app/lib/date';
 
 import Image from 'next/image';
-import Button from '@/app/components/button';
 import MDXContent from '@/app/components/mdx/content';
 
-import { BiChevronLeft } from 'react-icons/bi';
 import scss from '@/app/components/scss/post.module.scss';
 
 interface GenerateMetadataProps {
@@ -54,27 +54,6 @@ export async function generateMetadata({
   };
 }
 
-function NotFound() {
-  return (
-    <>
-      <section className={scss.wrapper}>
-        <div className={scss.container}>
-          <div className={scss.text}>
-            <h2 className={scss.title}>Oh no 🥲</h2>
-
-            <p className={scss.desc}>This post was not found.</p>
-          </div>
-
-          <Button width={180} redirect="/blog">
-            <BiChevronLeft size={20} />
-            See others
-          </Button>
-        </div>
-      </section>
-    </>
-  );
-}
-
 interface Props {
   params: { slug: string };
 }
@@ -83,7 +62,7 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
   const post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {
-    return <NotFound />;
+    return notFound();
   }
 
   return (
