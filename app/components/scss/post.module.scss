@@ -35,11 +35,18 @@
         color: var(--color-800);
       }
 
-      .date {
-        line-height: 1.6;
+      .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-        font-size: 0.875rem;
-        color: var(--color-400);
+        .date,
+        .views {
+          line-height: 1.6;
+
+          font-size: 0.875rem;
+          color: var(--color-400);
+        }
       }
 
       .desc {

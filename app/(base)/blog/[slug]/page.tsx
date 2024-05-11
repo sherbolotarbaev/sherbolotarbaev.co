@@ -8,6 +8,7 @@ import { formatDate, formatDate2 } from '@/app/lib/date';
 
 import Image from 'next/image';
 import MDXContent from '@/app/components/mdx/content';
+import Views from './components/views';
 
 import scss from '@/app/components/scss/post.module.scss';
 
@@ -95,10 +96,14 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
           <div className={scss.text}>
             <h2 className={scss.title}>{post.metadata.title}</h2>
 
-            <span className={scss.date}>
-              {formatDate2(post.metadata.publishedAt)} (
-              {formatDate(post.metadata.publishedAt)})
-            </span>
+            <div className={scss.info}>
+              <span className={scss.date}>
+                {formatDate2(post.metadata.publishedAt)} (
+                {formatDate(post.metadata.publishedAt)})
+              </span>
+
+              <Views slug={post.slug} />
+            </div>
           </div>
 
           <div className={scss.image_wrapper}>

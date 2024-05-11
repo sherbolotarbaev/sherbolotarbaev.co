@@ -57,9 +57,18 @@
           color: var(--color-600);
         }
 
-        .date {
-          font-size: 0.875rem;
-          color: var(--color-400);
+        .info {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .date,
+          .views {
+            line-height: 1.6;
+
+            font-size: 0.875rem;
+            color: var(--color-400);
+          }
         }
       }
     }
