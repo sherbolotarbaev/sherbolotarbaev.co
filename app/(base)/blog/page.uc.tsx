@@ -1,7 +1,7 @@
 'use client';
 
 import type { Post } from '@/app/lib/blog';
-import { formatDate } from '@/app/lib/date';
+import { formatDate, getDiffHours } from '@/app/lib/date';
 
 import Link from 'next/link';
 import Views from './components/views';
@@ -25,7 +25,10 @@ export default function BlogClient({ posts }: Readonly<Props>) {
             <div className={scss.posts}>
               {posts.map((post, index) => (
                 <Link className={scss.post} href={`/blog/${post.slug}`} key={index}>
-                  <h3 className={scss.title}>{post.metadata.title}</h3>
+                  <h3 className={scss.title}>
+                    {post.metadata.title}
+                    {getDiffHours(post.metadata.publishedAt) <= 24 && <span>today</span>}
+                  </h3>
 
                   <div className={scss.info}>
                     <span className={scss.date}>

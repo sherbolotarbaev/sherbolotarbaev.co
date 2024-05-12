@@ -7,6 +7,8 @@ import '../scss/atom-one-dark-reasonable.scss';
 
 import { components } from './components';
 
+import { visit } from 'unist-util-visit';
+
 type MDXContentProps = Omit<MDXRemoteProps, 'components'>;
 
 export default function MDXContent(props: MDXContentProps) {
@@ -18,8 +20,32 @@ export default function MDXContent(props: MDXContentProps) {
       options={{
         parseFrontmatter: true,
         mdxOptions: {
-          // @ts-expect-error
-          rehypePlugins: [rehypeHighlight, rehypeSlug],
+          rehypePlugins: [
+            () => (tree) => {
+              visit(tree, (node) => {
+                if (node?.type === 'element' && node?.tagName === 'pre') {
+                  const [codeEl] = node.children;
+
+                  if (codeEl.tagName !== 'code') return;
+
+                  node.raw = codeEl.children?.[0].value;
+                }
+              });
+            },
+            () => (tree) => {
+              visit(tree, (node) => {
+                if (node?.tagName === 'pre') {
+                  for (const child of node.children) {
+                    if (child.tagName === 'code') {
+                      child.properties['raw'] = node.raw;
+                    }
+                  }
+                }
+              });
+            },
+            // @ts-expect-error
+            [rehypeHighlight, rehypeSlug],
+          ],
           remarkPlugins: [remarkGfm],
         },
       }}

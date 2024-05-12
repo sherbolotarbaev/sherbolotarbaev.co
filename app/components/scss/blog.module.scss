@@ -52,15 +52,30 @@
         width: 100%;
 
         .title {
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+
           font-size: 1.05rem;
           font-weight: 500;
           color: var(--color-600);
+
+          span {
+            padding: 0.15rem 0.35rem;
+
+            background: var(--green-badge-bg);
+            border-radius: var(--border-radius-500);
+            border: 0.8px solid var(--green-badge-border-color);
+
+            font-size: 0.785rem;
+            font-weight: 400;
+            color: var(--green-badge-color);
+          }
         }
 
         .info {
           display: flex;
           align-items: center;
-          justify-content: space-between;
 
           .date,
           .views {
@@ -68,6 +83,13 @@
 
             font-size: 0.875rem;
             color: var(--color-400);
+          }
+
+          .views {
+            &:before {
+              content: '•';
+              margin: 0 0.35rem;
+            }
           }
         }
       }

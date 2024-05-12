@@ -4,6 +4,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import Copy from './copy';
 
 import { geistSans, geistMono } from '@/app/lib/fonts';
 import scss from '../scss/post.module.scss';
@@ -32,6 +33,7 @@ export const components: MDXComponents = {
       <div className={scss.image_wrapper}>
         <Image
           className={scss.image}
+          style={{ border: 0 }}
           width={700}
           height={350}
           alt={alt}
@@ -42,11 +44,7 @@ export const components: MDXComponents = {
     );
   },
   a: ({ href, ...props }) =>
-    href?.startsWith('#') ? (
-      <Link className={`${scss.link} ${scss.h}`} href={href}>
-        {props.children}
-      </Link>
-    ) : href ? (
+    href ? (
       <Link className={scss.link} href={href} target="_blank">
         {props.children}
       </Link>
@@ -117,7 +115,15 @@ export const components: MDXComponents = {
   },
   h5: () => null,
   h6: () => null,
-  pre: ({ ...props }: ComponentPropsWithoutRef<'pre'>) => (
-    <pre style={geistMono.style} {...props} />
-  ),
+  pre: ({ children }: ComponentPropsWithoutRef<'pre'>) => {
+    const codeContent = (children as any).props.raw || '';
+
+    return (
+      <div className={scss.code_wrapper}>
+        <Copy content={codeContent} />
+
+        <pre style={geistMono.style}>{children}</pre>
+      </div>
+    );
+  },
 };

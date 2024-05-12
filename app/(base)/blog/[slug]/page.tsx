@@ -106,24 +106,20 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
             </div>
           </div>
 
-          <div className={scss.image_wrapper}>
-            <Image
-              className={scss.image}
-              width={700}
-              height={350}
-              src={
-                post.metadata.image
-                  ? `${siteConfig.url}${post.metadata.image}`
-                  : `${siteConfig.url}/og?title=${post.metadata.title}`
-              }
-              alt={post.metadata.title}
-              loading="lazy"
-            />
-          </div>
+          {post.metadata.image && (
+            <div className={scss.image_wrapper}>
+              <Image
+                className={scss.image}
+                width={700}
+                height={350}
+                src={`${siteConfig.url}${post.metadata.image}`}
+                alt={post.metadata.title}
+                loading="lazy"
+              />
+            </div>
+          )}
 
           <div className={scss.text}>
-            <h3>Introduction</h3>
-
             <p className={scss.desc}>{post.metadata.summary}</p>
           </div>
 

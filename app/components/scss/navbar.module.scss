@@ -76,6 +76,10 @@
           @media (max-width: 1205px) {
             font-size: 0.825rem;
           }
+
+          @media (max-width: 585px) {
+            cursor: default;
+          }
         }
       }
     }
