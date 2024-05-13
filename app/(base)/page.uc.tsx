@@ -1,6 +1,7 @@
 'use client';
 
 import { siteConfig } from '@/config/site';
+import type { Post } from '@/app/lib/blog';
 
 import Image from 'next/image';
 
@@ -8,12 +9,17 @@ import Button from '@/app/components/button';
 import Experience from './components/experience';
 import Contact from './components/contact';
 import Skills from './components/skills';
+import Posts from './components/posts';
 
 import { icons } from '@/content/home/icons';
 import sher from '@/public/images/sherbolot.webp';
 import scss from '@/app/components/scss/page.module.scss';
 
-export default function HomeClient() {
+interface Props {
+  posts: Post[];
+}
+
+export default function HomeClient({ posts }: Readonly<Props>) {
   return (
     <>
       <section className={scss.wrapper}>
@@ -58,6 +64,10 @@ export default function HomeClient() {
 
         <div className={scss.container}>
           <Experience />
+        </div>
+
+        <div className={scss.container}>
+          <Posts posts={posts} />
         </div>
 
         <div className={scss.container}>

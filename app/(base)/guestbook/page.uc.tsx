@@ -109,7 +109,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
                   <div className={scss.info}>
                     <span className={scss.name}>
                       {name.split(' ')[0]}
-                      <span className={scss.created_at}>• {formatDate(createdAt)}</span>
+                      <span className={scss.created_at}>{formatDate(createdAt)}</span>
                     </span>
 
                     {message}

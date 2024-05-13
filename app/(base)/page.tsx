@@ -1,5 +1,9 @@
+import { getRecentBlogPosts } from '../lib/blog';
+
 import HomeClient from './page.uc';
 
 export default async function Home() {
-  return <HomeClient />;
+  const posts = getRecentBlogPosts();
+
+  return <HomeClient posts={posts} />;
 }

@@ -164,15 +164,16 @@
           color: var(--color-800);
 
           .name {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-
             color: var(--color-500);
 
             .created_at {
               font-size: 0.785rem;
               color: var(--color-400);
+
+              &:before {
+                content: '•';
+                margin: 0 0.35rem;
+              }
             }
           }
         }
