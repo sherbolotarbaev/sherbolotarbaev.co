@@ -8,7 +8,7 @@ import { useSendMessageMutation } from '@/app/redux/api/contact';
 
 import Button from '@/app/components/button';
 
-import { BiCheckCircle, BiEnvelope, BiErrorCircle } from 'react-icons/bi';
+import { BiCheckCircle, BiEnvelope, BiErrorCircle, BiLogoTelegram } from 'react-icons/bi';
 import { geistSans } from '@/app/lib/fonts';
 import scss from '@/app/components/scss/form.module.scss';
 
@@ -67,15 +67,25 @@ export default function Form() {
           maxWidth: '100%',
         }}
       >
-        {error && !isLoading && (
-          <span className={scss.error_message}>
-            <BiErrorCircle className={scss.icon} size={20} />
-            {error}
-          </span>
-        )}
-
         {!success ? (
           <form className={scss.form}>
+            <Button open="https://t.me/sherbolotarbaev">
+              <BiLogoTelegram size={20} /> Contact with Telegram
+            </Button>
+
+            <div className={scss.devider}>
+              <hr />
+              <span>or</span>
+              <hr />
+            </div>
+
+            {error && !isLoading && (
+              <span className={scss.error_message}>
+                <BiErrorCircle className={scss.icon} size={20} />
+                {error}
+              </span>
+            )}
+
             <div className={scss.inputs_container}>
               <div className={scss.couple}>
                 <div className={scss.input_container}>

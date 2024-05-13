@@ -13,8 +13,8 @@ export const links: Link[] = [
     url: 'https://github.com/sherbolotarbaev',
   },
   {
-    name: 'Twitter',
-    url: 'https://twitter.com/sherbolotarbaev',
+    name: 'Telegram',
+    url: 'https://t.me/sherbolotarbaev1',
   },
   {
     name: 'Instagram',

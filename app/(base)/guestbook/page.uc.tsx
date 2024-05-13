@@ -1,6 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import {
+  //  useCallback, useEffect,
+  useState,
+} from 'react';
 
 import type { User } from 'next-auth';
 
@@ -13,7 +16,7 @@ import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
 import Modal from '@/app/components/modal';
 import Button from '@/app/components/button';
 
-import { BiChevronDown } from 'react-icons/bi';
+// import { BiChevronDown } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
 
 interface Props {
@@ -40,14 +43,18 @@ function LoadingMessages({ count }: { count: number }) {
 }
 
 export default function GuestbookClient({ user }: Readonly<Props>) {
-  const [take, setTake] = useState<number>(7);
+  // const [take, setTake] = useState<number>(7);
 
-  const { data, isLoading, refetch, isFetching } = useGetGuestbookMessagesQuery({ take });
+  const {
+    data,
+    isLoading,
+    //  refetch, isFetching
+  } = useGetGuestbookMessagesQuery();
 
-  const handleLoadMore = useCallback(() => {
-    setTake((prevTake) => prevTake + 3);
-    refetch();
-  }, [setTake, refetch]);
+  // const handleLoadMore = useCallback(() => {
+  //   setTake((prevTake) => prevTake + 3);
+  //   refetch();
+  // }, [setTake, refetch]);
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -55,11 +62,11 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
     setOpen(!open);
   };
 
-  useEffect(() => {
-    if (!user) {
-      handleOpen();
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     handleOpen();
+  //   }
+  // }, [user]);
 
   return (
     <>
@@ -117,13 +124,13 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
                 </div>
               ))}
 
-              {isFetching && <LoadingMessages count={3} />}
+              {/* {isFetching && <LoadingMessages count={3} />} */}
 
-              {data.count !== data.totalCount && (
+              {/* {data.count !== data.totalCount && (
                 <span className={scss.load_more} onClick={handleLoadMore}>
                   Load more <BiChevronDown size={18} />
                 </span>
-              )}
+              )} */}
             </div>
           ) : (
             <LoadingMessages count={7} />

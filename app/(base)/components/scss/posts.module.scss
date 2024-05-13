@@ -32,6 +32,10 @@
 
       &:hover {
         background: var(--bg-main-hover);
+
+        .icon {
+          transform: rotate(45deg);
+        }
       }
 
       @media (max-width: 585px) {
@@ -79,6 +83,8 @@
 
       .icon {
         color: var(--color-600);
+
+        transition: 0.25s;
       }
     }
   }

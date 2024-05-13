@@ -1,5 +1,8 @@
 'use client';
 
+import { siteConfig } from '@/config/site';
+import moment from 'moment';
+
 import { links } from '@/content/footer/links';
 
 import Link from 'next/link';
@@ -11,10 +14,6 @@ export default function Footer() {
   return (
     <>
       <div className={scss.footer}>
-        <div className={scss.text}>
-          Built and designed by Sherbolot Arbaev. <br /> All rights reserved. ©
-        </div>
-
         {links.length && (
           <div className={scss.links}>
             {links.map((link, index) => (
@@ -24,6 +23,10 @@ export default function Footer() {
             ))}
           </div>
         )}
+
+        <div className={scss.text}>
+          © {moment().year()} {siteConfig.name}
+        </div>
       </div>
     </>
   );

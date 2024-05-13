@@ -11,7 +11,6 @@ import Contact from './components/contact';
 import Skills from './components/skills';
 import Posts from './components/posts';
 
-import { icons } from '@/content/home/icons';
 import sher from '@/public/images/sherbolot.webp';
 import scss from '@/app/components/scss/page.module.scss';
 
@@ -47,15 +46,9 @@ export default function HomeClient({ posts }: Readonly<Props>) {
             </p>
           </div>
 
-          {icons.length && (
-            <div className={scss.icons}>
-              {icons.map((icon, index) => (
-                <Button key={index} width={40} open={icon.url}>
-                  {icon.svg}
-                </Button>
-              ))}
-            </div>
-          )}
+          <Button width={150} open="/cv/sherbolot_arbaev.pdf">
+            download resume
+          </Button>
         </div>
 
         <div className={scss.container}>

@@ -16,7 +16,7 @@ type NewGuestbookMessageResponse = {
 
 type GetGuestbookMessagesRequest = {
   take?: number;
-};
+} | void;
 
 type GetGuestbookMessagesResponse = {
   totalCount: number;
