@@ -1,7 +1,8 @@
 'use client';
 
 import {
-  //  useCallback, useEffect,
+  //  useCallback,
+  useEffect,
   useState,
 } from 'react';
 
@@ -62,16 +63,21 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
     setOpen(!open);
   };
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     handleOpen();
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (!user) {
+      handleOpen();
+    }
+  }, [user]);
 
   return (
     <>
       {open && (
-        <Modal open={open} handleOpen={handleOpen} title="Sign in" desc="to your account">
+        <Modal
+          open={open}
+          handleOpen={handleOpen}
+          title="Welcome to the Guestbook!"
+          desc="sign in to your account"
+        >
           <SignInButtons />
         </Modal>
       )}
@@ -82,6 +88,12 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
             <h2 className={scss.title}>
               Guestbook ({(data && !isLoading && data.count) || 0})
             </h2>
+
+            <p className={scss.desc}>
+              {
+                "Share your feedback, questions, collaborations, or just say hi. I'm eager to hear from you. Sign in to leave your message!"
+              }
+            </p>
           </div>
 
           {user ? (

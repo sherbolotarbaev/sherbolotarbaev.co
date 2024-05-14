@@ -47,7 +47,7 @@ export default function HomeClient({ posts }: Readonly<Props>) {
           </div>
 
           <Button width={150} open="/cv/sherbolot_arbaev.pdf">
-            download resume
+            Download CV
           </Button>
         </div>
 

@@ -70,7 +70,7 @@ export default function Form() {
         {!success ? (
           <form className={scss.form}>
             <Button open="https://t.me/sherbolotarbaev">
-              <BiLogoTelegram size={20} /> Contact with Telegram
+              <BiLogoTelegram size={20} /> Connect via Telegram
             </Button>
 
             <div className={scss.devider}>
