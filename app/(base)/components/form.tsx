@@ -69,9 +69,15 @@ export default function Form() {
       >
         {!success ? (
           <form className={scss.form}>
-            <Button type="button" open="https://t.me/sherbolotarbaev">
-              <BiLogoTelegram size={20} /> Connect via Telegram
-            </Button>
+            <div className={scss.couple}>
+              <Button type="button" open="https://t.me/sherbolotarbaev">
+                <BiLogoTelegram size={18} /> Connect via Telegram
+              </Button>
+
+              <Button type="button" open="mailto:sherbolot@wedevx.co">
+                <BiEnvelope size={18} /> Connect via Email
+              </Button>
+            </div>
 
             <div className={scss.devider}>
               <hr />
@@ -222,7 +228,7 @@ export default function Form() {
                 type="submit"
                 disabled={isLoading}
               >
-                <BiEnvelope size={15} /> Submit
+                Submit
               </Button>
             </div>
           </form>

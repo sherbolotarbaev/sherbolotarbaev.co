@@ -6,6 +6,16 @@
   flex-direction: column;
   gap: 2rem;
 
+  .couple {
+    display: flex;
+    align-items: center;
+    gap: 0.975rem;
+
+    @media (max-width: 578px) {
+      flex-direction: column;
+    }
+  }
+
   .success_message,
   .error_message {
     display: flex;
@@ -82,16 +92,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.975rem;
-
-      .couple {
-        display: flex;
-        align-items: center;
-        gap: 0.975rem;
-
-        @media (max-width: 578px) {
-          flex-direction: column;
-        }
-      }
 
       .input_container {
         width: 100%;
