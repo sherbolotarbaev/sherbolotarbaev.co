@@ -89,11 +89,12 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
               Guestbook ({(data && !isLoading && data.count) || 0})
             </h2>
 
-            <p className={scss.desc}>
-              {
-                "Share your feedback, questions, collaborations, or just say hi. I'm eager to hear from you. Sign in to leave your message!"
-              }
-            </p>
+            {!user && (
+              <p className={scss.desc}>
+                Share your feedback, questions, collaborations, or just say hi. I am eager
+                to hear from you. Sign in to leave your message!
+              </p>
+            )}
           </div>
 
           {user ? (
