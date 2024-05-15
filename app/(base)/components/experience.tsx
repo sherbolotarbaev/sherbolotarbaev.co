@@ -17,12 +17,12 @@ export default function Experience() {
             {jobs.map((job, idx) => (
               <div key={idx} className={scss.job}>
                 <div className={scss.head}>
-                  <span className={scss.role}>{job.role}</span>
+                  <span className={scss.role}>{job.name}</span>
 
                   <span className={scss.date}>{job.date}</span>
                 </div>
 
-                <span className={scss.name}>{job.name} • Full-time</span>
+                <span className={scss.name}>{job.role} • Full-time</span>
 
                 <p
                   className={scss.desc}

@@ -20,7 +20,7 @@
     .post {
       width: 100%;
 
-      padding: 0.85rem 0.55em;
+      padding: 0.75rem;
 
       display: flex;
       align-items: center;
@@ -28,7 +28,7 @@
 
       background: var(--bg-300);
       border: 0.8px solid var(--color-300);
-      border-radius: var(--border-radius-300);
+      border-radius: var(--border-radius-700);
 
       &:hover {
         background: var(--bg-main-hover);
