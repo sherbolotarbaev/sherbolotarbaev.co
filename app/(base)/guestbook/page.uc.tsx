@@ -71,16 +71,14 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
 
   return (
     <>
-      {open && (
-        <Modal
-          open={open}
-          handleOpen={handleOpen}
-          title="Welcome to the Guestbook!"
-          desc="sign in to your account"
-        >
-          <SignInButtons />
-        </Modal>
-      )}
+      <Modal
+        open={open}
+        handleOpen={handleOpen}
+        title="Welcome to the Guestbook!"
+        desc="sign in to your account"
+      >
+        <SignInButtons />
+      </Modal>
 
       <section className={scss.wrapper}>
         <div className={scss.container}>
