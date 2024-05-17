@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import { toast } from 'sonner';
+
 import { BiCheck, BiCopy } from 'react-icons/bi';
 import scss from '../scss/post.module.scss';
 
@@ -11,6 +13,10 @@ export default function Copy({ content }: { content: string }) {
   const copy = () => {
     setCopied(true);
     navigator.clipboard.writeText(content);
+    toast.success('Copied to clipboard!', {
+      duration: 4500,
+      position: 'bottom-right',
+    });
   };
 
   useEffect(() => {

@@ -2,6 +2,8 @@
 
 import { SessionProvider } from 'next-auth/react';
 
+import { Toaster } from 'sonner';
+
 import NavBar from '@/app/components/navbar';
 import Footer from '@/app/components/footer';
 
@@ -15,6 +17,8 @@ interface Props {
 export default function LangLayoutClient({ children }: Readonly<Props>) {
   return (
     <>
+      <Toaster richColors />
+
       <ReduxProvider>
         <SessionProvider>
           <ThemeContextProvider>
