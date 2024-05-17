@@ -17,7 +17,10 @@ import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
 import Modal from '@/app/components/modal';
 import Button from '@/app/components/button';
 
-// import { BiChevronDown } from 'react-icons/bi';
+import {
+  // BiChevronDown,
+  BiErrorCircle,
+} from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
 
 interface Props {
@@ -50,6 +53,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
     data,
     isLoading,
     //  refetch, isFetching
+    isError,
   } = useGetGuestbookMessagesQuery();
 
   // const handleLoadMore = useCallback(() => {
@@ -107,7 +111,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
             </Button>
           )}
 
-          {data && !isLoading ? (
+          {data && !isLoading && !isError ? (
             <div className={scss.messages}>
               {data.messages.map(({ message, image, name, createdAt }, index) => (
                 <div key={index} className={scss.message}>
@@ -143,6 +147,11 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
                 </span>
               )} */}
             </div>
+          ) : isError ? (
+            <span className={scss.error_message}>
+              <BiErrorCircle className={scss.icon} size={20} />
+              Oh no 🥲, something went wrong... maybe refresh?
+            </span>
           ) : (
             <LoadingMessages count={7} />
           )}

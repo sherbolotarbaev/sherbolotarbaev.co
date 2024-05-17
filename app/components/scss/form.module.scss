@@ -18,11 +18,11 @@
 
   .success_message,
   .error_message {
+    padding: 0.55rem;
+
     display: flex;
     align-items: center;
     gap: 0.35rem;
-
-    padding: 0.55rem;
 
     font-size: 0.8rem;
   }
