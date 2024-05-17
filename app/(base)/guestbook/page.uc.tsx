@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  //  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import type { User } from 'next-auth';
 
@@ -17,10 +13,7 @@ import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
 import Modal from '@/app/components/modal';
 import Button from '@/app/components/button';
 
-import {
-  // BiChevronDown,
-  BiErrorCircle,
-} from 'react-icons/bi';
+import { BiChevronDown, BiErrorCircle } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
 
 interface Props {
@@ -47,19 +40,16 @@ function LoadingMessages({ count }: { count: number }) {
 }
 
 export default function GuestbookClient({ user }: Readonly<Props>) {
-  // const [take, setTake] = useState<number>(7);
+  const [take, setTake] = useState<number>(40);
 
-  const {
-    data,
-    isLoading,
-    //  refetch, isFetching
-    isError,
-  } = useGetGuestbookMessagesQuery();
+  const { data, isLoading, refetch, isFetching, isError } = useGetGuestbookMessagesQuery({
+    take,
+  });
 
-  // const handleLoadMore = useCallback(() => {
-  //   setTake((prevTake) => prevTake + 3);
-  //   refetch();
-  // }, [setTake, refetch]);
+  const handleLoadMore = useCallback(() => {
+    setTake((prevTake) => prevTake + 10);
+    refetch();
+  }, [setTake, refetch]);
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -139,13 +129,13 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
                 </div>
               ))}
 
-              {/* {isFetching && <LoadingMessages count={3} />} */}
+              {isFetching && <LoadingMessages count={10} />}
 
-              {/* {data.count !== data.totalCount && (
+              {data.count !== data.totalCount && (
                 <span className={scss.load_more} onClick={handleLoadMore}>
                   Load more <BiChevronDown size={18} />
                 </span>
-              )} */}
+              )}
             </div>
           ) : isError ? (
             <span className={scss.error_message}>
