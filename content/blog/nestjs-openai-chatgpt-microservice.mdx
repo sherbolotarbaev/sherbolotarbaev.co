@@ -26,7 +26,7 @@ src
 
 The `main.ts` includes an async function, which will start our application:
 
-```ts
+```typescript
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
@@ -70,7 +70,7 @@ nest g module openai
 nest g service openai --no-spec
 ```
 
-```ts
+```typescript
 import { Global, Module } from '@nestjs/common';
 import { OpenAIService } from './openai.service';
 import { SupabaseService } from '../supabase/supabase.service';
@@ -83,7 +83,7 @@ import { SupabaseService } from '../supabase/supabase.service';
 export class OpenAIModule {}
 ```
 
-```ts
+```typescript
 import { Injectable, ServiceUnavailableException } from '@nestjs/common';
 import OpenAIApi from 'openai';
 import { ChatCompletion, ChatCompletionMessageParam } from 'openai/resources';
@@ -280,7 +280,7 @@ export class ChatGptService {
 
 Setting Up the OpenAI Module in `app.module.ts`
 
-```ts
+```typescript
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { OpenAiModule } from './openai/openai.module';

@@ -1,90 +1,113 @@
 .hljs {
-  color: #abb2bf;
-  background: var(--bg-main-hover);
+  color: var(--color-code-main);
 }
-.hljs-keyword,
-.hljs-operator {
-  color: #ff7b72;
-}
-.hljs-pattern-match {
-  color: #f92672;
-}
-.hljs-pattern-match .hljs-constructor {
-  color: #61aeee;
-}
-.hljs-function {
-  color: #d2a8ff;
-}
-.hljs-function .hljs-params {
-  color: #79c0ff;
-}
-.hljs-function .hljs-params .hljs-typing {
-  color: #fd971f;
-}
-.hljs-module-access .hljs-module {
-  color: #7e57c2;
-}
-.hljs-constructor {
-  color: #e2b93d;
-}
-.hljs-constructor .hljs-string {
-  color: #9ccc65;
-}
-.hljs-comment,
-.hljs-quote {
-  color: var(--color-400);
-  font-style: italic;
-}
+
 .hljs-doctag,
-.hljs-formula {
-  color: #c678dd;
-}
-.hljs-section,
-.hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
-  color: #e06c75;
-}
-.hljs-literal {
-  color: #34a4ff;
-}
-.hljs-string,
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute,
-.hljs-meta .hljs-string {
-  color: #a6d174;
-}
-.hljs-built_in,
-.hljs-title.class_,
-.hljs-class .hljs-title {
-  color: #e3c15b;
-}
-.hljs-attr,
-.hljs-variable,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
 .hljs-template-variable,
 .hljs-type,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-number {
-  color: var(--color-700);
+.hljs-variable.language_ {
+  /* prettylights-syntax-keyword */
+  color: var(--color-code-keyword);
 }
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link,
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  /* prettylights-syntax-entity */
+  color: var(--color-code-entity);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
 .hljs-meta,
-.hljs-selector-id,
-.hljs-title {
-  color: #d2a8ff;
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  /* prettylights-syntax-constant */
+  color: var(--color-code-constant);
 }
-.hljs-emphasis {
-  font-style: italic;
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  /* prettylights-syntax-string */
+  color: var(--color-code-string);
 }
-.hljs-strong {
+
+.hljs-built_in,
+.hljs-symbol {
+  /* prettylights-syntax-variable */
+  color: var(--color-code-variable);
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  /* prettylights-syntax-comment */
+  color: var(--color-code-comment);
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  /* prettylights-syntax-entity-tag */
+  color: var(--color-code-entity-tag);
+}
+
+.hljs-subst {
+  /* prettylights-syntax-storage-modifier-import */
+  color: var(--color-code-storage-modifier-import);
+}
+
+.hljs-section {
+  /* prettylights-syntax-markup-heading */
+  color: var(--color-code-markup-heading);
   font-weight: bold;
 }
-.hljs-link {
-  text-decoration: underline;
+
+.hljs-bullet {
+  /* prettylights-syntax-markup-list */
+  color: var(--color-code-markup-list);
+}
+
+.hljs-emphasis {
+  /* prettylights-syntax-markup-italic */
+  color: var(--color-code-markup-italic);
+  font-style: italic;
+}
+
+.hljs-strong {
+  /* prettylights-syntax-markup-bold */
+  color: var(--color-code-markup-bold);
+  font-weight: bold;
+}
+
+.hljs-addition {
+  /* prettylights-syntax-markup-inserted */
+  color: var(--color-code-markup-inserted);
+  background: var(--bg-code--markup-inserted);
+}
+
+.hljs-deletion {
+  /* prettylights-syntax-markup-deleted */
+  color: var(--color-code-markup-deleted);
+  background: var(--bg-code--markup-deleted);
+}
+
+.hljs-char.escape_,
+.hljs-link,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
 }

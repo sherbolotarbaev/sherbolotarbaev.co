@@ -107,7 +107,7 @@
         border-radius: 0;
 
         font-weight: 400;
-        color: var(--color-600);
+        color: var(--color-code-main);
       }
     }
 
@@ -169,7 +169,7 @@
 
       position: relative;
 
-      background: var(--bg-300);
+      background: var(--bg-code);
       border: 0.8px solid var(--color-300);
       border-radius: var(--border-radius-700);
 
@@ -193,15 +193,15 @@
         right: 0.45rem;
         top: 0.45rem;
 
-        background: var(--bg-main-hover);
-        border: 0.8px solid var(--color-300);
+        background: var(--bg-code-300);
+        border: 0.8px solid var(--bg-code-hover);
         border-radius: var(--border-radius-400);
 
         cursor: pointer;
 
         font-size: 1.755rem;
         font-weight: 300;
-        color: var(--color-600);
+        color: var(--color-code-main);
 
         @media (max-width: 585px) {
           cursor: default;

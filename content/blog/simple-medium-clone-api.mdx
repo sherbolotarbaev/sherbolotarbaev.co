@@ -194,7 +194,7 @@ DATABASE_URL="postgres://myuser:mypassword@localhost:5432/nestjs-db"
 
 If you open `prisma/schema.prisma`, you should see the following default schema:
 
-```ts
+```typescript
 // prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
@@ -222,7 +222,7 @@ Now it's time to define the data models for your application. For this tutorial,
 
 Inside the `prisma/prisma.schema` file, add a new model to your schema named `Article`:
 
-```ts
+```typescript
 // prisma/schema.prisma
 model Article {
   id          Int      @id @default(autoincrement())
@@ -313,7 +313,7 @@ touch prisma/seed.ts
 
 Then, inside the seed file, add the following code:
 
-```ts
+```typescript
 // prisma/seed.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -440,7 +440,7 @@ npx nest generate service prisma
 
 This should generate a new subdirectory `./src/prisma` with a `prisma.module.ts` and `prisma.service.ts` file. The service file should contain the following code:
 
-```ts
+```typescript
 // src/prisma/prisma.service.ts
 import { INestApplication, Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
@@ -451,7 +451,7 @@ export class PrismaService extends PrismaClient {}
 
 The Prisma module will be responsible for creating a [singleton](https://docs.nestjs.com/modules#shared-modules) instance of the `PrismaService` and allow sharing of the service throughout your application. To do this, you will add the `PrismaService` to the `exports` array in the `prisma.module.ts` file:
 
-```ts
+```typescript
 // src/prisma/prisma.module.ts
 import { Module } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
@@ -479,7 +479,7 @@ npm install --save @nestjs/swagger swagger-ui-express
 
 Now open `main.ts` and initialize Swagger using the `SwaggerModule` class:
 
-```ts
+```typescript
 // src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -539,7 +539,7 @@ The `SwaggerModule` searches for all `@Body()`, `@Query()`, and `@Param()` decor
 
 To access `PrismaClient` inside the `Articles` module, you must add the `PrismaModule` as an import. Add the following `imports` to `ArticlesModule`:
 
-```ts
+```typescript
 // src/articles/articles.module.ts
 import { Module } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
@@ -556,7 +556,7 @@ export class ArticlesModule {}
 
 You can now inject the `PrismaService` inside the `ArticlesService` and use it to access the database. To do this, add a constructor to `articles.service.ts` like this:
 
-```ts
+```typescript
 // src/articles/articles.service.ts
 import { Injectable } from '@nestjs/common';
 import { CreateArticleDto } from './dto/create-article.dto';
@@ -575,7 +575,7 @@ export class ArticlesService {
 
 The controller for this endpoint is called `findAll`. This endpoint will return all published articles in the database. The `findAll` controller looks like this:
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 @Get()
 findAll() {
@@ -585,7 +585,7 @@ findAll() {
 
 You need to update `ArticlesService.findAll()` to return an array of all published articles in the database:
 
-```ts
+```typescript
 // src/articles/articles.service.ts
 @Injectable()
 export class ArticlesService {
@@ -616,7 +616,7 @@ You can test out the endpoint by going to [`http://localhost:3000/api`](http://l
 
 You will define a new route to fetch all _unpublished_ articles. NestJS did not automatically generate the controller route handler for this endpoint, so you have to write it yourself.
 
-```ts
+```typescript
 // src/aceilrst / articles.controller.ts;
 @Controller('articles')
 export class ArticlesController {
@@ -638,7 +638,7 @@ export class ArticlesController {
 
 Your editor should show an error that no function called `articlesService.findDrafts()` exists. To fix this, implement the `findDrafts` method in `ArticlesService`:
 
-```ts
+```typescript
 // src/articles/articles.service.ts
 @Injectable()
 export class ArticlesService {
@@ -664,7 +664,7 @@ The `GET /articles/drafts` endpoint will now be available in the Swagger [API pa
 
 The controller route handler for this endpoint is called `findOne`. It looks like this:
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 @Get(':id')
 findOne(@Param('id') id: string) {
@@ -676,7 +676,7 @@ The route accepts a dynamic `id` parameter, which is passed to the `findOne` con
 
 Now, update the `findOne` method in the `ArticlesService` to return the article with the given id:
 
-```ts
+```typescript
 // src/articles/articles.service.ts
 @Injectable()
 export class ArticlesService {
@@ -707,7 +707,7 @@ Once again, test out the endpoint by going to [http://localhost:3000/api](http:/
 
 This is the endpoint for creating new articles. The controller route handler for this endpoint is called `create`. It looks like this:
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 @Post()
 create(@Body() createArticleDto: CreateArticleDto) {
@@ -717,7 +717,7 @@ create(@Body() createArticleDto: CreateArticleDto) {
 
 Notice that it expects arguments of type `CreateArticleDto` in the request body. A DTO (Data Transfer Object) is an object that defines how the data will be sent over the network. Currently, the `CreateArticleDto` is an empty class. You will add properties to it to define the shape of the request body.
 
-```ts
+```typescript
 // src/articles/dto/create-article.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -747,7 +747,7 @@ The `CreateArticleDto` should now be defined in the Swagger API page under **Sch
 
 Now update the `create` method in the `ArticlesService` to create a new article in the database:
 
-```ts
+```typescript
 // src/articles/articles.service.ts
 @Injectable()
 export class ArticlesService {
@@ -765,7 +765,7 @@ export class ArticlesService {
 
 This endpoint is for updating existing articles. The route handler for this endpoint is called `update`. It looks like this:
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 @Patch(':id')
 update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
@@ -775,7 +775,7 @@ update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
 
 The `updateArticleDto` definition is defined as a [`PartialType`](https://docs.nestjs.com/openapi/mapped-types#partial) of `CreateArticleDto`. So it can have all the properties of `CreateArticleDto`.
 
-```ts
+```typescript
 // src/articles/dto/update-article.dto.ts
 import { PartialType } from '@nestjs/swagger';
 import { CreateArticleDto } from './create-article.dto';
@@ -785,7 +785,7 @@ export class UpdateArticleDto extends PartialType(CreateArticleDto) {}
 
 Just like before, you must update the corresponding service method for this operation:
 
-````ts
+```typescript
 // src/articles/articles.service.ts
 @Injectable()
 export class ArticlesService {
@@ -809,17 +809,17 @@ If no such Article record is found in the database, Prisma will return an error.
 
 #### Define DELETE `/articles/:id` endpoint
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 @Delete(':id')
 remove(@Param('id') id: string) {
   return this.articlesService.remove(+id);
 }
-````
+```
 
 Just like before, go to `ArticlesService` and update the corresponding method:
 
-```ts
+```typescript
 // src/articles/articles.service.ts
 @Injectable()
 export class ArticlesService {
@@ -838,7 +838,7 @@ That was the last operation for the `articles` endpoint. Congratulations your AP
 
 Add an `@ApiTags` decorator to the `ArticlesController` class, to group all the `articles` endpoints together in Swagger:
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 import { ApiTags } from '@nestjs/swagger';
 
@@ -862,7 +862,7 @@ If you look at the **Responses** tab under each endpoint in Swagger, you will fi
 
 First, you need to define an `entity` that Swagger can use to identify the shape of the returned entity object. To do this, update the `ArticleEntity` class in the `articles.entity.ts` file as follows:
 
-```ts
+```typescript
 // src/articles/entities/article.entity.ts
 import { Article } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
@@ -895,7 +895,7 @@ This is an implementation of the `Article` type generated by Prisma Client, with
 
 Now, it's time to annotate the controller route handlers with the correct response types. NestJS has a set of decorators for this purpose.
 
-```ts
+```typescript
 // src/articles/articles.controller.ts
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ArticleEntity } from './entities/article.entity';
