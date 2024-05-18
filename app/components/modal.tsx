@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
+import { isMobile } from 'react-device-detect';
 
 import scss from './scss/modal.module.scss';
 
@@ -63,7 +64,7 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
         onClick={handleClose}
       >
         <animated.div
-          {...bind()}
+          {...(isMobile ? bind() : {})}
           className={scss.box}
           onClick={(e) => e.stopPropagation()}
           style={{
@@ -71,6 +72,8 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
           }}
         >
           <div className={scss.head}>
+            <span className={scss.indicator}></span>
+
             {title && (
               <div className={scss.text}>
                 <h2 className={scss.title}>{title}</h2>
