@@ -54,7 +54,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
-    setOpen(!open);
+    setOpen(true);
   };
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
     <>
       <Modal
         open={open}
-        handleOpen={handleOpen}
+        setOpen={setOpen}
         title="Welcome to the Guestbook!"
         desc="sign in to your account"
       >
