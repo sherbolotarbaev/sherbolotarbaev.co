@@ -28,8 +28,10 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
       if (my > 300 && last) {
         setOpen(false);
         set({ y: window.innerHeight });
+      } else if (last) {
+        set({ y: my < 300 ? 0 : my });
       } else {
-        set({ y: my, immediate: !last });
+        set({ y: my, immediate: true });
       }
 
       return memo;
@@ -46,8 +48,9 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
     if (open) {
       set({ y: 0 });
       document.body.classList.add('disabled');
+    } else {
+      set({ y: window.innerHeight });
     }
-
     return () => {
       document.body.classList.remove('disabled');
     };
