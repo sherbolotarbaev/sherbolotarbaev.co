@@ -12,4 +12,8 @@ export const links: Link[] = [
     name: 'guestbook',
     path: '/guestbook',
   },
+  // {
+  //   name: 'projects',
+  //   path: '/projects',
+  // },
 ];
