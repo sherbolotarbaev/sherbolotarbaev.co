@@ -64,7 +64,7 @@
   &.gradient {
     position: relative;
 
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.092);
 
     &:hover,
     &:active {
@@ -81,32 +81,6 @@
       background: linear-gradient(135deg, #8964e8 0, #25a6e9 100%);
       border-radius: var(--border-radius-500);
       animation: glow-enter-blur 1s ease 0.5s;
-      animation-fill-mode: both;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      transform: translate(0);
-      z-index: 0;
-      opacity: 0.8;
-      background: linear-gradient(
-        135deg,
-        transparent 0,
-        transparent 34%,
-        transparent 49%,
-        #fff 57%,
-        #fff 64%,
-        #8964e8 66%,
-        #25a6e9 100%
-      );
-      background-size: 300% 300%;
-      background-position: 0 0;
-      background-repeat: no-repeat;
-      transition: background-position 0.8s ease;
-      border-radius: var(--border-radius-500);
-      animation: glow-enter-stroke 0.5s ease 0.5s;
       animation-fill-mode: both;
     }
   }

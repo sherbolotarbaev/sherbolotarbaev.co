@@ -41,12 +41,6 @@
         align-items: center;
         justify-content: space-between;
 
-        @media (max-width: 528px) {
-          align-items: start;
-          flex-direction: column;
-          gap: 0.55rem;
-        }
-
         .role {
           font-size: 1.15rem;
           font-weight: 400;

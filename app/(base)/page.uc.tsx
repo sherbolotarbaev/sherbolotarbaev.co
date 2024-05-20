@@ -6,6 +6,7 @@ import type { Post } from '@/app/lib/blog';
 import Image from 'next/image';
 
 import Button from '@/app/components/button';
+import Images from './components/images';
 import Experience from './components/experience';
 import Contact from './components/contact';
 import Skills from './components/skills';
@@ -47,7 +48,7 @@ export default function HomeClient({ posts }: Readonly<Props>) {
           </div>
 
           <Button width={150} open="/cv/sherbolot_arbaev.pdf" gradient>
-            Download CV
+            📢 Available for Work
           </Button>
         </div>
 

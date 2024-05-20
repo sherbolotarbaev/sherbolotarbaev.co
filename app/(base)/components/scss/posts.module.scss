@@ -20,13 +20,12 @@
     .post {
       width: 100%;
 
-      padding: 0.75rem;
+      padding: 1.05rem 0.75rem;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      background: var(--bg-300);
       border: 0.8px solid var(--color-300);
       border-radius: var(--border-radius-700);
 
@@ -53,7 +52,7 @@
 
           font-size: 1.05rem;
           font-weight: 500;
-          color: var(--color-600);
+          color: var(--color-800);
 
           span {
             padding: 0.15rem 0.35rem;
