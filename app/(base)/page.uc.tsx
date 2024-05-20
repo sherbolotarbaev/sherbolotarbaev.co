@@ -6,7 +6,6 @@ import type { Post } from '@/app/lib/blog';
 import Image from 'next/image';
 
 import Button from '@/app/components/button';
-import Images from './components/images';
 import Experience from './components/experience';
 import Contact from './components/contact';
 import Skills from './components/skills';
