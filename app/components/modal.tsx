@@ -67,7 +67,8 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
         onClick={handleClose}
       >
         <animated.div
-          {...(isMobile ? bind() : {})}
+          // {...(isMobile ? bind() : {})}
+          {...bind()}
           className={scss.box}
           onClick={(e) => e.stopPropagation()}
           style={{
