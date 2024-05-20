@@ -46,7 +46,7 @@ export default function HomeClient({ posts }: Readonly<Props>) {
             </p>
           </div>
 
-          <Button width={150} open="/cv/sherbolot_arbaev.pdf">
+          <Button width={150} open="/cv/sherbolot_arbaev.pdf" gradient>
             Download CV
           </Button>
         </div>
