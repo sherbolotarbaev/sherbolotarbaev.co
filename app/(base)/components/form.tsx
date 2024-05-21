@@ -74,7 +74,7 @@ export default function Form() {
                 <BiLogoTelegram size={18} /> Connect via Telegram
               </Button>
 
-              <Button type="button" open="mailto:sherbolot@wedevx.co">
+              <Button type="button" open="mailto:arbaevsherbolot@gmail.com">
                 <BiEnvelope size={18} /> Connect via Email
               </Button>
             </div>

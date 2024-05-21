@@ -32,7 +32,8 @@ export default function NotFound() {
           <h2 className={scss.title}>{"Oh no! This page doesn't exist."}</h2>
 
           <p className={scss.desc}>
-            If you expected to see something here, let me know (sherbolot@wedevx.co).
+            If you expected to see something here, let me know
+            (arbaevsherbolot@gmail.com).
           </p>
         </div>
       </div>
