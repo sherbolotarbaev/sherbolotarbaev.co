@@ -12,7 +12,7 @@ interface Props {
   title?: string;
   desc?: string;
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setOpen?: (open: boolean) => void;
 }
 
 export default function Modal({ children, title, desc, open, setOpen }: Readonly<Props>) {
@@ -26,7 +26,7 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
       if (my < -5) return memo;
 
       if (my > 300 && last) {
-        setOpen(false);
+        handleClose();
         set({ y: window.innerHeight });
       } else if (last) {
         set({ y: my < 300 ? 0 : my });
@@ -57,7 +57,9 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
   }, [open]);
 
   const handleClose = () => {
-    setOpen(false);
+    if (setOpen) {
+      setOpen(false);
+    }
   };
 
   return (
@@ -67,15 +69,15 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
         onClick={handleClose}
       >
         <animated.div
-          {...(isMobile ? bind() : {})}
+          {...(isMobile && setOpen ? bind() : {})}
           className={scss.box}
           onClick={(e) => e.stopPropagation()}
           style={{
             y,
           }}
         >
-          <div className={scss.head}>
-            <span className={scss.indicator}></span>
+          <div className={!setOpen ? scss.head : `${scss.head} ${scss.pt}`}>
+            {setOpen && <span className={scss.indicator}></span>}
 
             {title && (
               <div className={scss.text}>
@@ -85,9 +87,11 @@ export default function Modal({ children, title, desc, open, setOpen }: Readonly
               </div>
             )}
 
-            <span className={scss.close} onClick={handleClose}>
-              Close
-            </span>
+            {setOpen && (
+              <span className={scss.close} onClick={handleClose}>
+                Close
+              </span>
+            )}
           </div>
 
           <div className={scss.content}>{children}</div>

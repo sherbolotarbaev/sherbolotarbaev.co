@@ -60,7 +60,9 @@
       @media (max-width: 435px) {
         position: relative;
 
-        padding-top: 1.25rem;
+        &.pt {
+          padding-top: 1.25rem;
+        }
       }
 
       .indicator {

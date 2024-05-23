@@ -4,6 +4,7 @@ export interface Metadata {
   image?: string;
   author: string;
   summary: string;
+  private: string;
 }
 
 export function parseFrontmatter(fileContent: string) {

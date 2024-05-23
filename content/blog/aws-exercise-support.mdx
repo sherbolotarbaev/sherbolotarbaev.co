@@ -1,0 +1,82 @@
+---
+title: 'AWS Exercise Support'
+private: 'true'
+publishedAt: '2024-05-23'
+image: '/images/aws-exercise-support-preview.png'
+author: 'Sher Arbaev'
+summary: 'This is a notes for creating a logic to make AWS logic exercise support on platform'
+---
+
+## ENDPOINTS:
+
+### _Start Lab / Create AWS Account (Platform)_
+
+**Method**: `POST`
+
+**Endpoint**: `/aws/:exerciseId`
+
+**Response:**
+
+```jsx
+credentials: {
+  username: string;
+  password: string;
+  consoleUrl: string;
+}
+```
+
+<Image
+  src="https://sherbolotarbaev.pro/images/aws-exercise-support.png"
+  alt="AWS Exercise Support | Endpoint"
+/>
+
+### Check Exercise / Check Test Case URLs (compare actual & expected outputs)
+
+**Method**: `POST`
+
+**Endpoint**: `/aws/:exerciseId/check`
+
+**Response:**
+
+```jsx
+[
+	{
+		actualOutput: string
+		errorMessage: string
+		input: string
+		output: string
+		result: string
+		testCaseName: string
+		stdoutDiff: [
+			{
+				count: number
+				value: string
+			}
+			...
+		]
+	}
+	...
+]
+```
+
+<Image
+  src="https://sherbolotarbaev.pro/images/aws-exercise-support2.png"
+  alt="AWS Exercise Support | Endpoint"
+/>
+
+### _Get AWS Account_ credentials _(Platform)_
+
+**Method**: `GET`
+
+**Endpoint**: `/aws/:exerciseId`
+
+**Response:**
+
+```jsx
+{
+  username: string;
+  password: string;
+  consoleUrl: string;
+  accountId: number;
+}
+```

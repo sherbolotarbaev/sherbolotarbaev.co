@@ -3,12 +3,15 @@ import { siteConfig } from '@/config/site';
 
 import { notFound } from 'next/navigation';
 
+import { getUser } from '@/app/lib/auth/user';
 import { getBlogPosts } from '@/app/lib/blog';
 import { formatDate, formatDate2 } from '@/app/lib/date';
 
 import Image from 'next/image';
 import MDXContent from '@/app/components/mdx/content';
 import Views from './components/views';
+import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
+import Modal from '@/app/components/modal';
 
 import scss from '@/app/components/scss/post.module.scss';
 
@@ -64,6 +67,40 @@ export default async function Post({ params: { slug } }: Readonly<Props>) {
 
   if (!post) {
     return notFound();
+  }
+
+  if (post.metadata.private === 'true') {
+    const user = await getUser();
+
+    if (!user) {
+      return (
+        <>
+          <Modal open={true} title="Private post" desc="sign in to your account">
+            <SignInButtons />
+          </Modal>
+        </>
+      );
+    }
+
+    if (user.email && !user.email.endsWith('@wedevx.co')) {
+      return (
+        <>
+          <section className={scss.wrapper}>
+            <div className={scss.container}>
+              <div className={scss.text}>
+                <h2 className={scss.title}>Access Denied 🥲</h2>
+
+                <p className={scss.desc}>
+                  Oh no! It seems you do not have permission to access this resource.
+                </p>
+              </div>
+
+              <SignOutButton />
+            </div>
+          </section>
+        </>
+      );
+    }
   }
 
   return (
