@@ -7,14 +7,12 @@ author: 'Sher Arbaev'
 summary: 'This is a notes for creating a logic to make AWS logic exercise support on platform'
 ---
 
-## ENDPOINTS:
+### ENDPOINTS:
 
-### _Start Lab / Create AWS Account (Platform)_
+#### _Start Lab / Create AWS Account (Platform)_
 
-**Method**: `POST`
-
-**Endpoint**: `/aws/:exerciseId`
-
+**Method**: `POST` <br />
+**Endpoint**: `/aws/:exerciseId` <br />
 **Response:**
 
 ```jsx
@@ -30,12 +28,10 @@ credentials: {
   alt="AWS Exercise Support | Endpoint"
 />
 
-### Check Exercise / Check Test Case URLs (compare actual & expected outputs)
+#### Check Exercise / Check Test Case URLs (compare actual & expected outputs)
 
-**Method**: `POST`
-
-**Endpoint**: `/aws/:exerciseId/check`
-
+**Method**: `POST` <br />
+**Endpoint**: `/aws/:exerciseId/check` <br />
 **Response:**
 
 ```jsx
@@ -66,10 +62,8 @@ credentials: {
 
 ### _Get AWS Account_ credentials _(Platform)_
 
-**Method**: `GET`
-
-**Endpoint**: `/aws/:exerciseId`
-
+**Method**: `GET` <br />
+**Endpoint**: `/aws/:exerciseId` <br />
 **Response:**
 
 ```jsx
