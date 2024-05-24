@@ -105,12 +105,12 @@ body {
   }
 
   &.dark {
-    --bg-main: #111;
-    --bg-main-hover: #1e1e1e;
-    --bg-main-active: #232323;
+    --bg-main: rgb(19 19 22 / 1);
+    --bg-main-hover: rgb(28, 28, 32);
+    --bg-main-active: rgb(32, 32, 37);
 
-    --bg-300: #181818;
-    --bg-400: #111111a1;
+    --bg-300: rgb(25, 25, 29);
+    --bg-400: rgba(19, 19, 22, 0.735);
 
     --bg-code: var(--bg-main-hover);
     --bg-code-300: var(--bg-300);
@@ -151,10 +151,10 @@ body {
 
     --color-800: rgb(255 255 255 / 1);
     --color-700: rgb(238, 238, 238);
-    --color-600: rgba(233, 233, 233, 0.824);
-    --color-500: rgb(163 163 163 / 1);
-    --color-400: rgb(105, 105, 105);
-    --color-300: rgba(71, 71, 71, 0.575);
+    --color-600: #9394a1;
+    --color-500: #d9d9de;
+    --color-400: #5e5f6e;
+    --color-300: hsla(0, 0%, 100%, 0.1);
   }
 
   main {

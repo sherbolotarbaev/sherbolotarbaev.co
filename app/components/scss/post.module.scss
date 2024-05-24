@@ -16,7 +16,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.15rem;
 
     .text {
       width: 100%;
@@ -51,7 +51,9 @@
       }
 
       .desc {
-        font-size: 0.955rem;
+        line-height: 1.75rem;
+
+        font-size: 0.9375rem;
         color: var(--color-600);
       }
     }
@@ -104,8 +106,8 @@
     }
 
     h1 {
-      padding-top: 1.85rem;
-      padding-bottom: 0.85rem;
+      padding-top: 1.55rem;
+      padding-bottom: 1.25rem;
 
       border-bottom: 1px solid var(--color-300);
 
@@ -121,6 +123,8 @@
     h2,
     h3,
     h4 {
+      padding-top: 1.25rem;
+
       font-size: 1.685rem;
       font-weight: 500;
       color: var(--color-800);
@@ -147,9 +151,9 @@
     }
 
     p {
-      line-height: 1.7;
+      line-height: 1.75rem;
 
-      font-size: 0.955rem;
+      font-size: 0.9375rem;
       color: var(--color-600);
     }
 

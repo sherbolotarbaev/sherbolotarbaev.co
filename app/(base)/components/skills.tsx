@@ -19,6 +19,8 @@ export default function Skills() {
               ))}
             </div>
           )}
+
+          <div className={scss.gradient} />
         </div>
       </div>
     </>

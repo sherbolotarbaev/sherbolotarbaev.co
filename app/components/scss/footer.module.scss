@@ -11,10 +11,10 @@
   gap: 1.25rem;
 
   .text {
-    line-height: 1.6;
+    line-height: 1.75rem;
 
-    font-size: 0.955rem;
-    color: var(--color-500);
+    font-size: 0.9375rem;
+    color: var(--color-600);
   }
 
   .links {
@@ -27,8 +27,10 @@
       align-items: center;
       gap: 0.25rem;
 
-      font-size: 0.955rem;
-      color: var(--color-500);
+      line-height: 1.75rem;
+
+      font-size: 0.9375rem;
+      color: var(--color-600);
 
       &:hover {
         color: var(--color-700);
