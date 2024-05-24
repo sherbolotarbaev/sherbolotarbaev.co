@@ -17,7 +17,7 @@ export function getMDXData(dir: string) {
         content,
       };
     })
-    .filter((post) => !!post.metadata.publishedAt && post.metadata.private === 'false')
+    .filter((post) => !!post.metadata.publishedAt)
     .sort((a, b) =>
       compareDesc(new Date(a.metadata.publishedAt), new Date(b.metadata.publishedAt)),
     );
@@ -35,7 +35,7 @@ export function getRecentMDXData(dir: string, limit: number = 3) {
         content,
       };
     })
-    .filter((post) => !!post.metadata.publishedAt && post.metadata.private === 'false')
+    .filter((post) => !!post.metadata.publishedAt)
     .sort((a, b) =>
       compareDesc(new Date(a.metadata.publishedAt), new Date(b.metadata.publishedAt)),
     );

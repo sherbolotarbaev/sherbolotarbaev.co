@@ -23,22 +23,26 @@ export default function BlogClient({ posts }: Readonly<Props>) {
 
           {posts.length && (
             <div className={scss.posts}>
-              {posts.map((post, index) => (
-                <Link className={scss.post} href={`/blog/${post.slug}`} key={index}>
-                  <h3 className={scss.title}>
-                    {post.metadata.title}
-                    {getDiffHours(post.metadata.publishedAt) <= 24 && <span>today</span>}
-                  </h3>
+              {posts
+                .filter((post) => post.metadata.private === 'false')
+                .map((post, index) => (
+                  <Link className={scss.post} href={`/blog/${post.slug}`} key={index}>
+                    <h3 className={scss.title}>
+                      {post.metadata.title}
+                      {getDiffHours(post.metadata.publishedAt) <= 24 && (
+                        <span>today</span>
+                      )}
+                    </h3>
 
-                  <div className={scss.info}>
-                    <span className={scss.date}>
-                      {formatDate(post.metadata.publishedAt)}
-                    </span>
+                    <div className={scss.info}>
+                      <span className={scss.date}>
+                        {formatDate(post.metadata.publishedAt)}
+                      </span>
 
-                    <Views slug={post.slug} />
-                  </div>
-                </Link>
-              ))}
+                      <Views slug={post.slug} />
+                    </div>
+                  </Link>
+                ))}
             </div>
           )}
         </div>
