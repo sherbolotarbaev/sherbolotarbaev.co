@@ -6,7 +6,6 @@ import { BiLoader } from 'react-icons/bi';
 import scss from './scss/button.module.scss';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
   theme?: Theme;
   width?: number;
   load?: boolean;
