@@ -4,11 +4,11 @@ import { useGetViewsQuery } from '@/app/redux/api/blog';
 
 import scss from '@/app/components/scss/blog.module.scss';
 
-interface Props {
+interface ViewsProps {
   slug: string;
 }
 
-export default function Views({ slug }: Readonly<Props>) {
+export default function Views({ slug }: Readonly<ViewsProps>) {
   const { data: allViews } = useGetViewsQuery();
 
   const viewsForPost = allViews && allViews.find((view) => view.slug === slug);

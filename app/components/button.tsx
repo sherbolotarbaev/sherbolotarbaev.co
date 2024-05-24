@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { BiLoader } from 'react-icons/bi';
 import scss from './scss/button.module.scss';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: Theme;
   width?: number;
   load?: boolean;
@@ -25,7 +25,7 @@ export default function Button({
   open,
   gradient,
   ...props
-}: Readonly<Props>) {
+}: Readonly<ButtonProps>) {
   const router = useRouter();
 
   const style: React.CSSProperties = {};

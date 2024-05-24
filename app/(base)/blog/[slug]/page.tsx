@@ -58,11 +58,11 @@ export async function generateMetadata({
   };
 }
 
-interface Props {
+interface PostProps {
   params: { slug: string };
 }
 
-export default async function Post({ params: { slug } }: Readonly<Props>) {
+export default async function Post({ params: { slug } }: Readonly<PostProps>) {
   const post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {

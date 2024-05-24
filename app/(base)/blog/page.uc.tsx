@@ -8,11 +8,11 @@ import Views from './components/views';
 
 import scss from '@/app/components/scss/blog.module.scss';
 
-interface Props {
+interface BlogClientProps {
   posts: Post[];
 }
 
-export default function BlogClient({ posts }: Readonly<Props>) {
+export default function BlogClient({ posts }: Readonly<BlogClientProps>) {
   return (
     <>
       <section className={scss.wrapper}>

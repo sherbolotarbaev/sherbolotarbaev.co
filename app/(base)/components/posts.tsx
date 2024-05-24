@@ -9,11 +9,11 @@ import Views from '../blog/components/views';
 import { GoArrowUpRight } from 'react-icons/go';
 import scss from './scss/posts.module.scss';
 
-interface Props {
+interface PostsProps {
   posts: Post[];
 }
 
-export default function Posts({ posts }: Readonly<Props>) {
+export default function Posts({ posts }: Readonly<PostsProps>) {
   return (
     <>
       <div className={scss.wrapper} id="posts">

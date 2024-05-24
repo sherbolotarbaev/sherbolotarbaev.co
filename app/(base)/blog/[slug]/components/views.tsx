@@ -4,11 +4,11 @@ import { useAddViewQuery } from '@/app/redux/api/blog';
 
 import scss from '@/app/components/scss/post.module.scss';
 
-interface Props {
+interface ViewsProps {
   slug: string;
 }
 
-export default function Views({ slug }: Readonly<Props>) {
+export default function Views({ slug }: Readonly<ViewsProps>) {
   const { data: viewsForPost } = useAddViewQuery({ slug });
   const views = new Number(viewsForPost?.count || 0);
 

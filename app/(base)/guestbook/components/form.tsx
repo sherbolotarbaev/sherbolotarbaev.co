@@ -13,7 +13,7 @@ import Button from '@/app/components/button';
 import { BiErrorCircle, BiUpArrowAlt } from 'react-icons/bi';
 import scss from '@/app/components/scss/form.module.scss';
 
-interface Props {
+interface FormProps {
   user: User;
 }
 
@@ -21,7 +21,7 @@ type FormData = {
   message: string;
 };
 
-export default function Form({ user }: Readonly<Props>) {
+export default function Form({ user }: Readonly<FormProps>) {
   const {
     register,
     handleSubmit,

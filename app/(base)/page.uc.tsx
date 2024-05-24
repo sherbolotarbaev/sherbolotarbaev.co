@@ -14,11 +14,11 @@ import Posts from './components/posts';
 import sher from '@/public/images/sherbolot.webp';
 import scss from '@/app/components/scss/page.module.scss';
 
-interface Props {
+interface HomeClientProps {
   posts: Post[];
 }
 
-export default function HomeClient({ posts }: Readonly<Props>) {
+export default function HomeClient({ posts }: Readonly<HomeClientProps>) {
   return (
     <>
       <section className={scss.wrapper}>

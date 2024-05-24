@@ -10,7 +10,7 @@ import {
   THEME_LOCAL_STORAGE_KEY,
 } from './context';
 
-interface Props {
+interface ThemeContextProviderProps {
   children: React.ReactNode;
 }
 
@@ -26,7 +26,9 @@ const getThemeFromLocalStorage = (): Theme => {
   return DEFAULT_THEME;
 };
 
-export default function ThemeContextProvider({ children }: Readonly<Props>) {
+export default function ThemeContextProvider({
+  children,
+}: Readonly<ThemeContextProviderProps>) {
   const [theme, setTheme] = useState<Theme>(getThemeFromLocalStorage);
 
   const toggleTheme = () =>

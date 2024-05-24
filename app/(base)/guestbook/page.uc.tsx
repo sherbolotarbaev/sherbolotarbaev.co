@@ -16,30 +16,11 @@ import Button from '@/app/components/button';
 import { BiChevronDown, BiErrorCircle } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
 
-interface Props {
+interface GuestbookClientProps {
   user?: User;
 }
 
-function LoadingMessages({ count }: { count: number }) {
-  return (
-    <div className={`${scss.messages} ${scss.load}`}>
-      {count > 0 &&
-        Array.from({ length: count }).map((_, index) => (
-          <div key={index} className={scss.message}>
-            <div className={scss.logo_wrapper}></div>
-
-            <div className={scss.info}>
-              <span className={scss.name}></span>
-
-              <span className={scss.text}></span>
-            </div>
-          </div>
-        ))}
-    </div>
-  );
-}
-
-export default function GuestbookClient({ user }: Readonly<Props>) {
+export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>) {
   const [take, setTake] = useState<number>(40);
 
   const { data, isLoading, refetch, isFetching, isError } = useGetGuestbookMessagesQuery({
@@ -148,5 +129,24 @@ export default function GuestbookClient({ user }: Readonly<Props>) {
         </div>
       </section>
     </>
+  );
+}
+
+function LoadingMessages({ count }: { count: number }) {
+  return (
+    <div className={`${scss.messages} ${scss.load}`}>
+      {count > 0 &&
+        Array.from({ length: count }).map((_, index) => (
+          <div key={index} className={scss.message}>
+            <div className={scss.logo_wrapper}></div>
+
+            <div className={scss.info}>
+              <span className={scss.name}></span>
+
+              <span className={scss.text}></span>
+            </div>
+          </div>
+        ))}
+    </div>
   );
 }

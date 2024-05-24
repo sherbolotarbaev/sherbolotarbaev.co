@@ -3,7 +3,7 @@ import { siteConfig } from '@/config/site';
 
 import { Suspense } from 'react';
 
-import LayoutClient from './layout.uc';
+import RootLayoutClient from './layout.uc';
 import Loader from '@/app/components/loader';
 
 import { geistSans } from '@/app/lib/fonts';
@@ -60,16 +60,16 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-interface Props {
+interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function RootLayout({ children }: Readonly<Props>) {
+export default async function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en">
       <body style={geistSans.style}>
         <Suspense fallback={<Loader />}>
-          <LayoutClient>{children}</LayoutClient>
+          <RootLayoutClient>{children}</RootLayoutClient>
         </Suspense>
       </body>
     </html>

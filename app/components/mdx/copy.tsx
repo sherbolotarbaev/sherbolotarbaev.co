@@ -7,7 +7,11 @@ import { toast } from 'sonner';
 import { BiCheck, BiCopy } from 'react-icons/bi';
 import scss from '../scss/post.module.scss';
 
-export default function Copy({ content }: { content: string }) {
+interface CopyProps {
+  content: string;
+}
+
+export default function Copy({ content }: Readonly<CopyProps>) {
   const [copied, setCopied] = useState<boolean>(false);
 
   const copy = () => {

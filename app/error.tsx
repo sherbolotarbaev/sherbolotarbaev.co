@@ -4,12 +4,12 @@ import { useEffect } from 'react';
 
 import scss from '@/app/components/scss/page.module.scss';
 
-interface Props {
+interface ErrorProps {
   error: Error;
   reset: () => void;
 }
 
-export default function Error({ error, reset }: Readonly<Props>) {
+export default function Error({ error, reset }: Readonly<ErrorProps>) {
   useEffect(() => {
     console.error(error);
   }, [error]);

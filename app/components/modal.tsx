@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect';
 
 import scss from './scss/modal.module.scss';
 
-interface Props {
+interface ModalProps {
   children: React.ReactNode;
   title?: string;
   desc?: string;
@@ -15,7 +15,13 @@ interface Props {
   setOpen?: (open: boolean) => void;
 }
 
-export default function Modal({ children, title, desc, open, setOpen }: Readonly<Props>) {
+export default function Modal({
+  children,
+  title,
+  desc,
+  open,
+  setOpen,
+}: Readonly<ModalProps>) {
   const [{ y }, set] = useSpring(() => ({
     y: 0,
     config: { tension: 300, friction: 30 },

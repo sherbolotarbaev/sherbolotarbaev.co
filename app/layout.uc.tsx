@@ -10,11 +10,11 @@ import Footer from '@/app/components/footer';
 import ReduxProvider from '@/app/lib/providers/redux';
 import ThemeContextProvider from '@/app/lib/providers/theme';
 
-interface Props {
+interface RootLayoutClientProps {
   children: React.ReactNode;
 }
 
-export default function RootLayoutClient({ children }: Readonly<Props>) {
+export default function RootLayoutClient({ children }: Readonly<RootLayoutClientProps>) {
   return (
     <>
       <Toaster richColors />
