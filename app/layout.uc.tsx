@@ -14,7 +14,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default function LangLayoutClient({ children }: Readonly<Props>) {
+export default function RootLayoutClient({ children }: Readonly<Props>) {
   return (
     <>
       <Toaster richColors />

@@ -64,7 +64,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default async function Layout({ children }: Readonly<Props>) {
+export default async function RootLayout({ children }: Readonly<Props>) {
   return (
     <html lang="en">
       <body style={geistSans.style}>
