@@ -6,7 +6,6 @@ import { formatDate, getDiffHours } from '@/app/lib/date';
 import Link from 'next/link';
 import Views from './components/views';
 
-import { BiLockAlt } from 'react-icons/bi';
 import scss from '@/app/components/scss/blog.module.scss';
 
 interface Props {
@@ -29,7 +28,6 @@ export default function BlogClient({ posts }: Readonly<Props>) {
                   <h3 className={scss.title}>
                     {post.metadata.title}
                     {getDiffHours(post.metadata.publishedAt) <= 24 && <span>today</span>}
-                    {post.metadata.private === 'true' && <BiLockAlt />}
                   </h3>
 
                   <div className={scss.info}>
