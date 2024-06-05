@@ -6,7 +6,7 @@ const nextConfig = {
     domains: [
       'avatars.githubusercontent.com',
       'lh3.googleusercontent.com',
-      'sherbolotarbaev.pro',
+      'sherbolotarbaev.co',
       'avatar.vercel.sh',
     ],
   },

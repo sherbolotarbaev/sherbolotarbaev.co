@@ -1,4 +1,4 @@
-## sherbolotarbaev.pro ✨
+## sherbolotarbaev.co ✨
 
 - Framework: [Next.js](https://nextjs.org/)
 - Deployment: [Vercel](https://vercel.com/)
@@ -9,8 +9,8 @@
 This application requires Node.js v18.17+.
 
 ```
-git clone https://github.com/sherbolotarbaev/sherbolotarbaev.pro.git
-cd sherbolotarbaev.pro
+git clone https://github.com/sherbolotarbaev/sherbolotarbaev.co.git
+cd sherbolotarbaev.co
 pnpm install
 pnpm dev
 ```
