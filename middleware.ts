@@ -34,13 +34,8 @@ export async function middleware(request: NextRequest) {
 
       const me = await res.json();
 
-      if (me.statusCode === 403) {
+      if (me.statusCode === 401 || me.statusCode === 403) {
         responseCookies.delete(session);
-      }
-
-      if (me.statusCode === 403 && pathname !== '/sign-in') {
-        const redirectUrl = new URL('/sign-in?error=403', url);
-        return NextResponse.redirect(redirectUrl);
       }
 
       if (me.email) {
@@ -48,11 +43,6 @@ export async function middleware(request: NextRequest) {
       }
     } catch (_) {}
   }
-
-  console.log({
-    session,
-    user,
-  });
 
   if (user && user.isActive && pathname === '/sign-in') {
     const redirectUrl = new URL(`/redirect?to=${next}`, url);
@@ -63,5 +53,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/((?!api|_next/static|favicon.ico).*)',
+  matcher: '/sign-in',
 };
