@@ -84,7 +84,7 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
 
           {data && !isLoading && !isError ? (
             <div className={scss.messages}>
-              {data.messages.map(({ message, image, name, createdAt }, index) => (
+              {data.items.map(({ message, image, name, createdAt }, index) => (
                 <div key={index} className={scss.message}>
                   {image && (
                     <div className={scss.logo_wrapper}>

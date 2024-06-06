@@ -4,7 +4,7 @@ const api = index.injectEndpoints({
   endpoints: (build) => ({
     addView: build.query<AddViewResponse, AddViewRequest>({
       query: (params) => ({
-        url: `/others/view/${params.slug}`,
+        url: `/views/${params.slug}`,
         method: 'GET',
       }),
       providesTags: ['blog'],
@@ -12,7 +12,7 @@ const api = index.injectEndpoints({
 
     getViews: build.query<GetViewsResponse, GetViewsRequest>({
       query: () => ({
-        url: '/others/view',
+        url: '/views',
         method: 'GET',
       }),
       providesTags: ['blog'],

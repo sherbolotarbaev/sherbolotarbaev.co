@@ -7,7 +7,7 @@ const api = index.injectEndpoints({
       NewGuestbookMessageRequest
     >({
       query: (body) => ({
-        url: '/others/guestbook-message',
+        url: '/guestbook/messages',
         method: 'POST',
         body,
       }),
@@ -19,7 +19,7 @@ const api = index.injectEndpoints({
       GetGuestbookMessagesRequest
     >({
       query: (queryParams) => ({
-        url: '/others/guestbook-message',
+        url: '/guestbook/messages',
         method: 'GET',
         params: queryParams,
       }),

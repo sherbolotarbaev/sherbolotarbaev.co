@@ -21,7 +21,7 @@ type GetGuestbookMessagesRequest = {
 type GetGuestbookMessagesResponse = {
   totalCount: number;
   count: number;
-  messages: {
+  items: {
     id: number;
     message: string;
     name: string;
