@@ -1,7 +1,5 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
-
 import { Toaster } from 'sonner';
 
 import NavBar from '@/app/components/navbar';
@@ -20,15 +18,13 @@ export default function RootLayoutClient({ children }: Readonly<RootLayoutClient
       <Toaster richColors />
 
       <ReduxProvider>
-        <SessionProvider>
-          <ThemeContextProvider>
-            <NavBar />
+        <ThemeContextProvider>
+          <NavBar />
 
-            <main>{children}</main>
+          <main>{children}</main>
 
-            <Footer />
-          </ThemeContextProvider>
-        </SessionProvider>
+          <Footer />
+        </ThemeContextProvider>
       </ReduxProvider>
     </>
   );

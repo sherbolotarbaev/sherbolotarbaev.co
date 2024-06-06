@@ -117,4 +117,39 @@
       }
     }
   }
+
+  &.red {
+    padding: 0.375rem 0.75rem;
+
+    background: var(--red-badge-bg);
+    border-color: var(--red-badge-border-color);
+
+    color: var(--red-badge-color);
+
+    &:hover {
+      background: var(--red-badge-bg-hover);
+    }
+
+    &:active {
+      background: var(--red-badge-bg-active);
+    }
+
+    .loader {
+      color: var(--red-badge-color);
+    }
+
+    &.disabled,
+    &.load {
+      background: var(--red-badge-bg-active);
+
+      opacity: 0.6;
+
+      cursor: not-allowed;
+
+      &:hover,
+      &:active {
+        background: var(--red-badge-bg-active);
+      }
+    }
+  }
 }

@@ -2,14 +2,13 @@
 
 import { useEffect, useState, useCallback } from 'react';
 
-import type { User } from 'next-auth';
-
 import { useGetGuestbookMessagesQuery } from '@/app/redux/api/guestbook';
 import { formatDate } from '@/app/lib/date';
 
 import Image from 'next/image';
 import Form from './components/form';
-import { SignInButtons, SignOutButton } from '@/content/guestbook/buttons';
+import { SignOutButton } from '@/content/guestbook/buttons';
+import OuathButtons from '@/app/components/oauth-buttons';
 import Modal from '@/app/components/modal';
 import Button from '@/app/components/button';
 
@@ -52,7 +51,7 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
         title="Welcome to the Guestbook!"
         desc="sign in to your account"
       >
-        <SignInButtons />
+        <OuathButtons />
       </Modal>
 
       <section className={scss.wrapper}>

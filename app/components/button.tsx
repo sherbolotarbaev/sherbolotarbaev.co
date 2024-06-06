@@ -6,39 +6,36 @@ import { BiLoader } from 'react-icons/bi';
 import scss from './scss/button.module.scss';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  theme?: Theme;
   width?: number;
   load?: boolean;
   redirect?: string;
   open?: string;
-  gradient?: boolean;
+  theme?: Theme;
 }
 
-type Theme = 'blue';
+type Theme = 'red';
 
 export default function Button({
   children,
-  theme,
   width,
   load,
   redirect,
   open,
-  gradient,
+  theme,
   ...props
 }: Readonly<ButtonProps>) {
   const router = useRouter();
 
-  const style: React.CSSProperties = {};
-
   const className = [
     scss.button,
-    theme && scss[theme],
     load && scss.load,
     props.disabled && scss.disabled,
-    gradient && scss.gradient,
+    theme && scss[theme],
   ]
     .filter(Boolean)
     .join(' ');
+
+  const style: React.CSSProperties = {};
 
   if (width) {
     style.maxWidth = `${width}px`;
@@ -48,14 +45,13 @@ export default function Button({
       router.push(redirect);
     } else if (open) {
       window.open(open, '_blank');
-    } else if (props.onClick) {
-      props.onClick(event);
     }
+    props.onClick && props.onClick(event);
   };
 
   return (
     <button {...props} onClick={handleClick} style={style} className={className}>
-      {load ? <BiLoader size={15} className={scss.loader} /> : children}
+      {load ? <BiLoader size={19} className={scss.loader} /> : children}
     </button>
   );
 }

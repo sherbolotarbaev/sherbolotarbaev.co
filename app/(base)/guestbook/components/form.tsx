@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import type { User } from 'next-auth';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { useNewGuestbookMessageMutation } from '@/app/redux/api/guestbook';
@@ -41,9 +40,9 @@ export default function Form({ user }: Readonly<FormProps>) {
   const handleSubmitForm: SubmitHandler<FormData> = async ({ message }) => {
     try {
       await newGuestbookMessage({
-        name: user.name as string,
-        email: user.email as string,
-        image: user.image || `https://avatar.vercel.sh/${user.email}`,
+        name: `${user.name} ${user.surname}`,
+        email: user.email,
+        image: user.photo || `https://avatar.vercel.sh/${user.email}`,
         message,
       }).unwrap();
     } catch (error: any) {
@@ -77,7 +76,7 @@ export default function Form({ user }: Readonly<FormProps>) {
                   className={scss.logo}
                   width={30}
                   height={30}
-                  src={user.image || `https://avatar.vercel.sh/${user.email}`}
+                  src={user.photo || `https://avatar.vercel.sh/${user.email}`}
                   alt={user.name || 'User'}
                   loading="lazy"
                 />
