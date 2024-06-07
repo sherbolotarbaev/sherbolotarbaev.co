@@ -41,7 +41,7 @@ export default function Modal({
         onClick={handleClose}
       >
         <div className={scss.box} onClick={(e) => e.stopPropagation()}>
-          {setOpen && (
+          {(setOpen || title) && (
             <div className={scss.head}>
               {title && (
                 <div className={scss.text}>
@@ -51,9 +51,11 @@ export default function Modal({
                 </div>
               )}
 
-              <span className={scss.close} onClick={handleClose}>
-                Close
-              </span>
+              {setOpen && (
+                <span className={scss.close} onClick={handleClose}>
+                  Close
+                </span>
+              )}
             </div>
           )}
 

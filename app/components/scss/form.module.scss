@@ -40,7 +40,6 @@
   .success_message {
     background: var(--green-badge-bg);
     border-radius: var(--border-radius-400);
-    border: 0.8px solid var(--green-badge-border-color);
 
     color: var(--green-badge-color);
   }
@@ -48,7 +47,6 @@
   .error_message {
     background: var(--red-badge-bg);
     border-radius: var(--border-radius-400);
-    border: 0.8px solid var(--red-badge-border-color);
 
     color: var(--red-badge-color);
   }
