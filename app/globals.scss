@@ -55,10 +55,10 @@
   --green-badge-border-color: #00d66fed;
 
   --red-badge-color: #f57165;
-  --red-badge-bg: #f571651d;
+  --red-badge-bg: #f5716511;
   --red-badge-bg-hover: #f5716527;
   --red-badge-bg-active: #f5716531;
-  --red-badge-border-color: #f5716543;
+  --red-badge-border-color: #f5716530;
   --red-badge-outline-color: #f5716553;
 
   --blue-badge-color: #ffffff;
@@ -66,6 +66,7 @@
   --blue-badge-bg-hover: #007dfc;
   --blue-badge-bg-active: #1b8dff;
   --blue-badge-border-color: #0074e7;
+  --blue-badge-outline-color: #0080ff72;
 
   --border-radius-700: 1rem;
   --border-radius-500: 0.75rem;
@@ -121,7 +122,7 @@ body {
     --bg-code--markup-inserted: #033a16;
     --bg-code--markup-deleted: #67060c;
 
-    --color-code-main: var(--color-600);
+    --color-code-main: var(--color-700);
     --color-code-keyword: #ff7b72;
     --color-code-entity: #d2a8ff;
     --color-code-constant: #79c0ff;
@@ -152,7 +153,7 @@ body {
     --red-badge-bg: #f571651d;
     --red-badge-bg-hover: #f5716527;
     --red-badge-bg-active: #f5716531;
-    --red-badge-border-color: #f5716543;
+    --red-badge-border-color: #f57165be;
     --red-badge-outline-color: #f5716553;
 
     --color-800: rgb(255 255 255 / 1);

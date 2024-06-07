@@ -3,13 +3,11 @@
 import { useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
-
 import { useNewGuestbookMessageMutation } from '@/app/redux/api/guestbook';
 
-import Image from 'next/image';
-import Button from '@/app/components/button';
+import { SignOutButton } from '@/content/guestbook/buttons';
+import Input from '@/app/components/input';
 
-import { BiErrorCircle, BiUpArrowAlt } from 'react-icons/bi';
 import scss from '@/app/components/scss/form.module.scss';
 
 interface FormProps {
@@ -56,46 +54,18 @@ export default function Form({ user }: Readonly<FormProps>) {
     <>
       <div className={scss.form_wrapper} onSubmit={handleSubmit(handleSubmitForm)}>
         <form className={scss.form}>
-          <div className={scss.inputs_container}>
-            <div className={scss.input_container}>
-              {errors.message || error ? (
-                <span className={scss.error}>
-                  <BiErrorCircle className={scss.icon} />
-                  {errors.message?.message || error}
-                </span>
-              ) : (
-                <span className={scss.label}>Message</span>
-              )}
+          <div className={scss.container}>
+            <Input
+              label="Message"
+              placeholder="Your message..."
+              error={errors.message && errors.message.message}
+              load={isLoading}
+              register={register('message', {
+                required: 'This field is required',
+              })}
+            />
 
-              <div
-                className={
-                  isLoading ? `${scss.input_wrapper} ${scss.load}` : scss.input_wrapper
-                }
-              >
-                <Image
-                  className={scss.logo}
-                  width={30}
-                  height={30}
-                  src={user.photo || `https://avatar.vercel.sh/${user.email}`}
-                  alt={user.name || 'User'}
-                  loading="lazy"
-                />
-
-                <input
-                  type="text"
-                  disabled={isLoading}
-                  className={scss.input}
-                  placeholder="Your message..."
-                  {...register('message', {
-                    required: 'This field is required',
-                  })}
-                />
-
-                <Button width={35} load={isLoading} type="submit" disabled={isLoading}>
-                  <BiUpArrowAlt size={15} />
-                </Button>
-              </div>
-            </div>
+            <SignOutButton />
           </div>
         </form>
       </div>

@@ -53,7 +53,13 @@ export default function Button({
   };
 
   return (
-    <button {...props} onClick={handleClick} style={style} className={className}>
+    <button
+      {...props}
+      onClick={handleClick}
+      style={style}
+      className={className}
+      disabled={load || props.disabled}
+    >
       {load ? <BiLoader size={19} className={scss.loader} /> : children}
     </button>
   );

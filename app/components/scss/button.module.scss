@@ -12,7 +12,7 @@
 
   background: var(--bg-main);
   border: 0.8px solid var(--color-300);
-  border-radius: var(--border-radius-500);
+  border-radius: var(--border-radius-400);
 
   font-size: 0.875rem;
   color: var(--color-700);
@@ -79,7 +79,7 @@
       z-index: -1;
       opacity: 0.8;
       background: linear-gradient(135deg, #8964e8 0, #25a6e9 100%);
-      border-radius: var(--border-radius-500);
+      border-radius: var(--border-radius-400);
       animation: glow-enter-blur 1s ease 0.5s;
       animation-fill-mode: both;
     }

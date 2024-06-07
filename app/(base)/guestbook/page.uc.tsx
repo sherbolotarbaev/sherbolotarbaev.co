@@ -1,15 +1,12 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 import { useGetGuestbookMessagesQuery } from '@/app/redux/api/guestbook';
 import { formatDate } from '@/app/lib/date';
 
 import Image from 'next/image';
 import Form from './components/form';
-import { SignOutButton } from '@/content/guestbook/buttons';
-import OuathButtons from '@/app/components/oauth-buttons';
-import Modal from '@/app/components/modal';
 import Button from '@/app/components/button';
 
 import { BiChevronDown, BiErrorCircle } from 'react-icons/bi';
@@ -31,29 +28,8 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
     refetch();
   }, [setTake, refetch]);
 
-  const [open, setOpen] = useState<boolean>(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  useEffect(() => {
-    if (!user) {
-      handleOpen();
-    }
-  }, [user]);
-
   return (
     <>
-      <Modal
-        open={open}
-        setOpen={setOpen}
-        title="Welcome to the Guestbook!"
-        desc="sign in to your account"
-      >
-        <OuathButtons />
-      </Modal>
-
       <section className={scss.wrapper}>
         <div className={scss.container}>
           <div className={scss.text}>
@@ -70,13 +46,9 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
           </div>
 
           {user ? (
-            <>
-              <Form user={user} />
-
-              <SignOutButton />
-            </>
+            <Form user={user} />
           ) : (
-            <Button width={150} onClick={handleOpen}>
+            <Button width={150} redirect="/sign-in">
               Sign in
             </Button>
           )}

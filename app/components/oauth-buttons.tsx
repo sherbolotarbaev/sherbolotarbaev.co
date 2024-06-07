@@ -9,6 +9,7 @@ import Button from '@/app/components/button';
 
 import { FcGoogle } from 'react-icons/fc';
 import { BiLogoGithub } from 'react-icons/bi';
+import scss from './scss/oauth-buttons.module.scss';
 
 type ErrorCode = {
   code: string;
@@ -82,17 +83,19 @@ export default function OuathButtons() {
 
   return (
     <>
-      {authProviders.map((provider, index) => (
-        <Button
-          key={index}
-          type="button"
-          load={loading[provider.name]}
-          redirect={`${process.env.NEXT_PUBLIC_API_URL}/${provider.name}/callback`}
-          onClick={() => handleLoading(provider.name, true)}
-        >
-          {provider.svgIcon} {provider.actionText}
-        </Button>
-      ))}
+      <div className={scss.buttons}>
+        {authProviders.map((provider, index) => (
+          <Button
+            key={index}
+            type="button"
+            load={loading[provider.name]}
+            redirect={`${process.env.NEXT_PUBLIC_API_URL}/${provider.name}/callback`}
+            onClick={() => handleLoading(provider.name, true)}
+          >
+            {provider.svgIcon} {provider.actionText}
+          </Button>
+        ))}
+      </div>
     </>
   );
 }

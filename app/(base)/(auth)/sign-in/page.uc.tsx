@@ -1,5 +1,6 @@
 'use client';
 
+import Modal from '@/app/components/modal';
 import LoginForm from '../components/login/form';
 
 import scss from '@/app/components/scss/page.module.scss';
@@ -16,7 +17,9 @@ export default function LoginClient() {
         }}
       >
         <div className={scss.container}>
-          <LoginForm />
+          <Modal open={true}>
+            <LoginForm />
+          </Modal>
         </div>
       </section>
     </>

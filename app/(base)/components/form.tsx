@@ -3,13 +3,13 @@
 import { useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
-
 import { useSendMessageMutation } from '@/app/redux/api/contact';
 
 import Button from '@/app/components/button';
+import Input from '@/app/components/input';
+import Textarea from '@/app/components/textarea';
 
 import { BiCheckCircle, BiEnvelope, BiErrorCircle, BiLogoTelegram } from 'react-icons/bi';
-import { geistSans } from '@/app/lib/fonts';
 import scss from '@/app/components/scss/form.module.scss';
 
 type FormData = {
@@ -60,185 +60,106 @@ export default function Form() {
 
   return (
     <>
-      <div
-        className={scss.form_wrapper}
-        onSubmit={handleSubmit(handleSubmitForm)}
-        style={{
-          maxWidth: '100%',
-        }}
-      >
-        {!success ? (
-          <form className={scss.form}>
-            <div className={scss.couple}>
-              <Button type="button" open="https://t.me/sherbolotarbaev">
-                <BiLogoTelegram size={18} /> Connect via Telegram
-              </Button>
+      {!success ? (
+        <form
+          className={scss.form}
+          onSubmit={handleSubmit(handleSubmitForm)}
+          style={{
+            maxWidth: '100%',
+          }}
+        >
+          <div className={scss.couple}>
+            <Button type="button" open="https://t.me/sherbolotarbaev">
+              <BiLogoTelegram size={18} /> Connect via Telegram
+            </Button>
 
-              <Button type="button" open="mailto:arbaevsherbolot@gmail.com">
-                <BiEnvelope size={18} /> Connect via Email
-              </Button>
-            </div>
+            <Button type="button" open="mailto:arbaevsherbolot@gmail.com">
+              <BiEnvelope size={18} /> Connect via Email
+            </Button>
+          </div>
 
-            <div className={scss.devider}>
-              <hr />
-              <span>or</span>
-              <hr />
-            </div>
+          <div className={scss.devider}>
+            <hr />
+            <span>or</span>
+            <hr />
+          </div>
 
-            {error && !isLoading && (
-              <span className={scss.error_message}>
-                <BiErrorCircle className={scss.icon} size={20} />
-                {error}
-              </span>
-            )}
+          {error && !isLoading && (
+            <span className={scss.error_message}>
+              <BiErrorCircle className={scss.icon} size={19} />
+              {error}
+            </span>
+          )}
 
-            <div className={scss.inputs_container}>
-              <div className={scss.couple}>
-                <div className={scss.input_container}>
-                  {errors.name ? (
-                    <span className={scss.error}>
-                      <BiErrorCircle className={scss.icon} />
-                      {errors.name.message}
-                    </span>
-                  ) : (
-                    <span className={scss.label}>Name</span>
-                  )}
+          <div className={scss.couple}>
+            <Input
+              label="Name"
+              placeholder="Enter your name..."
+              error={errors.name?.message}
+              load={isLoading}
+              register={register('name', {
+                required: 'Name is required',
+                maxLength: {
+                  value: 64,
+                  message: 'Maximum 64 characters allowed',
+                },
+                minLength: {
+                  value: 2,
+                  message: 'Minimum 2 characters allowed',
+                },
+                pattern: {
+                  value: /^[a-zA-Zа-яА-Я]+$/,
+                  message: 'Invalid name, use letters only',
+                },
+              })}
+            />
 
-                  <div
-                    className={
-                      isLoading
-                        ? `${scss.input_wrapper} ${scss.load}`
-                        : scss.input_wrapper
-                    }
-                    style={
-                      errors.name
-                        ? {
-                            borderColor: 'var(--red-badge-color)',
-                          }
-                        : undefined
-                    }
-                  >
-                    <input
-                      type="text"
-                      disabled={isLoading}
-                      className={scss.input}
-                      placeholder="Enter your name..."
-                      {...register('name', {
-                        required: 'Name is required',
-                        maxLength: {
-                          value: 64,
-                          message: 'Maximum 64 characters allowed',
-                        },
-                        minLength: {
-                          value: 2,
-                          message: 'Minimum 2 characters allowed',
-                        },
-                        pattern: {
-                          value: /^[a-zA-Zа-яА-Я]+$/,
-                          message: 'Invalid name, use letters only',
-                        },
-                      })}
-                    />
-                  </div>
-                </div>
+            <Input
+              label="Email"
+              placeholder="Enter your email..."
+              error={errors.email && errors.email.message}
+              load={isLoading}
+              register={register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Invalid email',
+                },
+              })}
+            />
+          </div>
 
-                <div className={scss.input_container}>
-                  {errors.email ? (
-                    <span className={scss.error}>
-                      <BiErrorCircle className={scss.icon} />
-                      {errors.email.message}
-                    </span>
-                  ) : (
-                    <span className={scss.label}>Email</span>
-                  )}
+          <Textarea
+            label="Message"
+            placeholder="Enter your message..."
+            error={errors.message && errors.message.message}
+            load={isLoading}
+            register={register('message', {
+              required: 'Message is required',
+              maxLength: {
+                value: 500,
+                message: 'Maximum 500 characters allowed',
+              },
+            })}
+          />
 
-                  <div
-                    className={
-                      isLoading
-                        ? `${scss.input_wrapper} ${scss.load}`
-                        : scss.input_wrapper
-                    }
-                    style={
-                      errors.email
-                        ? {
-                            borderColor: 'var(--red-badge-color)',
-                          }
-                        : undefined
-                    }
-                  >
-                    <input
-                      type="email"
-                      disabled={isLoading}
-                      className={scss.input}
-                      placeholder="Enter your email..."
-                      {...register('email', {
-                        required: 'Email is required',
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: 'Invalid email',
-                        },
-                      })}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className={scss.input_container}>
-                {errors.message ? (
-                  <span className={scss.error}>
-                    <BiErrorCircle className={scss.icon} />
-                    {errors.message.message}
-                  </span>
-                ) : (
-                  <span className={scss.label}>Message</span>
-                )}
-
-                <div
-                  className={
-                    isLoading ? `${scss.input_wrapper} ${scss.load}` : scss.input_wrapper
-                  }
-                  style={
-                    errors.message
-                      ? {
-                          borderColor: 'var(--red-badge-color)',
-                        }
-                      : undefined
-                  }
-                >
-                  <textarea
-                    disabled={isLoading}
-                    className={scss.textarea}
-                    style={geistSans.style}
-                    placeholder="Enter your message..."
-                    {...register('message', {
-                      required: 'Message is required',
-                      maxLength: {
-                        value: 500,
-                        message: 'Maximum 500 characters allowed',
-                      },
-                    })}
-                  />
-                </div>
-              </div>
-
-              <Button
-                width={125}
-                theme="blue"
-                load={isLoading}
-                type="submit"
-                disabled={isLoading}
-              >
-                Submit
-              </Button>
-            </div>
-          </form>
-        ) : (
+          <Button width={125} theme="blue" load={isLoading} type="submit">
+            Submit
+          </Button>
+        </form>
+      ) : (
+        <form
+          className={scss.form}
+          style={{
+            maxWidth: '100%',
+          }}
+        >
           <span className={scss.success_message}>
-            <BiCheckCircle size={20} />
+            <BiCheckCircle size={19} />
             Your form has been successfully submitted
           </span>
-        )}
-      </div>
+        </form>
+      )}
     </>
   );
 }

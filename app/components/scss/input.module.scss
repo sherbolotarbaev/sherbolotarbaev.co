@@ -1,0 +1,97 @@
+.wrapper {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+
+  .label {
+    font-size: 0.8125rem;
+    color: var(--color-800);
+  }
+
+  .error {
+    font-size: 0.8125rem;
+    color: var(--red-badge-color);
+  }
+
+  .input,
+  .textarea {
+    width: 100%;
+    height: 2.55rem;
+
+    padding: 0.575rem 0.75rem;
+
+    background: var(--bg-main);
+    border: 1px solid var(--color-300);
+    border-radius: var(--border-radius-400);
+    outline: 2.4px solid transparent;
+
+    line-height: 1.38462;
+
+    font-size: 0.875rem;
+    color: var(--color-700);
+
+    &::placeholder {
+      color: var(--color-400);
+    }
+
+    &:focus {
+      border-color: var(--blue-badge-border-color);
+      outline-color: var(--blue-badge-outline-color);
+    }
+
+    &.error {
+      border-color: var(--red-badge-border-color);
+
+      &:focus {
+        outline-color: var(--red-badge-outline-color);
+      }
+    }
+
+    &.password {
+      letter-spacing: 0.33rem;
+
+      &::placeholder {
+        letter-spacing: normal;
+      }
+    }
+
+    &.load {
+      background: var(--gradient-loader);
+      background-size: 500% 500%;
+
+      color: var(--color-400);
+
+      animation: loadingAnimation 2s linear infinite;
+
+      @keyframes loadingAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    }
+  }
+
+  .textarea {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+    max-height: 365px;
+    resize: vertical;
+
+    @media (max-width: 578px) {
+      min-height: 150px;
+    }
+
+    &.load {
+      resize: none;
+    }
+  }
+}

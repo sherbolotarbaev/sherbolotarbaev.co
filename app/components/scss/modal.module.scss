@@ -24,7 +24,7 @@
   .box {
     width: 100%;
     max-width: 380px;
-    max-height: 540px;
+    max-height: 580px;
 
     padding: 1.25rem;
 
@@ -56,31 +56,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      @media (max-width: 435px) {
-        position: relative;
-
-        &.pt {
-          padding-top: 1.25rem;
-        }
-      }
-
-      .indicator {
-        width: 70px;
-        height: 4px;
-
-        position: absolute;
-        left: 50%;
-        top: 0.05rem;
-        transform: translateX(-50%);
-
-        background: var(--color-400);
-        border-radius: var(--border-radius-700);
-
-        @media (min-width: 436px) {
-          display: none;
-        }
-      }
 
       .text {
         display: flex;
