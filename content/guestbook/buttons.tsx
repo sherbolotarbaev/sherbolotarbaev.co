@@ -13,7 +13,7 @@ export function SignOutButton() {
         alignItems: 'center',
         gap: '0.55rem',
         fontSize: '0.875rem',
-        color: 'var(--red-badge-border-color)',
+        color: '#f5716530',
       }}
     >
       <BiLogOut size={19} /> Log out
