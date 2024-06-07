@@ -20,6 +20,7 @@ credentials: {
   username: string;
   password: string;
   consoleUrl: string;
+  accountId: number;
 }
 ```
 
@@ -35,24 +36,27 @@ credentials: {
 **Response:**
 
 ```jsx
-[
-	{
-		actualOutput: string
-		errorMessage: string
-		input: string
-		output: string
-		result: string
-		testCaseName: string
-		stdoutDiff: [
-			{
-				count: number
-				value: string
-			}
+{
+		submissionStatus: 'TODO' | 'SOLVED' | 'ATTEMPTED',
+		testCases: [
+				{
+					actualOutput: string
+					errorMessage: string
+					input: string
+					output: string
+					result: string
+					testCaseName: string
+					stdoutDiff: [
+							{
+									count: number
+									value: string
+							}
+						...
+					]
+				}
 			...
-		]
-	}
-	...
-]
+	]
+}
 ```
 
 <Image
@@ -68,14 +72,33 @@ credentials: {
 
 ```jsx
 {
-  username: string;
-  password: string;
-  consoleUrl: string;
-  accountId: number;
+	credentials: {
+			username: string
+			password: string
+			consoleUrl: string
+			accountId: number
+	} | null
 }
 ```
 
 <Image
   src="https://sherbolotarbaev.co/images/aws-exercise-support3.png"
+  alt="AWS Exercise Support | Endpoint"
+/>
+
+### Clean-up AWS Member Account (Platform)
+
+**Method**: `DELETE` <br />
+**Endpoint**: `/aws/:exerciseId/clean-up` <br />
+**Response:**
+
+```jsx
+{
+  success: boolean;
+}
+```
+
+<Image
+  src="https://sherbolotarbaev.co/images/aws-exercise-support4.png"
   alt="AWS Exercise Support | Endpoint"
 />
