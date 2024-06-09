@@ -10,6 +10,7 @@ interface ModalProps {
   desc?: string;
   open: boolean;
   setOpen?: (open: boolean) => void;
+  background?: string;
 }
 
 export default function Modal({
@@ -18,6 +19,7 @@ export default function Modal({
   desc,
   open,
   setOpen,
+  background,
 }: Readonly<ModalProps>) {
   useEffect(() => {
     if (open) {
@@ -38,6 +40,7 @@ export default function Modal({
     <>
       <div
         className={open ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
+        style={background ? { background } : undefined}
         onClick={handleClose}
       >
         <div className={scss.box} onClick={(e) => e.stopPropagation()}>
