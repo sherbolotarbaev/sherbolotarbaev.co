@@ -7,4 +7,15 @@ type User = {
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
+
+  metaData: UserMetaData;
+};
+
+type UserMetaData = {
+  ip: string;
+  city?: string;
+  region?: string;
+  country?: string;
+  timezone?: string;
+  lastSeen: Date;
 };
