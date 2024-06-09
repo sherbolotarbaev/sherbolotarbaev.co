@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const pathname = url.pathname;
   const searchParams = new URLSearchParams(url.searchParams);
-  const xff = `${request.headers.get('x-forwarded-for')?.split(',')[0]}`;
+  const xff = `${(request.headers.get('x-forwarded-for') ?? '127.0.0.1')?.split(',')[0]}`;
 
   const responseCookies = response.cookies;
   const requestCookies = request.cookies;
@@ -49,9 +49,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
+  responseCookies.set('x-forwarded-for', xff);
+
   return response;
 }
 
 export const config = {
-  matcher: ['/sign-in', '/guestbook'],
+  matcher: '/((?!api|_next/static|favicon.ico).*)',
 };
