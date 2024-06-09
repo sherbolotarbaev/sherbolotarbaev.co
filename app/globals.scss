@@ -63,7 +63,7 @@
 
   --blue-badge-color: #ffffff;
   --blue-badge-bg: #0a84ff;
-  --blue-badge-bg-hover: #007dfc;
+  --blue-badge-bg-hover: #0879eb;
   --blue-badge-bg-active: #1b8dff;
   --blue-badge-border-color: #0074e7;
   --blue-badge-outline-color: #0080ff72;
@@ -113,7 +113,7 @@ body {
     --bg-main-hover: rgb(28, 28, 32);
     --bg-main-active: rgb(32, 32, 37);
 
-    --bg-300: rgb(25, 25, 29);
+    --bg-300: #1a1b1f;
     --bg-400: rgba(19, 19, 22, 0.735);
 
     --bg-code: var(--bg-main-hover);
@@ -161,7 +161,7 @@ body {
     --color-600: #9394a1;
     --color-500: #d9d9de;
     --color-400: #5e5f6e;
-    --color-300: hsla(0, 0%, 100%, 0.1);
+    --color-300: hsla(0, 0%, 100%, 0.111);
   }
 
   main {

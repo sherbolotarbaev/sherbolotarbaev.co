@@ -3,6 +3,8 @@
   height: 100%;
   max-width: 375px;
 
+  padding: 0.95rem 1.25rem;
+
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -92,7 +94,7 @@
     align-items: center;
 
     hr {
-      height: 0.8px;
+      height: 0.5px;
 
       flex-grow: 1;
 

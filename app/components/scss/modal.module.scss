@@ -16,17 +16,15 @@
   overflow: hidden;
   z-index: 1;
 
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 
   transition: 0.15s;
 
   .box {
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     max-height: 580px;
-
-    padding: 1.25rem;
 
     display: flex;
     align-items: center;

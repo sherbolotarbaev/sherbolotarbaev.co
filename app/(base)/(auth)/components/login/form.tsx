@@ -93,6 +93,7 @@ export default function LoginForm() {
         className={scss.form}
         onSubmit={handleSubmit(handleSubmitForm)}
         style={{
+          maxWidth: '100%',
           marginInline: 'auto',
         }}
       >
@@ -107,8 +108,8 @@ export default function LoginForm() {
 
           <div className={scss.devider}>
             <hr />
-            <span>or</span>
-            <hr />
+            {/* <span>or</span>
+            <hr /> */}
           </div>
 
           {error && !isLoading && (
