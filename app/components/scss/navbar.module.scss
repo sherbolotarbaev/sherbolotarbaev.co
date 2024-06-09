@@ -2,19 +2,17 @@
   width: 100%;
   min-width: 350px;
 
-  // position: sticky;
-  // left: 0;
-  // top: 0;
-  // z-index: 1;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 1;
 
   display: flex;
   justify-content: center;
 
-  // background: var(--bg-400);
-  // backdrop-filter: blur(24px);
-  // -webkit-backdrop-filter: blur(24px);
-
-  // transition: 0.25s;
+  background: var(--bg-400);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 
   .wrapper {
     width: 100%;

@@ -13,11 +13,11 @@ export async function getMe(_req: GetMeRequest): Promise<GetMeResponse | undefin
   headers.append('cookie', `session=${session.value}`);
 
   try {
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       method: 'GET',
       headers,
     });
-    return res.json();
+    return response.json();
   } catch (error) {
     return;
   }

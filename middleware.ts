@@ -27,12 +27,12 @@ export async function middleware(request: NextRequest) {
     headers.append('cookie', `session=${session.value}`);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, {
         method: 'GET',
         headers,
       });
 
-      const me = await res.json();
+      const me = await response.json();
 
       if (me.statusCode === 401 || me.statusCode === 403) {
         responseCookies.delete(session);
@@ -53,5 +53,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/sign-in',
+  matcher: ['/sign-in', '/guestbook'],
 };
