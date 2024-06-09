@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse, userAgent as getUserAgent } from 'next/server';
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next();
@@ -21,10 +21,14 @@ export async function middleware(request: NextRequest) {
   let user: User | undefined;
 
   if (session) {
+    const { os, device } = getUserAgent(request);
+
+    const userAgent = `${os.name} ${os.version} (${device.vendor}, ${device.model})`;
     const headers = new Headers();
 
     headers.append('x-forwarded-for', xff);
     headers.append('cookie', `session=${session.value}`);
+    headers.append('user-agent', userAgent);
 
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, {
@@ -48,8 +52,6 @@ export async function middleware(request: NextRequest) {
     const redirectUrl = new URL(`/redirect?to=${next}`, url);
     return NextResponse.redirect(redirectUrl);
   }
-
-  responseCookies.set('x-forwarded-for', xff);
 
   return response;
 }
