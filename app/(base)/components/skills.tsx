@@ -8,7 +8,7 @@ export default function Skills() {
     <>
       <div className={scss.wrapper} id="skills">
         <div className={scss.container}>
-          <h2 className={scss.title}>Tech stack</h2>
+          <h2 className={scss.title}>Tech stack 🦾</h2>
 
           {skills.length && (
             <div className={scss.skills}>

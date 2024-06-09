@@ -66,11 +66,6 @@
 
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.092);
 
-    &:hover,
-    &:active {
-      background: var(--bg-main);
-    }
-
     &::before {
       content: '';
       position: absolute;

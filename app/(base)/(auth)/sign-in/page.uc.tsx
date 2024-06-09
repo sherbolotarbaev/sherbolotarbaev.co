@@ -1,32 +1,27 @@
 'use client';
 
-import Modal from '@/app/components/modal';
 import LoginForm from '../components/login/form';
 
 import scss from '@/app/components/scss/page.module.scss';
 
-interface LoginFormProps {
-  photo: string;
-}
-
-export default function LoginClient({ photo }: Readonly<LoginFormProps>) {
+export default function LoginClient() {
   return (
     <>
       <section
         className={scss.wrapper}
         style={{
-          minHeight: '75vh',
+          minHeight: '100vh',
           alignItems: 'center',
           justifyContent: 'center',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          zIndex: 1,
+          background: 'var(--bg-main)',
         }}
       >
         <div className={scss.container}>
-          <Modal
-            open={true}
-            background={`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${photo}) center/cover no-repeat`}
-          >
-            <LoginForm />
-          </Modal>
+          <LoginForm />
         </div>
       </section>
     </>

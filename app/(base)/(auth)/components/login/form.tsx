@@ -47,10 +47,10 @@ export default function LoginForm() {
     setValue(name, '');
   };
 
-  const handleErrorAlert = (message: string) => {
-    toast.error(message, {
+  const handleErrorAlert = (message?: string) => {
+    toast.error(message || 'Try again. Something happened on our end', {
       position: 'top-right',
-      duration: 9000,
+      duration: 5000,
     });
   };
 
@@ -67,7 +67,7 @@ export default function LoginForm() {
           setIsOtpSent(true);
         }
       } catch (error: any) {
-        handleErrorAlert(error.data.message);
+        handleErrorAlert(error.data?.message);
       } finally {
         return;
       }
@@ -83,7 +83,7 @@ export default function LoginForm() {
         router.push('/guestbook');
       }
     } catch (error: any) {
-      handleErrorAlert(error.data.message);
+      handleErrorAlert(error.data?.message);
     }
   };
 
@@ -93,8 +93,9 @@ export default function LoginForm() {
         className={scss.form}
         onSubmit={handleSubmit(handleSubmitForm)}
         style={{
-          maxWidth: '100%',
+          maxWidth: '30rem',
           marginInline: 'auto',
+          padding: '0 1.25rem',
         }}
       >
         <div className={scss.text}>

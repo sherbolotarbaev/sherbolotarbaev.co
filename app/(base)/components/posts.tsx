@@ -17,7 +17,7 @@ export default function Posts({ posts }: Readonly<PostsProps>) {
   return (
     <>
       <div className={scss.wrapper} id="posts">
-        <h2 className={scss.title}>Recent blog posts</h2>
+        <h2 className={scss.title}>Recent blog posts 🚀</h2>
 
         {posts.length && (
           <div className={scss.posts}>

@@ -10,7 +10,7 @@ export default function Experience() {
   return (
     <>
       <div className={scss.wrapper} id="experience">
-        <h2 className={scss.title}>Experience</h2>
+        <h2 className={scss.title}>My experience 🧠</h2>
 
         {jobs.length && (
           <div className={scss.jobs}>

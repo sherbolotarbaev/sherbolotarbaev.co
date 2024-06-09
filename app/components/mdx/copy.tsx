@@ -19,7 +19,7 @@ export default function Copy({ content }: Readonly<CopyProps>) {
     navigator.clipboard.writeText(content);
     toast.success('Copied to clipboard!', {
       duration: 4500,
-      position: 'bottom-right',
+      position: 'top-right',
     });
   };
 

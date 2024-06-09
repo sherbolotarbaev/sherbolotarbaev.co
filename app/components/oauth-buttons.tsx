@@ -60,10 +60,10 @@ export default function OuathButtons() {
     setLoading((prev) => ({ ...prev, [provider]: state }));
   };
 
-  const handleErrorAlert = (message: string) => {
-    toast.error(message, {
+  const handleErrorAlert = (message?: string) => {
+    toast.error(message || 'Try again. Something happened on our end', {
       position: 'top-right',
-      duration: 9000,
+      duration: 5000,
     });
   };
 

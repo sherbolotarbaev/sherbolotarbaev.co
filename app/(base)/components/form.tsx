@@ -9,7 +9,7 @@ import Button from '@/app/components/button';
 import Input from '@/app/components/input';
 import Textarea from '@/app/components/textarea';
 
-import { BiCheckCircle, BiEnvelope, BiErrorCircle, BiLogoTelegram } from 'react-icons/bi';
+import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import scss from '@/app/components/scss/form.module.scss';
 
 type FormData = {
@@ -31,8 +31,8 @@ export default function Form() {
 
   const [sendMessage, { isLoading }] = useSendMessageMutation();
 
-  const handleError = (error: any, msg: string) => {
-    setError(msg);
+  const handleError = (error: any, message?: string) => {
+    setError(message || 'Try again. Something happened on our end');
     console.error(error);
   };
 
@@ -51,37 +51,18 @@ export default function Form() {
         setError(null);
       }
     } catch (error: any) {
-      handleError(
-        error,
-        error.data.message || 'Try again. Something happened on our end',
-      );
+      handleError(error, error.data?.message);
     }
   };
 
   return (
     <>
       {!success ? (
-        <form
-          className={scss.form}
-          onSubmit={handleSubmit(handleSubmitForm)}
-          style={{
-            maxWidth: '100%',
-          }}
-        >
-          <div className={scss.couple}>
-            <Button type="button" open="https://t.me/sherbolotarbaev">
-              <BiLogoTelegram size={18} /> Connect via Telegram
-            </Button>
-
-            <Button type="button" open="mailto:arbaevsherbolot@gmail.com">
-              <BiEnvelope size={18} /> Connect via Email
-            </Button>
-          </div>
-
-          <div className={scss.devider}>
-            <hr />
-            <span>or</span>
-            <hr />
+        <form className={scss.form} onSubmit={handleSubmit(handleSubmitForm)}>
+          <div className={scss.text}>
+            <p className={scss.desc}>
+              Looking to hire? Email me arbaevsherbolot@gmail.com
+            </p>
           </div>
 
           {error && !isLoading && (

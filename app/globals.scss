@@ -109,11 +109,11 @@ body {
   }
 
   &.dark {
-    --bg-main: rgb(19 19 22 / 1);
+    --bg-main: hsl(240 10% 3.9%);
     --bg-main-hover: rgb(28, 28, 32);
     --bg-main-active: rgb(32, 32, 37);
 
-    --bg-300: #1a1b1f;
+    --bg-300: rgb(19 19 22 / 1);
     --bg-400: rgba(19, 19, 22, 0.735);
 
     --bg-code: var(--bg-main-hover);
