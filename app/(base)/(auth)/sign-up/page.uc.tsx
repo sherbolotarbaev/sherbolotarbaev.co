@@ -4,12 +4,12 @@ import { siteConfig } from '@/config/site';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import LoginForm from '../components/login.form';
+import RegisterForm from '../components/register.form';
 
 import logo from '@/public/images/logo.png';
 import scss from '@/app/components/scss/page.module.scss';
 
-export default function LoginClient() {
+export default function RegisterClient() {
   return (
     <>
       <section
@@ -41,7 +41,7 @@ export default function LoginClient() {
         </Link>
 
         <div className={scss.container}>
-          <LoginForm />
+          <RegisterForm />
         </div>
       </section>
     </>

@@ -13,7 +13,6 @@ import OuathButtons from '@/app/components/oauth-buttons';
 import Button from '@/app/components/button';
 import Link from 'next/link';
 
-import { BiErrorCircle } from 'react-icons/bi';
 import scss from '@/app/components/scss/form.module.scss';
 
 type FormData = {
@@ -30,8 +29,6 @@ export default function LoginForm() {
     setValue,
     formState: { errors },
   } = useForm<FormData>();
-
-  const [error, setError] = useState<string | null>(null);
 
   const [logIn, { isLoading }] = useLogInOtpMutation();
   const [sendOtp, { isLoading: isOtpSending }] = useSendOtpMutation();
@@ -55,8 +52,6 @@ export default function LoginForm() {
   };
 
   const handleSubmitForm: SubmitHandler<FormData> = async ({ email, otp }) => {
-    setError(null);
-
     if (!isOtpSent) {
       try {
         const data = await sendOtp({
@@ -96,24 +91,18 @@ export default function LoginForm() {
           maxWidth: '26rem',
           marginInline: 'auto',
           padding: '1.95rem 2.25rem',
-          border: '1px solid var(--color-300)',
-          borderRadius: 'var(--border-radius-500)',
+          // background: 'var(--bg-300)',
+          // border: '0.8px solid var(--color-300)',
+          // borderRadius: 'var(--border-radius-500)',
         }}
       >
-        <div className={scss.text}>
-          <h2 className={scss.title}>Sign in</h2>
+        <div className={scss.text} style={{ textAlign: 'center' }}>
+          <h2 className={scss.title}>Welcome back 😎</h2>
 
-          <p className={scss.desc}>Please sign in or create an account to continue.</p>
+          <p className={scss.desc}>Please sign in to your account to continue.</p>
         </div>
 
         <div className={scss.container}>
-          {error && !isLoading && (
-            <span className={scss.error_message}>
-              <BiErrorCircle className={scss.icon} size={19} />
-              {error}
-            </span>
-          )}
-
           <Input
             label="Email"
             placeholder="Enter your email..."
@@ -162,8 +151,8 @@ export default function LoginForm() {
 
           <OuathButtons />
 
-          <Link className={scss.link} href="/guestbook">
-            Back to Guestbook
+          <Link className={scss.link} href="/sign-up">
+            Don't have an account? Sign Up
           </Link>
         </div>
       </form>
