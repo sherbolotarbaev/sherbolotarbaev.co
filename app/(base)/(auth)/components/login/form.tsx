@@ -93,9 +93,11 @@ export default function LoginForm() {
         className={scss.form}
         onSubmit={handleSubmit(handleSubmitForm)}
         style={{
-          maxWidth: '30rem',
+          maxWidth: '26rem',
           marginInline: 'auto',
-          padding: '0 1.25rem',
+          padding: '1.95rem 2.25rem',
+          border: '1px solid var(--color-300)',
+          borderRadius: 'var(--border-radius-500)',
         }}
       >
         <div className={scss.text}>
@@ -105,14 +107,6 @@ export default function LoginForm() {
         </div>
 
         <div className={scss.container}>
-          <OuathButtons />
-
-          <div className={scss.devider}>
-            <hr />
-            {/* <span>or</span>
-            <hr /> */}
-          </div>
-
           {error && !isLoading && (
             <span className={scss.error_message}>
               <BiErrorCircle className={scss.icon} size={19} />
@@ -126,7 +120,7 @@ export default function LoginForm() {
             error={errors.email && errors.email.message}
             load={isLoading}
             register={register('email', {
-              required: 'Email is required',
+              required: 'Please enter your email',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'Invalid email',
@@ -146,7 +140,7 @@ export default function LoginForm() {
                 error={errors.email && errors.email.message}
                 load={isLoading}
                 register={register('otp', {
-                  required: 'Verification code is required',
+                  required: 'Please enter verification code',
                 })}
               />
 
@@ -159,6 +153,14 @@ export default function LoginForm() {
           <Button theme="blue" load={isLoading || isOtpSending}>
             {!isOtpSent ? 'Continue' : 'Sign in'}
           </Button>
+
+          <div className={scss.devider}>
+            <hr />
+            <span>OR</span>
+            <hr />
+          </div>
+
+          <OuathButtons />
 
           <Link className={scss.link} href="/guestbook">
             Back to Guestbook

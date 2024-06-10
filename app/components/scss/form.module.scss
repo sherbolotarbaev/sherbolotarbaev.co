@@ -51,6 +51,8 @@
   }
 
   .link {
+    padding-top: 1.05rem;
+
     text-align: center;
 
     line-height: 1.38462;
@@ -102,8 +104,8 @@
     span {
       margin: 0 18px;
 
-      font-size: 0.875rem;
-      color: var(--color-500);
+      font-size: 0.755rem;
+      color: var(--color-400);
     }
   }
 }
