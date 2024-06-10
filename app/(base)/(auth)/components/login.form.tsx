@@ -152,7 +152,7 @@ export default function LoginForm() {
           <OuathButtons />
 
           <Link className={scss.link} href="/sign-up">
-            Don't have an account? Sign Up
+            {"Don't have an account? Sign Up"}
           </Link>
         </div>
       </form>
