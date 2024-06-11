@@ -17,7 +17,7 @@ export default function Footer() {
         {links.length && (
           <div className={scss.links}>
             {links.map((link, index) => (
-              <Link key={index} className={scss.link} href={link.url}>
+              <Link key={index} className={scss.link} href={link.url} target="_blank">
                 <GoArrowUpRight size={20} /> {link.name}
               </Link>
             ))}
