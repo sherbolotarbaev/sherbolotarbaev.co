@@ -10,7 +10,6 @@ import { formatDate, formatDate2 } from '@/app/lib/date';
 import Image from 'next/image';
 import MDXContent from '@/app/components/mdx/content';
 import Views from './components/views';
-import { SignOutButton } from '@/content/guestbook/buttons';
 import OuathButtons from '@/app/components/oauth-buttons';
 import Modal from '@/app/components/modal';
 
@@ -95,8 +94,6 @@ export default async function Post({ params: { slug } }: Readonly<PostProps>) {
                   Oh no! It seems you do not have permission to access this resource.
                 </p>
               </div>
-
-              <SignOutButton />
             </div>
           </section>
         </>
