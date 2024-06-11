@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { useGetMeQuery } from '@/app/redux/api/me';
@@ -10,6 +11,8 @@ import Button from './button';
 import scss from './scss/account.module.scss';
 
 export default function Account() {
+  const pathname = usePathname();
+
   const { data: me, isLoading } = useGetMeQuery();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -86,7 +89,10 @@ export default function Account() {
             <div className={scss.item_container}>
               <span className={scss.label}>Danger zone</span>
 
-              <Button theme="red" redirect={`${process.env.NEXT_PUBLIC_API_URL}/logout`}>
+              <Button
+                theme="red"
+                redirect={`${process.env.NEXT_PUBLIC_API_URL}/logout?next=${pathname}`}
+              >
                 Log out
               </Button>
             </div>
