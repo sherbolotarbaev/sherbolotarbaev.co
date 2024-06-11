@@ -20,7 +20,12 @@ export default function Textarea({
   register,
   ...props
 }: Readonly<TextareaProps>) {
-  const className = [scss.textarea, error && !load && scss.error, load && scss.load]
+  const className = [
+    scss.textarea,
+    props.disabled && scss.disabled,
+    error && !load && scss.error,
+    load && scss.load,
+  ]
     .filter(Boolean)
     .join(' ');
 

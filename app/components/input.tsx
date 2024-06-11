@@ -20,6 +20,7 @@ export default function Input({
 }: Readonly<InputProps>) {
   const className = [
     scss.input,
+    props.disabled && scss.disabled,
     props.type === 'password' && `${scss.input} ${scss.password}`,
     error && !load && scss.error,
     load && scss.load,

@@ -34,6 +34,7 @@ export default function LoginForm() {
   const [sendOtp, { isLoading: isOtpSending }] = useSendOtpMutation();
 
   const [isOtpSent, setIsOtpSent] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const handleClearInput = (name: keyof FormData) => {
     if (name === 'email') {
@@ -44,42 +45,27 @@ export default function LoginForm() {
     setValue(name, '');
   };
 
-  const handleErrorAlert = (message?: string) => {
-    toast.error(message || 'Try again. Something happened on our end', {
-      position: 'top-right',
-      duration: 5000,
-    });
-  };
-
   const handleSubmitForm: SubmitHandler<FormData> = async ({ email, otp }) => {
-    if (!isOtpSent) {
-      try {
-        const data = await sendOtp({
-          email,
-        }).unwrap();
+    const promise = isOtpSent ? logIn({ email, otp }) : sendOtp({ email });
 
-        if (data.email) {
+    toast.promise(promise.unwrap(), {
+      position: 'top-right',
+      loading: 'Loading...',
+      success: (data) => {
+        if (!isOtpSent) {
           setIsOtpSent(true);
+        } else {
+          setSuccess(true);
+          router.push('/redirect?to=guestbook');
         }
-      } catch (error: any) {
-        handleErrorAlert(error.data?.message);
-      } finally {
-        return;
-      }
-    }
-
-    try {
-      const data = await logIn({
-        email,
-        otp,
-      }).unwrap();
-
-      if (data) {
-        router.push('/guestbook');
-      }
-    } catch (error: any) {
-      handleErrorAlert(error.data?.message);
-    }
+        return isOtpSent
+          ? `Successful sign in as ${data.email}`
+          : `Verification code sent successfully`;
+      },
+      error: (error) => {
+        return error.data?.message || 'Try again. Something happened on our end';
+      },
+    });
   };
 
   return (
@@ -108,6 +94,7 @@ export default function LoginForm() {
             placeholder="Enter your email..."
             error={errors.email && errors.email.message}
             load={isLoading}
+            disabled={success}
             register={register('email', {
               required: 'Please enter your email',
               pattern: {
@@ -128,6 +115,7 @@ export default function LoginForm() {
                 placeholder="Paste verification code..."
                 error={errors.email && errors.email.message}
                 load={isLoading}
+                disabled={success}
                 register={register('otp', {
                   required: 'Please enter verification code',
                 })}
@@ -139,7 +127,7 @@ export default function LoginForm() {
             </>
           )}
 
-          <Button theme="blue" load={isLoading || isOtpSending}>
+          <Button theme="blue" load={isLoading || isOtpSending} disabled={success}>
             {!isOtpSent ? 'Continue' : 'Sign in'}
           </Button>
 

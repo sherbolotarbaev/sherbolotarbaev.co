@@ -57,6 +57,16 @@
       }
     }
 
+    &.disabled {
+      background: var(--bg-300);
+
+      color: var(--color-400);
+
+      &::placeholder {
+        color: var(--color-300);
+      }
+    }
+
     &.load {
       background: var(--gradient-loader);
       background-size: 500% 500%;
