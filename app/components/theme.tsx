@@ -10,7 +10,7 @@ export default function Theme() {
   const { toggleTheme, theme } = useThemeContext();
 
   return (
-    <Button width={40} onClick={toggleTheme}>
+    <Button width={40} onClick={toggleTheme} style={{ borderRadius: '50%' }}>
       {theme !== ThemeEnum.LIGHT ? <BiSun size={18} /> : <BiMoon size={18} />}
     </Button>
   );

@@ -38,7 +38,9 @@ export default function Button({
     .filter(Boolean)
     .join(' ');
 
-  const style: React.CSSProperties = {};
+  const style: React.CSSProperties = {
+    ...props.style,
+  };
 
   if (width) {
     style.maxWidth = `${width}px`;

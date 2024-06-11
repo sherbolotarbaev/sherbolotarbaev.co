@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { toast } from 'sonner';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNewGuestbookMessageMutation } from '@/app/redux/api/guestbook';
 
-import { SignOutButton } from '@/content/guestbook/buttons';
 import Input from '@/app/components/input';
 
 import scss from '@/app/components/scss/form.module.scss';
@@ -26,13 +25,13 @@ export default function Form({ user }: Readonly<FormProps>) {
     formState: { errors },
   } = useForm<FormData>();
 
-  const [error, setError] = useState<string | null>(null);
-
   const [newGuestbookMessage, { isLoading }] = useNewGuestbookMessageMutation();
 
-  const handleError = (error: any, msg: string) => {
-    setError(msg);
-    console.error(error);
+  const handleErrorAlert = (message?: string) => {
+    toast.error(message || 'Try again. Something happened on our end', {
+      position: 'top-right',
+      duration: 5000,
+    });
   };
 
   const handleSubmitForm: SubmitHandler<FormData> = async ({ message }) => {
@@ -44,7 +43,7 @@ export default function Form({ user }: Readonly<FormProps>) {
         message,
       }).unwrap();
     } catch (error: any) {
-      handleError(error, 'Try again. Something happened on our end');
+      handleErrorAlert(error.response.message);
     } finally {
       setValue('message', '');
     }
@@ -64,8 +63,6 @@ export default function Form({ user }: Readonly<FormProps>) {
                 required: 'This field is required',
               })}
             />
-
-            <SignOutButton />
           </div>
         </form>
       </div>

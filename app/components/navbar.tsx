@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import NavLinks from './navlinks';
 import Theme from './theme';
+import Account from './account';
 
 import logo from '@/public/images/logo.png';
 import scss from './scss/navbar.module.scss';
@@ -25,7 +26,7 @@ export default function NavBar() {
       const scrollY = window.scrollY;
       const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
 
-      if (scrollDirection === 'up' && scrollY > 25) {
+      if (scrollDirection === 'up' && scrollY) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -66,6 +67,8 @@ export default function NavBar() {
 
           <div className={scss.right}>
             <Theme />
+
+            <Account />
           </div>
         </div>
       </div>

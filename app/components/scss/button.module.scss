@@ -118,8 +118,10 @@
   &.red {
     padding: 0.375rem 0.75rem;
 
-    background: var(--red-badge-bg);
-    border-color: var(--red-badge-border-color);
+    justify-content: start;
+
+    background: transparent;
+    border: 0;
 
     color: var(--red-badge-color);
 
