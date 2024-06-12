@@ -53,6 +53,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
+  responseCookies.set('x-forwarded-for', xff);
+
   return response;
 }
 

@@ -3,6 +3,12 @@ import { BaseQueryFn, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/r
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_API_URL,
   prepareHeaders: (headers) => {
+    const xff = document.cookie
+      .split(';')
+      .map((c) => c.trim())
+      .find((c) => c.startsWith('x-forwarded-for='))
+      ?.split('=')[1];
+    if (xff) headers.set('x-forwarded-for', xff);
     return headers;
   },
   credentials: 'include',
