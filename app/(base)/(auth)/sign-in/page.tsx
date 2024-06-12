@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default async function Login() {
-  return <LoginClient  />;
+  return <LoginClient />;
 }

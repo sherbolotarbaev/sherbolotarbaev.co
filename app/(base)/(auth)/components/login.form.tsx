@@ -76,19 +76,24 @@ export default function LoginForm() {
         style={{
           maxWidth: '26rem',
           marginInline: 'auto',
-          padding: '1.95rem 2.25rem',
-          // background: 'var(--bg-300)',
-          // border: '0.8px solid var(--color-300)',
-          // borderRadius: 'var(--border-radius-500)',
+          padding: '0 1.25rem',
         }}
       >
-        <div className={scss.text} style={{ textAlign: 'center' }}>
-          <h2 className={scss.title}>Welcome back 😎</h2>
+        <div className={scss.text}>
+          <h2 className={scss.title}>Welcome back</h2>
 
-          <p className={scss.desc}>Please sign in to your account to continue.</p>
+          <p className={scss.desc}>Sign in to continue.</p>
         </div>
 
         <div className={scss.container}>
+          <OuathButtons />
+
+          <div className={scss.devider}>
+            <hr />
+            <span>OR</span>
+            <hr />
+          </div>
+
           <Input
             label="Email"
             placeholder="Enter your email..."
@@ -130,14 +135,6 @@ export default function LoginForm() {
           <Button theme="blue" load={isLoading || isOtpSending} disabled={success}>
             {!isOtpSent ? 'Continue' : 'Sign in'}
           </Button>
-
-          <div className={scss.devider}>
-            <hr />
-            <span>OR</span>
-            <hr />
-          </div>
-
-          <OuathButtons />
 
           <Link className={scss.link} href="/sign-up">
             {"Don't have an account? Sign Up"}

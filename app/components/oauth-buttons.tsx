@@ -1,7 +1,7 @@
 'use client';
 
 import { type ReactElement, useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { toast } from 'sonner';
 
@@ -48,6 +48,7 @@ const authProviders: AuthProvider[] = [
 
 export default function OuathButtons() {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const error = searchParams.get('error');
   const next = searchParams.get('next') || '/guestbook';
@@ -90,7 +91,7 @@ export default function OuathButtons() {
             key={index}
             type="button"
             load={loading[provider.name]}
-            redirect={`${process.env.NEXT_PUBLIC_API_URL}/${provider.name}/callback?next=${next}`}
+            redirect={`${process.env.NEXT_PUBLIC_API_URL}/${provider.name}/callback?next=${next}&source=${pathname}`}
             onClick={() => handleLoading(provider.name, true)}
           >
             {provider.svgIcon} {provider.actionText}

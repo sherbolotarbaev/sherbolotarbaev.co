@@ -13,16 +13,13 @@ export default function RegisterForm() {
         style={{
           maxWidth: '26rem',
           marginInline: 'auto',
-          padding: '1.95rem 2.25rem',
-          // background: 'var(--bg-300)',
-          // border: '0.8px solid var(--color-300)',
-          // borderRadius: 'var(--border-radius-500)',
+          padding: '0 1.25rem',
         }}
       >
-        <div className={scss.text} style={{ textAlign: 'center' }}>
-          <h2 className={scss.title}>Welcome 👋</h2>
+        <div className={scss.text}>
+          <h2 className={scss.title}>Welcome</h2>
 
-          <p className={scss.desc}>Please create an account to continue.</p>
+          <p className={scss.desc}>Create an account to continue.</p>
         </div>
 
         <div className={scss.container}>

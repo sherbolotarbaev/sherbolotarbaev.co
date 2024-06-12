@@ -42,7 +42,12 @@
     }
 
     &.error {
+      background: var(--red-badge-bg);
       border-color: var(--red-badge-border-color);
+
+      &::placeholder {
+        color: var(--red-badge-outline-color);
+      }
 
       &:focus {
         outline-color: var(--red-badge-outline-color);

@@ -91,7 +91,7 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
             </div>
           ) : isError ? (
             <span className={scss.error_message}>
-              <BiErrorCircle className={scss.icon} size={20} />
+              <BiErrorCircle className={scss.icon} size={19} />
               Oh no 🥲, something went wrong... maybe refresh?
             </span>
           ) : (
