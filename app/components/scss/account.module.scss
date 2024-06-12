@@ -1,35 +1,6 @@
 .wrapper {
   position: relative;
 
-  &.load {
-    .user {
-      .photo_wrapper {
-        width: 35px;
-        height: 35px;
-
-        padding: 0.45rem;
-
-        background: var(--gradient-loader);
-        border-radius: 50%;
-        background-size: 500% 500%;
-
-        animation: loadingAnimation 2s linear infinite;
-
-        @keyframes loadingAnimation {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-      }
-    }
-  }
-
   &.active {
     .menu {
       opacity: 1;
