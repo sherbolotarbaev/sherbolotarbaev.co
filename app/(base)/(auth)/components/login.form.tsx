@@ -28,7 +28,7 @@ export default function LoginForm() {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ mode: 'onChange' });
 
   const [logIn, { isLoading }] = useLogInOtpMutation();
   const [sendOtp, { isLoading: isOtpSending }] = useSendOtpMutation();
