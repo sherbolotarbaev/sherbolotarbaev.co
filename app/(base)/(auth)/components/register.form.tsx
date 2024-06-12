@@ -16,7 +16,7 @@ export default function RegisterForm() {
           padding: '0 1.25rem',
         }}
       >
-        <div className={scss.text}>
+        <div className={scss.text} style={{ textAlign: 'center' }}>
           <h2 className={scss.title}>Welcome</h2>
 
           <p className={scss.desc}>Create an account to continue.</p>
