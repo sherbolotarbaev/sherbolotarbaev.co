@@ -40,45 +40,43 @@ export default function Account() {
     };
   }, [isOpen]);
 
-  return (
-    me &&
-    !isLoading && (
-      <>
-        <div
-          className={isOpen ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
-          onClick={(e) => e.stopPropagation()}
-          ref={accountMenuRef}
-        >
-          <div className={scss.user} onClick={handleOpenAccountMenu}>
-            <div className={scss.photo_wrapper}>
-              <Image
-                src={me?.photo || 'https://cdn-icons-png.freepik.com/512/552/552721.png'}
-                alt={`${me.name} ${me.surname}`}
-                className={scss.photo}
-                width={250}
-                height={250}
-                loading="lazy"
-              />
-            </div>
+  return me && !isLoading ? (
+    <>
+      <div
+        className={isOpen ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
+        onClick={(e) => e.stopPropagation()}
+        ref={accountMenuRef}
+      >
+        <div className={scss.user} onClick={handleOpenAccountMenu}>
+          <div className={scss.photo_wrapper}>
+            <Image
+              src={me?.photo || 'https://cdn-icons-png.freepik.com/512/552/552721.png'}
+              alt={`${me.name} ${me.surname}`}
+              className={scss.photo}
+              width={250}
+              height={250}
+              loading="lazy"
+            />
           </div>
+        </div>
 
-          <div className={scss.menu}>
-            <div className={scss.list}>
-              <div className={scss.item_container}>
-                <span className={scss.label}>Full name</span>
+        <div className={scss.menu}>
+          <div className={scss.list}>
+            <div className={scss.item_container}>
+              <span className={scss.label}>Full name</span>
 
-                <span className={scss.item}>
-                  {me.name} {me.surname}
-                </span>
-              </div>
+              <span className={scss.item}>
+                {me.name} {me.surname}
+              </span>
+            </div>
 
-              <div className={scss.item_container}>
-                <span className={scss.label}>Email</span>
+            <div className={scss.item_container}>
+              <span className={scss.label}>Email</span>
 
-                <span className={scss.item}>{me.email}</span>
-              </div>
+              <span className={scss.item}>{me.email}</span>
+            </div>
 
-              {/* {me.metaData && (
+            {/* {me.metaData && (
               <div className={scss.item_container}>
                 <span className={scss.label}>Location</span>
 
@@ -88,20 +86,19 @@ export default function Account() {
               </div>
             )} */}
 
-              <div className={scss.item_container}>
-                <span className={scss.label}>Danger zone</span>
+            <div className={scss.item_container}>
+              <span className={scss.label}>Danger zone</span>
 
-                <Button
-                  theme="red"
-                  redirect={`${process.env.NEXT_PUBLIC_API_URL}/logout?next=${pathname}`}
-                >
-                  Log out
-                </Button>
-              </div>
+              <Button
+                theme="red"
+                redirect={`${process.env.NEXT_PUBLIC_API_URL}/logout?next=${pathname}`}
+              >
+                Log out
+              </Button>
             </div>
           </div>
         </div>
-      </>
-    )
-  );
+      </div>
+    </>
+  ) : null;
 }
