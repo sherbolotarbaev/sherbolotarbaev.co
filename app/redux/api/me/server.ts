@@ -1,23 +1,14 @@
-import { cookies as requestCookies, headers as requestHeaders } from 'next/headers';
+import { cookies } from 'next/headers';
 
-export async function getMe(_req: GetMeRequest): Promise<GetMeResponse | undefined> {
-  const session = requestCookies().get('session');
+import axios from '../axios';
 
+export async function getMe(_request: GetMeRequest): Promise<GetMeResponse | undefined> {
+  const session = cookies().get('session');
   if (!session) return;
 
-  const xff = `${requestHeaders().get('x-forwarded-for')?.split(',')[0]}`;
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/me`;
-  const headers = new Headers();
-
-  headers.append('x-forwarded-for', xff);
-  headers.append('cookie', `session=${session.value}`);
-
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers,
-    });
-    return response.json();
+    const { data } = await axios.get('/me');
+    return data;
   } catch (error) {
     return;
   }
