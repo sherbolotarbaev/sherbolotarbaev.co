@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -22,6 +22,8 @@ type FormData = {
 
 export default function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next');
 
   const {
     register,
@@ -136,7 +138,7 @@ export default function LoginForm() {
 
           <OuathButtons />
 
-          <Link className={scss.link} href="/sign-up">
+          <Link className={scss.link} href={next ? `/sign-up?next=${next}` : '/sign-up'}>
             {"Don't have an account? Sign Up"}
           </Link>
         </div>

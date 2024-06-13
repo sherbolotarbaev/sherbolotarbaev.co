@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 import { getMe } from '@/app/redux/api/me/server';
 import { getBlogPosts } from '@/app/lib/blog';
@@ -10,8 +10,6 @@ import { formatDate, formatDate2 } from '@/app/lib/date';
 import Image from 'next/image';
 import MDXContent from '@/app/components/mdx/content';
 import Views from './components/views';
-import OuathButtons from '@/app/components/oauth-buttons';
-import Modal from '@/app/components/modal';
 
 import scss from '@/app/components/scss/post.module.scss';
 
@@ -73,13 +71,7 @@ export default async function Post({ params: { slug } }: Readonly<PostProps>) {
     const user = await getMe();
 
     if (!user) {
-      return (
-        <>
-          <Modal open={true} title="Private post" desc="sign in to your account">
-            <OuathButtons />
-          </Modal>
-        </>
-      );
+      return redirect(`/sign-in?next=/blog/${post.slug}`);
     }
 
     if (user.email && !user.email.endsWith('@wedevx.co')) {

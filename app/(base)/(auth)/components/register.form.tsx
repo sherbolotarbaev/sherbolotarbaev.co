@@ -1,11 +1,16 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
+
 import OuathButtons from '@/app/components/oauth-buttons';
 import Link from 'next/link';
 
 import scss from '@/app/components/scss/form.module.scss';
 
 export default function RegisterForm() {
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next');
+
   return (
     <>
       <form
@@ -25,7 +30,7 @@ export default function RegisterForm() {
         <div className={scss.container}>
           <OuathButtons />
 
-          <Link className={scss.link} href="/sign-in">
+          <Link className={scss.link} href={next ? `/sign-in?next=${next}` : '/sign-in'}>
             Already have an account? Sign in
           </Link>
         </div>
