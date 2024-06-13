@@ -39,7 +39,7 @@ export default function NavBar() {
           <div className={scss.right}>
             <Theme />
 
-            <Account />
+            <Account close={isFixed} />
           </div>
         </div>
       </div>

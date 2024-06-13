@@ -10,7 +10,11 @@ import Button from './button';
 
 import scss from './scss/account.module.scss';
 
-export default function Account() {
+interface AccountProps {
+  close?: boolean;
+}
+
+export default function Account({ close }: Readonly<AccountProps>) {
   const pathname = usePathname();
 
   const { data: me, isLoading } = useGetMeQuery();
@@ -43,7 +47,7 @@ export default function Account() {
   return me && !isLoading ? (
     <>
       <div
-        className={isOpen ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
+        className={isOpen && !close ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
         onClick={(e) => e.stopPropagation()}
         ref={accountMenuRef}
       >
