@@ -37,29 +37,29 @@ credentials: {
 
 ```jsx
 {
-		submissionStatus: 'TODO' | 'SOLVED' | 'ATTEMPTED',
-		testCases: [
+	submissionStatus: 'TODO' | 'SOLVED' | 'ATTEMPTED',
+	testCases: [
+    {
+      result: 'passed' | 'failed',
+      input": string, // Stringfied JSON
+      output": string, // Stringfied JSON
+      testCaseName: string,
+      errorMessage: string,
+      actualOutput: string, // Stringfied JSON
+      stdoutDiff: [
         {
-          result: 'passed' | 'failed',
-          input": string, // Stringfied JSON
-          output": string, // Stringfied JSON
-          testCaseName: string,
-          errorMessage: string,
-          actualOutput: string, // Stringfied JSON
-          stdoutDiff: [
-            {
-              added: boolean,
-              removed: boolean,
-              edited: boolean,
-              value: {
-                from: string, // Stringfied JSON
-                to: string, // Stringfied JSON
-              } | string,
-              count: number
-            }
-          ]
+          added: boolean,
+          removed: boolean,
+          edited: boolean,
+          value: {
+            from: string, // Stringfied JSON
+            to: string, // Stringfied JSON
+          } | string,
+          count: number
         }
-		...
+      ]
+    }
+	  ...
 	]
 }
 ```
