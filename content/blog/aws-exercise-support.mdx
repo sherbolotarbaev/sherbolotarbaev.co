@@ -39,22 +39,27 @@ credentials: {
 {
 		submissionStatus: 'TODO' | 'SOLVED' | 'ATTEMPTED',
 		testCases: [
-				{
-					actualOutput: string
-					errorMessage: string
-					input: string
-					output: string
-					result: string
-					testCaseName: string
-					stdoutDiff: [
-							{
-									count: number
-									value: string
-							}
-						...
-					]
-				}
-			...
+        {
+          result: 'passed' | 'failed',
+          input": string, // Stringfied JSON
+          output": string, // Stringfied JSON
+          testCaseName: string,
+          errorMessage: string,
+          actualOutput: string, // Stringfied JSON
+          stdoutDiff: [
+            {
+              added: boolean,
+              removed: boolean,
+              edited: boolean,
+              value: {
+                from: string, // Stringfied JSON
+                to: string, // Stringfied JSON
+              } | string,
+              count: number
+            }
+          ]
+        }
+		...
 	]
 }
 ```
