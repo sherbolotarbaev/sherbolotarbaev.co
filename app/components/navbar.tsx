@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { siteConfig } from '@/config/site';
+import { useHeaderFixed } from '@/app/hooks/use-header-fixed';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,40 +13,11 @@ import logo from '@/public/images/logo.png';
 import scss from './scss/navbar.module.scss';
 
 export default function NavBar() {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const [lastScrollY, setLastScrollY] = useState<number>(0);
-
-  useEffect(() => {
-    const updateScrollDirection = () => {
-      const scrollY = window.scrollY;
-      setLastScrollY(scrollY);
-    };
-
-    const handleActive = () => {
-      const scrollY = window.scrollY;
-      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
-
-      if (scrollDirection === 'up' && scrollY) {
-        setIsActive(true);
-      } else {
-        setIsActive(false);
-      }
-
-      console.log({ scrollY });
-    };
-
-    window.addEventListener('scroll', updateScrollDirection);
-    window.addEventListener('scroll', handleActive);
-
-    return () => {
-      window.removeEventListener('scroll', updateScrollDirection);
-      window.removeEventListener('scroll', handleActive);
-    };
-  }, [lastScrollY]);
+  const { isFixed } = useHeaderFixed();
 
   return (
     <>
-      <div className={!isActive ? scss.navbar : `${scss.navbar} ${scss.active}`}>
+      <div className={!isFixed ? scss.navbar : `${scss.navbar} ${scss.fixed}`}>
         <div className={scss.wrapper}>
           <div className={scss.content}>
             <Link href="/" className={scss.logo_wrapper}>

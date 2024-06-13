@@ -5,18 +5,19 @@
   display: flex;
   justify-content: center;
 
-  transition: top 0.5s, background 0.5s, backdrop-filter 0.5s,
-    -webkit-backdrop-filter 0.5s;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 1;
 
-  &.active {
-    position: sticky;
-    left: 0;
-    top: 0;
-    z-index: 1;
+  background: var(--bg-400);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 
-    background: var(--bg-400);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+  transition: transform 0.15s;
+
+  &.fixed {
+    transform: translateY(-100%);
   }
 
   .wrapper {
