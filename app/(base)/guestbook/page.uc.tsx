@@ -1,35 +1,124 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
-import { useGetGuestbookMessagesQuery } from '@/app/redux/api/guestbook';
+import {
+  useDeleteGuestbookMessageMutation,
+  useGetGuestbookMessagesQuery,
+  // useUpdateGuestbookMessageMutation,
+} from '@/app/redux/api/guestbook';
 import { formatDate } from '@/app/lib/date';
 
 import Image from 'next/image';
 import Form from './components/form';
 import Button from '@/app/components/button';
 
-import { BiChevronDown, BiErrorCircle } from 'react-icons/bi';
+import { BiChevronDown, BiErrorCircle, BiTrash } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
+import Modal from '@/app/components/modal';
 
 interface GuestbookClientProps {
   user?: User;
 }
 
+type Action = {
+  name: 'Delete';
+  function: () => void;
+};
+
 export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>) {
+  const [open, setOpen] = useState<boolean>(false);
+  const [action, setAction] = useState<Action | null>(null);
+
+  const [deleteMessage, { isLoading: isMessageDeleting }] =
+    useDeleteGuestbookMessageMutation();
+  // const [updateMessage, { isLoading: isMessageUpdating }] =
+  //   useUpdateGuestbookMessageMutation();
+
   const [take, setTake] = useState<number>(40);
 
   const { data, isLoading, refetch, isFetching, isError } = useGetGuestbookMessagesQuery({
     take,
   });
 
+  const handleAction = useCallback((a: Action) => {
+    setAction(() => ({
+      ...a,
+      function: async () => {
+        await a.function();
+        setOpen(false);
+      },
+    }));
+    setOpen(true);
+  }, []);
+
   const handleLoadMore = useCallback(() => {
     setTake((prevTake) => prevTake + 10);
     refetch();
-  }, [setTake, refetch]);
+  }, [refetch]);
+
+  const messages = useMemo(() => {
+    if (!data || isLoading || isError || isFetching) return null;
+    return data.items.map(({ id, message, createdAt, author }, index) => (
+      <div key={index} className={scss.message}>
+        {author.photo && (
+          <div className={scss.logo_wrapper}>
+            <Image
+              className={scss.logo}
+              width={30}
+              height={30}
+              src={author.photo}
+              alt={author.name || 'User'}
+              loading="lazy"
+            />
+          </div>
+        )}
+
+        <div className={scss.info}>
+          <span className={scss.name}>
+            {author.name}
+
+            <span className={scss.created_at}>{formatDate(createdAt)}</span>
+          </span>
+
+          {message}
+        </div>
+
+        <div className={scss.controls}>
+          {user && author.email === user.email && (
+            <Button
+              small
+              theme="red"
+              onClick={() =>
+                handleAction({
+                  name: 'Delete',
+                  function: async () => deleteMessage(id).unwrap(),
+                })
+              }
+            >
+              <BiTrash /> Delete
+            </Button>
+          )}
+        </div>
+      </div>
+    ));
+  }, [data, isLoading, isError, user, handleAction, deleteMessage]);
 
   return (
     <>
+      {action && user && (
+        <Modal
+          open={open}
+          setOpen={setOpen}
+          title="Confirm Action"
+          desc={`Are you sure you want to ${action.name.toLowerCase()} this message? This action cannot be undone.`}
+        >
+          <Button onClick={action.function} theme="blue" load={isMessageDeleting}>
+            {action.name}
+          </Button>
+        </Modal>
+      )}
+
       <section className={scss.wrapper}>
         <div className={scss.container}>
           <div className={scss.text}>
@@ -46,56 +135,32 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
           </div>
 
           {user ? (
-            <Form user={user} />
+            <Form />
           ) : (
             <Button width={150} redirect="/sign-in">
               Sign in
             </Button>
           )}
 
-          {data && !isLoading && !isError ? (
+          {isLoading && <LoadingMessages count={7} />}
+
+          {isError && (
+            <span className={scss.error_message}>
+              <BiErrorCircle className={scss.icon} size={19} />
+              Oh no 🥲, something went wrong... maybe refresh?
+            </span>
+          )}
+
+          {messages && (
             <div className={scss.messages}>
-              {data.items.map(({ message, image, name, createdAt }, index) => (
-                <div key={index} className={scss.message}>
-                  {image && (
-                    <div className={scss.logo_wrapper}>
-                      <Image
-                        className={scss.logo}
-                        width={30}
-                        height={30}
-                        src={image}
-                        alt={name || 'User'}
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-
-                  <div className={scss.info}>
-                    <span className={scss.name}>
-                      {name.split(' ')[0]}
-                      <span className={scss.created_at}>{formatDate(createdAt)}</span>
-                    </span>
-
-                    {message}
-                  </div>
-                </div>
-              ))}
-
+              {messages}
               {isFetching && <LoadingMessages count={10} />}
-
-              {data.count !== data.totalCount && (
+              {data && data.count !== data.totalCount && (
                 <span className={scss.load_more} onClick={handleLoadMore}>
                   Load more <BiChevronDown size={18} />
                 </span>
               )}
             </div>
-          ) : isError ? (
-            <span className={scss.error_message}>
-              <BiErrorCircle className={scss.icon} size={19} />
-              Oh no 🥲, something went wrong... maybe refresh?
-            </span>
-          ) : (
-            <LoadingMessages count={7} />
           )}
         </div>
       </section>

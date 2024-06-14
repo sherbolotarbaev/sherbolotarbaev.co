@@ -9,15 +9,11 @@ import Input from '@/app/components/input';
 
 import scss from '@/app/components/scss/form.module.scss';
 
-interface FormProps {
-  user: User;
-}
-
 type FormData = {
   message: string;
 };
 
-export default function Form({ user }: Readonly<FormProps>) {
+export default function Form() {
   const {
     register,
     handleSubmit,
@@ -37,9 +33,6 @@ export default function Form({ user }: Readonly<FormProps>) {
   const handleSubmitForm: SubmitHandler<FormData> = async ({ message }) => {
     try {
       await newGuestbookMessage({
-        name: `${user.name} ${user.surname}`,
-        email: user.email,
-        image: user.photo || `https://avatar.vercel.sh/${user.email}`,
         message,
       }).unwrap();
     } catch (error: any) {

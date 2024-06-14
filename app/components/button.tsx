@@ -12,6 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   open?: string;
   theme?: Theme;
   gradient?: boolean;
+  small?: boolean;
 }
 
 type Theme = 'red' | 'blue';
@@ -24,6 +25,7 @@ export default function Button({
   open,
   theme,
   gradient,
+  small,
   ...props
 }: Readonly<ButtonProps>) {
   const router = useRouter();
@@ -34,6 +36,7 @@ export default function Button({
     props.disabled && scss.disabled,
     theme && scss[theme],
     gradient && scss.gradient,
+    small && scss.small,
   ]
     .filter(Boolean)
     .join(' ');

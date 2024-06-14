@@ -1,18 +1,18 @@
 type NewGuestbookMessageRequest = {
   message: string;
-  name: string;
-  email: string;
-  image: string;
 };
 
-type NewGuestbookMessageResponse = {
-  id: number;
-  message: string;
-  name: string;
-  email: string;
-  image: string;
-  createdAt: string;
+type NewGuestbookMessageResponse = GuestbookMessage;
+
+type DeleteGuestbookMessageRequest = number;
+
+type DeleteGuestbookMessageResponse = {
+  success: boolean;
 };
+
+type UpdateGuestbookMessageRequest = number;
+
+type UpdateGuestbookMessageResponse = GuestbookMessage;
 
 type GetGuestbookMessagesRequest = {
   take?: number;
@@ -21,12 +21,5 @@ type GetGuestbookMessagesRequest = {
 type GetGuestbookMessagesResponse = {
   totalCount: number;
   count: number;
-  items: {
-    id: number;
-    message: string;
-    name: string;
-    email: string;
-    image: string;
-    createdAt: string;
-  }[];
+  items: GuestbookMessage[];
 };

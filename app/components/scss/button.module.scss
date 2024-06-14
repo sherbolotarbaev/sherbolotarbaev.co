@@ -32,6 +32,16 @@
     cursor: default;
   }
 
+  &.small {
+    gap: 0.15rem;
+
+    padding: 0.25rem;
+
+    border-radius: var(--border-radius-200);
+
+    font-size: 0.755rem;
+  }
+
   &.disabled,
   &.load {
     background: var(--bg-main-hover);
@@ -135,6 +145,10 @@
 
     .loader {
       color: var(--red-badge-color);
+    }
+
+    &.small {
+      padding: 0.25rem;
     }
 
     &.disabled,
