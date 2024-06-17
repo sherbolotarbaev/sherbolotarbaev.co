@@ -32,3 +32,10 @@ type GuestbookMessage = {
     photo: string;
   };
 };
+
+type Action = {
+  name: 'Delete';
+  title: string;
+  desc: string;
+  body: React.ReactNode;
+};

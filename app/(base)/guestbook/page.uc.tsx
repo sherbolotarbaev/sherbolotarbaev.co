@@ -2,38 +2,25 @@
 
 import { useState, useCallback, useMemo } from 'react';
 
-import {
-  useDeleteGuestbookMessageMutation,
-  useGetGuestbookMessagesQuery,
-  // useUpdateGuestbookMessageMutation,
-} from '@/app/redux/api/guestbook';
+import { useGetGuestbookMessagesQuery } from '@/app/redux/api/guestbook';
 import { formatDate } from '@/app/lib/date';
 
 import Image from 'next/image';
 import Form from './components/form';
+import DeleteButton from './components/delete.button';
 import Button from '@/app/components/button';
+import Modal from '@/app/components/modal';
 
 import { BiChevronDown, BiErrorCircle, BiTrash } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
-import Modal from '@/app/components/modal';
 
 interface GuestbookClientProps {
   user?: User;
 }
 
-type Action = {
-  name: 'Delete';
-  function: () => void;
-};
-
 export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>) {
   const [open, setOpen] = useState<boolean>(false);
   const [action, setAction] = useState<Action | null>(null);
-
-  const [deleteMessage, { isLoading: isMessageDeleting }] =
-    useDeleteGuestbookMessageMutation();
-  // const [updateMessage, { isLoading: isMessageUpdating }] =
-  //   useUpdateGuestbookMessageMutation();
 
   const [take, setTake] = useState<number>(40);
 
@@ -42,13 +29,7 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
   });
 
   const handleAction = useCallback((a: Action) => {
-    setAction(() => ({
-      ...a,
-      function: async () => {
-        await a.function();
-        setOpen(false);
-      },
-    }));
+    setAction(a);
     setOpen(true);
   }, []);
 
@@ -84,38 +65,39 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
           {message}
         </div>
 
-        <div className={scss.controls}>
-          {user && author.email === user.email && (
+        {user && author.email === user.email && (
+          <div className={scss.controls}>
             <Button
               small
               theme="red"
               onClick={() =>
                 handleAction({
                   name: 'Delete',
-                  function: async () => deleteMessage(id).unwrap(),
+                  title: 'Confirm Action',
+                  desc: `Are you sure you want to delete this message? This action cannot be undone.`,
+                  body: (
+                    <DeleteButton
+                      messageId={id}
+                      setAction={setAction}
+                      setOpen={setOpen}
+                    />
+                  ),
                 })
               }
             >
               <BiTrash /> Delete
             </Button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     ));
-  }, [data, isLoading, isError, user, handleAction, deleteMessage]);
+  }, [data, isLoading, isError, user, handleAction]);
 
   return (
     <>
       {action && user && (
-        <Modal
-          open={open}
-          setOpen={setOpen}
-          title="Confirm Action"
-          desc={`Are you sure you want to ${action.name.toLowerCase()} this message? This action cannot be undone.`}
-        >
-          <Button onClick={action.function} theme="blue" load={isMessageDeleting}>
-            {action.name}
-          </Button>
+        <Modal open={open} setOpen={setOpen} title={action.title} desc={action.desc}>
+          {action.body}
         </Modal>
       )}
 
