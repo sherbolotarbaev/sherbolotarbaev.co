@@ -1,12 +1,13 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useLogInOtpMutation, useSendOtpMutation } from '@/app/redux/api/auth';
 
 import { toast } from 'sonner';
+import { setCookie, getCookie } from 'cookies-next';
 
 import Input from '@/app/components/input';
 import OuathButtons from '@/app/components/oauth-buttons';
@@ -23,7 +24,9 @@ type FormData = {
 export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get('next');
+  const next = searchParams.get('next') || '/';
+
+  const cookieEmail = getCookie('email');
 
   const {
     register,
@@ -48,27 +51,40 @@ export default function LoginForm() {
   };
 
   const handleSubmitForm: SubmitHandler<FormData> = async ({ email, otp }) => {
-    const promise = isOtpSent ? logIn({ email, otp }) : sendOtp({ email });
-
-    toast.promise(promise.unwrap(), {
-      position: 'top-right',
-      loading: 'Loading...',
-      success: (data) => {
-        if (!isOtpSent) {
-          setIsOtpSent(true);
-        } else {
+    if (isOtpSent) {
+      toast.promise(logIn({ email, otp, next }).unwrap(), {
+        position: 'top-right',
+        loading: 'Loading...',
+        success: ({ redirectUrl, email }: LogInOtpResponse) => {
           setSuccess(true);
-          router.push('/redirect?to=guestbook');
-        }
-        return isOtpSent
-          ? `Successful sign in as ${data.email}`
-          : `Verification code sent successfully`;
-      },
-      error: (error) => {
-        return error.data?.message || 'Try again. Something happened on our end';
-      },
-    });
+          setCookie('email', email);
+          router.push(redirectUrl);
+          return `Successful sign in as ${email}`;
+        },
+        error: (error) => {
+          return error.data?.message || 'Try again. Something happened on our end';
+        },
+      });
+    } else {
+      toast.promise(sendOtp({ email }).unwrap(), {
+        position: 'top-right',
+        loading: 'Sending...',
+        success: () => {
+          setIsOtpSent(true);
+          return `Verification code sent successfully`;
+        },
+        error: (error) => {
+          return error.data?.message || 'Try again. Something happened on our end';
+        },
+      });
+    }
   };
+
+  useEffect(() => {
+    if (cookieEmail) {
+      setValue('email', cookieEmail);
+    }
+  }, [cookieEmail]);
 
   return (
     <>
@@ -138,7 +154,10 @@ export default function LoginForm() {
 
           <OuathButtons />
 
-          <Link className={scss.link} href={next ? `/sign-up?next=${next}` : '/sign-up'}>
+          <Link
+            className={scss.link}
+            href={next !== '/' ? `/sign-up?next=${next}` : '/sign-up'}
+          >
             {"Don't have an account? Sign Up"}
           </Link>
         </div>

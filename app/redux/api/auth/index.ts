@@ -3,10 +3,16 @@ import { api as index } from '..';
 const api = index.injectEndpoints({
   endpoints: (build) => ({
     logInOtp: build.mutation<LogInOtpResponse, LogInOtpRequest>({
-      query: (body) => ({
+      query: ({ email, otp, next }) => ({
         url: '/login',
         method: 'POST',
-        body,
+        body: {
+          email,
+          otp,
+        },
+        params: {
+          next,
+        },
       }),
       invalidatesTags: ['auth'],
     }),

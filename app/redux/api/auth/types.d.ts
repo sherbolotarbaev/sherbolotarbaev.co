@@ -1,9 +1,13 @@
 type LogInOtpRequest = {
   email: string;
   otp: string;
+  next: string;
 };
 
-type LogInOtpResponse = User;
+type LogInOtpResponse = {
+  email: string;
+  redirectUrl: string;
+};
 
 type SendOtpRequest = {
   email: string;

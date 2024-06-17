@@ -22,9 +22,9 @@ export default function RegisterForm() {
         }}
       >
         <div className={scss.text} style={{ textAlign: 'center' }}>
-          <h2 className={scss.title}>Welcome</h2>
+          <h2 className={scss.title}>Create an account</h2>
 
-          <p className={scss.desc}>Create an account to continue.</p>
+          <p className={scss.desc}>You can create an account using a Google or GitHub.</p>
         </div>
 
         <div className={scss.container}>
