@@ -46,7 +46,7 @@ export default function HomeClient({ posts }: Readonly<HomeClientProps>) {
             </p>
           </div>
 
-          <Button width={165} open="/cv/sherbolot-arbaev.pdf" gradient>
+          <Button width={165} open="/cv/Sherbolot-Arbaev.pdf" gradient>
             📢 Available for Work
           </Button>
         </div>
