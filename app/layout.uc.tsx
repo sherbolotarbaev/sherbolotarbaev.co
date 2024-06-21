@@ -15,7 +15,7 @@ interface RootLayoutClientProps {
 export default function RootLayoutClient({ children }: Readonly<RootLayoutClientProps>) {
   return (
     <>
-      <Toaster richColors />
+      <Toaster richColors closeButton />
 
       <ReduxProvider>
         <ThemeContextProvider>
