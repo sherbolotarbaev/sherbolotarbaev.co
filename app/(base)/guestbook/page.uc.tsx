@@ -113,7 +113,7 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
         <div className={scss.container}>
           <div className={scss.text}>
             <h2 className={scss.title}>
-              Guestbook ({(data && !isLoading && data.count) || 0})
+              Guestbook ({(data && !isLoading && data.totalCount) || 0})
             </h2>
 
             {!user && (
