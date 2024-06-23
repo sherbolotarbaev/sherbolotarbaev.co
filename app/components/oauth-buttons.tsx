@@ -53,15 +53,6 @@ export default function OuathButtons() {
   const error = searchParams.get('error');
   const next = searchParams.get('next') || '/guestbook';
 
-  const [loading, setLoading] = useState<Record<AuthProvider['name'], boolean>>({
-    google: false,
-    github: false,
-  });
-
-  const handleLoading = (provider: AuthProvider['name'], state: boolean) => {
-    setLoading((prev) => ({ ...prev, [provider]: state }));
-  };
-
   const handleErrorAlert = (message?: string) => {
     toast.error(message || 'Try again. Something happened on our end', {
       position: 'top-right',
@@ -90,9 +81,7 @@ export default function OuathButtons() {
           <Button
             key={index}
             type="button"
-            load={loading[provider.name]}
             redirect={`${process.env.NEXT_PUBLIC_API_URL}/${provider.name}/callback?next=${next}&source=${pathname}`}
-            onClick={() => handleLoading(provider.name, true)}
           >
             {provider.svgIcon} {provider.actionText}
           </Button>

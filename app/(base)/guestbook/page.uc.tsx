@@ -69,6 +69,9 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
           <div className={scss.controls}>
             <Button
               small
+              style={{
+                opacity: '0.75',
+              }}
               theme="red"
               onClick={() =>
                 handleAction({

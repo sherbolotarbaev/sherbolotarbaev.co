@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { useGetMeQuery } from '@/app/redux/api/me';
+import { formatDate2 } from '../lib/date';
 
 import Image from 'next/image';
 import Button from './button';
@@ -27,6 +28,12 @@ export default function Account({ close }: Readonly<AccountProps>) {
   };
 
   useEffect(() => {
+    if (close) {
+      setIsOpen(false);
+    }
+  }, [close]);
+
+  useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
         isOpen &&
@@ -47,7 +54,7 @@ export default function Account({ close }: Readonly<AccountProps>) {
   return me && !isLoading ? (
     <>
       <div
-        className={isOpen && !close ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
+        className={isOpen ? `${scss.wrapper} ${scss.active}` : scss.wrapper}
         onClick={(e) => e.stopPropagation()}
         ref={accountMenuRef}
       >
@@ -66,31 +73,21 @@ export default function Account({ close }: Readonly<AccountProps>) {
 
         <div className={scss.menu}>
           <div className={scss.list}>
-            <div className={scss.item_container}>
-              <span className={scss.label}>Full name</span>
+            <div className={scss.items_container}>
+              <span className={scss.label}>Display name</span>
 
-              <span className={scss.item}>
-                {me.name} {me.surname}
-              </span>
-            </div>
+              <span className={scss.item}>{me.name}</span>
 
-            <div className={scss.item_container}>
               <span className={scss.label}>Email</span>
 
               <span className={scss.item}>{me.email}</span>
+
+              <span className={scss.label}>Joined date</span>
+
+              <span className={scss.item}>{formatDate2(me.createdAt.toString())}</span>
             </div>
 
-            {/* {me.metaData && (
-              <div className={scss.item_container}>
-                <span className={scss.label}>Location</span>
-
-                <span className={scss.item}>
-                  {me.metaData.city}, {me.metaData.country}
-                </span>
-              </div>
-            )} */}
-
-            <div className={scss.item_container}>
+            <div className={scss.items_container}>
               <span className={scss.label}>Danger zone</span>
 
               <Button
