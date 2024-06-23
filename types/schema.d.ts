@@ -5,6 +5,7 @@ type User = {
   surname: string;
   photo?: string;
   isActive: boolean;
+  isVerified: boolean;
   createdAt: Date;
   updatedAt: Date;
 
@@ -30,6 +31,7 @@ type GuestbookMessage = {
     name: string;
     email: string;
     photo: string;
+    isVerified: boolean;
   };
 };
 

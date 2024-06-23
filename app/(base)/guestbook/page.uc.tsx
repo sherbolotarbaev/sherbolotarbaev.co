@@ -11,6 +11,7 @@ import DeleteButton from './components/delete.button';
 import Button from '@/app/components/button';
 import Modal from '@/app/components/modal';
 
+import { MdVerified } from 'react-icons/md';
 import { BiChevronDown, BiErrorCircle, BiTrash } from 'react-icons/bi';
 import scss from '@/app/components/scss/guestbook.module.scss';
 
@@ -58,6 +59,8 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
         <div className={scss.info}>
           <span className={scss.name}>
             {author.name}
+
+            {author.isVerified && <MdVerified color="var(--color-code-markup-heading)" />}
 
             <span className={scss.created_at}>{formatDate(createdAt)}</span>
           </span>
