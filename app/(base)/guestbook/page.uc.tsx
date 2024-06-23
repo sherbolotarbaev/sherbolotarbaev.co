@@ -35,7 +35,9 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
   }, []);
 
   const handleLoadMore = useCallback(() => {
-    setTake((prevTake) => prevTake + 10);
+    setTake(
+      (prevTake) => prevTake + (data ? Math.min(5, data.totalCount - data.count) : 5),
+    );
     refetch();
   }, [refetch]);
 
@@ -142,8 +144,12 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
           {messages && (
             <div className={scss.messages}>
               {messages}
-              {isFetching && <LoadingMessages count={10} />}
-              {data && data.count !== data.totalCount && (
+              {isFetching && (
+                <LoadingMessages
+                  count={data ? Math.min(5, data.totalCount - data.count) : 5}
+                />
+              )}
+              {data && data.count !== data.totalCount && !isFetching && (
                 <span className={scss.load_more} onClick={handleLoadMore}>
                   Load more <BiChevronDown size={18} />
                 </span>
