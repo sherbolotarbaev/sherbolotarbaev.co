@@ -23,7 +23,7 @@ export default function GuestbookClient({ user }: Readonly<GuestbookClientProps>
   const [open, setOpen] = useState<boolean>(false);
   const [action, setAction] = useState<Action | null>(null);
 
-  const [take, setTake] = useState<number>(40);
+  const [take, setTake] = useState<number>(25);
 
   const { data, isLoading, refetch, isFetching, isError } = useGetGuestbookMessagesQuery({
     take,
