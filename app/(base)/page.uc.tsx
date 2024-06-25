@@ -5,13 +5,14 @@ import type { Post } from '@/app/lib/blog';
 
 import Image from 'next/image';
 
-import Button from '@/app/components/button';
+import Banner from '../components/banner';
 import Experience from './components/experience';
 import Contact from './components/contact';
 import Skills from './components/skills';
 import Posts from './components/posts';
 
 import sher from '@/public/images/sherbolot.webp';
+import { IoIosArrowRoundForward } from 'react-icons/io';
 import scss from '@/app/components/scss/page.module.scss';
 
 interface HomeClientProps {
@@ -46,9 +47,9 @@ export default function HomeClient({ posts }: Readonly<HomeClientProps>) {
             </p>
           </div>
 
-          <Button width={165} open="/cv/Sherbolot-Arbaev.pdf" gradient>
-            📢 Available for Work
-          </Button>
+          <Banner width={195} href="/cv/Sherbolot-Arbaev.pdf">
+            📢 Available for Work <IoIosArrowRoundForward size={19} />
+          </Banner>
         </div>
 
         <div className={scss.container}>

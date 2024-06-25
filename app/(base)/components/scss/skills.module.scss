@@ -40,7 +40,7 @@
     }
 
     .gradient {
-      --size: 250px;
+      --size: 230px;
       --speed: 40s;
       --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
 
@@ -62,7 +62,7 @@
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 
       @media (min-width: 720px) {
-        --size: 340px;
+        --size: 310px;
       }
 
       @keyframes rotate {
