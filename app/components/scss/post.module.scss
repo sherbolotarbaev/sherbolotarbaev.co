@@ -77,10 +77,10 @@
       text-decoration: underline;
 
       font-style: italic;
-      color: #47a3f3;
+      color: var(--blue-badge-bg-active);
 
       strong {
-        color: #47a3f3;
+        color: var(--blue-badge-bg-active);
       }
     }
 

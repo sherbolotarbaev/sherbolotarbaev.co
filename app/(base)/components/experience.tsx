@@ -30,7 +30,7 @@ export default function Experience() {
                 />
 
                 <Link className={scss.link} href={job.url} target="_blank">
-                  <BiLink /> {job.url}
+                  <BiLink size={19} /> {job.url}
                 </Link>
               </div>
             ))}

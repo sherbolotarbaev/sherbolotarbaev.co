@@ -26,11 +26,12 @@
       align-items: center;
       justify-content: space-between;
 
-      border: 0.8px solid var(--color-300);
+      background: var(--bg-300);
+      border: 1px solid transparent;
       border-radius: var(--border-radius-500);
 
       &:hover {
-        background: var(--bg-main-hover);
+        border-color: var(--blue-badge-bg);
 
         .icon {
           transform: rotate(45deg);
