@@ -4,7 +4,6 @@ import { siteConfig } from '@/config/site';
 import { Suspense } from 'react';
 
 import RootLayoutClient from './layout.uc';
-import Loader from '@/app/components/loader';
 
 import { geistSans } from '@/app/lib/fonts';
 import './globals.scss';
@@ -68,7 +67,7 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
   return (
     <html lang="en">
       <body style={geistSans.style}>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={null}>
           <RootLayoutClient>{children}</RootLayoutClient>
         </Suspense>
       </body>
