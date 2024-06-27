@@ -67,19 +67,7 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
   return (
     <html lang="en">
       <body style={geistSans.style}>
-        <Suspense
-          fallback={
-            <span
-              style={{
-                margin: 'auto',
-                fontWeight: 'bold',
-                fontSize: '1rem',
-              }}
-            >
-              Loading...
-            </span>
-          }
-        >
+        <Suspense>
           <RootLayoutClient>{children}</RootLayoutClient>
         </Suspense>
       </body>
