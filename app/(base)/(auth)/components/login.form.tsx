@@ -32,7 +32,7 @@ export default function LoginForm() {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({ mode: 'onChange' });
 
   const [logIn, { isLoading }] = useLogInOtpMutation();
@@ -92,18 +92,25 @@ export default function LoginForm() {
         className={scss.form}
         onSubmit={handleSubmit(handleSubmitForm)}
         style={{
-          maxWidth: '26rem',
+          maxWidth: '35rem',
           marginInline: 'auto',
-          padding: '0 1.25rem',
         }}
       >
-        <div className={scss.text} style={{ textAlign: 'center' }}>
-          <h2 className={scss.title}>Welcome back</h2>
+        <div
+          className={scss.container}
+          style={{
+            width: '100%',
+            maxWidth: '26rem',
+            padding: '1.5rem 1.25rem',
+            marginInline: 'auto',
+          }}
+        >
+          <div className={scss.text} style={{ textAlign: 'center' }}>
+            <h2 className={scss.title}>Welcome back</h2>
 
-          <p className={scss.desc}>Sign in to continue.</p>
-        </div>
+            <p className={scss.desc}>Sign in to continue.</p>
+          </div>
 
-        <div className={scss.container}>
           <Input
             label="Email"
             placeholder="Enter your email..."
@@ -142,7 +149,11 @@ export default function LoginForm() {
             </>
           )}
 
-          <Button theme="blue" load={isLoading || isOtpSending} disabled={success}>
+          <Button
+            theme="blue"
+            load={isLoading || isOtpSending}
+            disabled={success || !isValid}
+          >
             {!isOtpSent ? 'Continue' : 'Sign in'}
           </Button>
 
