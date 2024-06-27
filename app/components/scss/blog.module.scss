@@ -51,6 +51,12 @@
           cursor: default;
         }
 
+        &:hover {
+          .title {
+            color: var(--color-700);
+          }
+        }
+
         .title {
           display: flex;
           align-items: center;
